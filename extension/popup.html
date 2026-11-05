@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>OnlyRead</title>
+<link rel="stylesheet" href="ui.css" />
+<link rel="stylesheet" href="welcome.css" />
+<style>
+  /* Chrome draws the popup window (with its own rounded corners) and does not allow a transparent
+     background, so the content fills the window edge to edge instead of drawing a card inside it. */
+  html, body { background: var(--bg); }
+  body { width: 356px; padding: 0; }
+  .shell { background: var(--glow), var(--bg); background-repeat: no-repeat; overflow: hidden; }
+  header { display: flex; align-items: center; gap: 10px; padding: 14px 14px 10px 16px; }
+  .enforce { display: flex; align-items: center; gap: 8px; font: 700 12px/1 var(--display); color: var(--muted); cursor: pointer; }
+  .enforce .switch { width: 36px; height: 21px; }
+  .enforce .switch span::before { width: 15px; height: 15px; }
+  .enforce .switch input:checked + span::before { transform: translateX(15px); }
+  main { padding: 2px 12px 12px; }
+  .site { padding: 16px; align-items: flex-start; border-radius: 16px; gap: 14px; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: #fff; }
+  .logo svg, .logo img { width: 28px; height: 28px; }
+  .name { font-size: 16px; }
+  .state { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 11.5px; font-weight: 600; color: var(--muted); padding: 4px 9px 4px 8px; border-radius: 999px; background: color-mix(in srgb, var(--fg) 6%, transparent); }
+  .state::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; opacity: .7; }
+  .state.on { color: var(--ok); background: color-mix(in srgb, var(--ok) 12%, transparent); }
+  .excl { color: var(--warn); font-size: 12px; margin-top: 4px; }
+  .actions { display: flex; align-items: center; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+  .actions .btn { white-space: nowrap; }
+  /* No AI judge (popup.ts judgeCard): one call to action, nothing else. */
+  body.no-judge #options, body.no-judge footer { display: none; }
+  body.no-judge #current { padding: 22px 18px 18px; text-align: center; }
+  .judge-needed .hero { margin-bottom: 10px; }
+  .judge-needed .title { font: 800 19px/1.25 var(--display); letter-spacing: -.02em; }
+  .judge-needed .lede { margin: 6px auto 16px; max-width: 270px; color: var(--muted); font-size: 12.5px; line-height: 1.5; text-wrap: balance; }
+  .judge-needed .small { margin: 10px 0 0; color: var(--faint); font-size: 11.5px; }
+  /* Calmer than the setup window: the logo's ring plays once and the sparkle stays still (the shine stays). */
+  .judge-needed .hero .tile-logo::after { animation-iteration-count: 1; }
+  .judge-needed .btn.cta .lead { animation: none; }
+  .enforce[hidden] { display: none; }
+  .actions .sub { white-space: normal; flex-basis: 100%; color: var(--faint); font-size: 11.5px; }
+  .actions .switch + .sub { flex-basis: auto; }
+  footer { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 11.5px; padding: 10px 16px 12px; border-top: 1px solid var(--line); background: color-mix(in srgb, var(--card) 60%, transparent); }
+  footer::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 3px color-mix(in srgb, var(--ok) 18%, transparent); flex: none; }
+  footer:has(.warn)::before { background: var(--warn); box-shadow: 0 0 0 3px color-mix(in srgb, var(--warn) 18%, transparent); }
+  footer .warn { color: var(--warn); line-height: 1.4; }
+  .foot-link[hidden] { display: none; }
+  .foot-link { margin-left: auto; border: 0; background: none; padding: 0; font: inherit; color: var(--muted); cursor: pointer; white-space: nowrap; }
+  .foot-link:hover { color: var(--fg); text-decoration: underline; text-underline-offset: 2px; }
+  /* The lock's word: a small amber lock, its first sentence as the title, the rest under it (shared/lock-text.ts). */
+  .lock { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-radius: 12px; font-size: 12.5px; line-height: 1.45; color: var(--muted);
+    background: color-mix(in srgb, var(--warn) 6%, var(--card)); border: 1px solid color-mix(in srgb, var(--warn) 22%, var(--line)); }
+  .lock .lock-mark { width: 26px; height: 26px; flex: none; display: grid; place-items: center; border-radius: 8px; color: var(--warn); background: color-mix(in srgb, var(--warn) 14%, transparent); }
+  .lock .lock-mark svg { width: 14px; height: 14px; }
+  .lock .lock-body { min-width: 0; padding-top: 3px; }
+  .lock .lock-body b { display: block; margin-bottom: 1px; color: var(--fg); font-weight: 700; }
+  .lock { margin-bottom: 10px; }
+  .lock[hidden] { display: none; }
+  .lock .link { border: 0; padding: 0; background: none; color: inherit; font: inherit; font-weight: 600; text-decoration: underline; cursor: pointer; }
+  /* Why the Pro account was not changed: not the lock, so it has its own box and stays whatever the lock says. */
+  .lock.err { color: var(--danger); background: color-mix(in srgb, var(--danger) 8%, transparent); border-color: color-mix(in srgb, var(--danger) 25%, transparent); }
+  /* A change on its way to the Pro account: a small spinner in place of words. */
+  .saving { display: inline-block; width: 12px; height: 12px; margin-left: 8px; border: 2px solid color-mix(in srgb, var(--accent) 25%, transparent); border-top-color: var(--accent); border-radius: 50%; vertical-align: -1px; animation: saving-spin .8s linear infinite; }
+  @keyframes saving-spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <div class="wordmark"><img class="mark" src="assets/wordmark.png" alt="OnlyRead"></div>
+      <label class="enforce" id="enforce" title="Protection: refuse writes to guarded sites"><span>Protection</span><span class="switch"><input id="mode" type="checkbox"><span></span></span></label>
+      <!-- No AI judge (status.judgeMissing): protection cannot be on, and this takes its place. -->
+      <button id="options" class="icon-btn" title="Sites and settings" aria-label="Sites and settings">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      </button>
+    </header>
+    <main>
+      <div id="lock" class="lock" role="status" hidden><span class="lock-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><div class="lock-body"><span id="lock-text"></span> <button id="lock-settings" class="link">Settings</button></div></div>
+      <div id="note" class="lock err" role="alert" hidden><span id="note-text"></span></div>
+      <div id="current" class="card"><div class="empty">…</div></div>
+    </main>
+    <footer><span id="foot-left">…</span><button type="button" id="report" class="foot-link" title="Send a refusal that was a mistake to OnlyRead support">Report a mistake</button></footer>
+  </div>
+  <script type="module" src="dist/popup.js"></script>
+</body>
+</html>

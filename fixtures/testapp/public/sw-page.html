@@ -1,0 +1,19 @@
+<!doctype html><meta charset="utf-8"><title>sw fixture</title>
+<h1>service worker fixture</h1>
+<pre id="out">registering…</pre>
+<script>
+  window.swReady = (async () => {
+    const reg = await navigator.serviceWorker.register('/sw.js');
+    await navigator.serviceWorker.ready;
+    if (!navigator.serviceWorker.controller) {
+      await new Promise((r) => navigator.serviceWorker.addEventListener('controllerchange', r, { once: true }));
+    }
+    document.getElementById('out').textContent = 'controlled';
+    return true;
+  })();
+  window.swFetch = (method, url, body) => new Promise((resolve) => {
+    navigator.serviceWorker.addEventListener('message', (e) => resolve(e.data.status !== undefined ? `status:${e.data.status}` : `error:${e.data.error}`), { once: true });
+    navigator.serviceWorker.controller.postMessage({ method, url, body });
+    setTimeout(() => resolve('timeout'), 5000);
+  });
+</script>

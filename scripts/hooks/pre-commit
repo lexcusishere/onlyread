@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Refuse a commit that stages raw sessions, env files, API keys or private account identifiers.
+set -euo pipefail
+staged=$(git diff --cached --name-only)
+if echo "$staged" | grep -qE '(^|/)sessions/|(^|/)\.env'; then
+  echo "pre-commit: raw sessions or .env files are staged; they must never be committed." >&2
+  exit 1
+fi
+python3 harness/scrub_check.py >/dev/null || { python3 harness/scrub_check.py; echo "pre-commit: scrub the files above first." >&2; exit 1; }

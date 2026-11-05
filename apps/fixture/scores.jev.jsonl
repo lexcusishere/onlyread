@@ -1,0 +1,9 @@
+{"fingerprint": "POST localhost/api/search json:q", "label": "read", "pWrite": 0.04, "latencyMs": 832, "model": "typesafe-ai/jev"}
+{"fingerprint": "POST localhost/graphql gql:query:-", "label": "read", "pWrite": 0.03, "latencyMs": 528, "model": "typesafe-ai/jev"}
+{"fingerprint": "POST localhost/rpc json:op;op=list", "label": "read", "pWrite": 0.03, "latencyMs": 542, "model": "typesafe-ai/jev"}
+{"fingerprint": "POST localhost/api/items json:name", "label": "write", "pWrite": 0.98, "latencyMs": 519, "model": "typesafe-ai/jev"}
+{"fingerprint": "POST localhost/graphql gql:mutation:-", "label": "write", "pWrite": 0.99, "latencyMs": 909, "model": "typesafe-ai/jev"}
+{"fingerprint": "POST localhost/graphql gql[]:query,mutation", "label": "write", "pWrite": 0.96, "latencyMs": 807, "model": "typesafe-ai/jev"}
+{"fingerprint": "POST localhost/rpc json:name,op;op=create", "label": "write", "pWrite": 0.97, "latencyMs": 550, "model": "typesafe-ai/jev"}
+{"fingerprint": "POST localhost/api/items form:name", "label": "write", "pWrite": 0.97, "latencyMs": 587, "model": "typesafe-ai/jev"}
+{"fingerprint": "POST localhost/rpc json:op", "label": "read", "pWrite": 0.13, "latencyMs": 544, "model": "typesafe-ai/jev"}

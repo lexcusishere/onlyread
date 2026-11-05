@@ -1,0 +1,40 @@
+{
+  "targetDomains": [
+    "calendar.google.com",
+    "calendar-pa.clients6.google.com",
+    "clients6.google.com"
+  ],
+  "telemetryAllow": [
+    "/gen_204",
+    "/log?",
+    "/logstreamz",
+    "/jserror",
+    "/_/CalendarWebService/log",
+    "/csi",
+    "/beacon",
+    "play.google.com/log",
+    "/_/calendar/logging",
+    "google.internal.waa.v1.Waa"
+  ],
+  "blockedGetPaths": [
+    "action=RESPOND",
+    "/calendar/event?action=RESPOND"
+  ],
+  "websockets": "block",
+  "blockedShapes": [
+    "gcal:sync:w",
+    "gtasks:sync:w",
+    "gmail:s:w"
+  ],
+  "allowedShapes": [
+    "gcal:sync:w[set:smartMailAck]"
+  ],
+  "readTrackingShapes": [
+    "gcal:sync:w[set:defaultCalMode]",
+    "gcal:sync:w[set:goocalwebmat.darkModePromoDismissed]",
+    "gcal:sync:w[set:goocalwebmat.lastEventCreationDate]",
+    "gcal:sync:w[set:goocalwebmat.notificationPromptDismissed]",
+    "gcal:sync:w[set:goocalwebmat.onboardingWelcomeDoneTimestamp]",
+    "gcal:sync:w[set:goocalwebmat.usedNewCreationFlow]"
+  ]
+}

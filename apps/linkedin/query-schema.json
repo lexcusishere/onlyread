@@ -1,0 +1,14 @@
+{
+ "note": "Query keys folded out of write-capable fingerprints on these endpoints: their values change on every request (tokens, counters, span and session ids). Reviewed by hand from `python3 harness/site/query_schema.py propose linkedin`; keys that select the operation are never listed. See harness/site/query_schema.py.",
+ "volatile": {
+  "www.linkedin.com/flagship-web/rsc-action/actions/component": [
+   "parentSpanId"
+  ],
+  "www.linkedin.com/flagship-web/rsc-action/actions/pagination": [
+   "parentSpanId"
+  ],
+  "www.linkedin.com/realtime/realtimeFrontendSubscriptions": [
+   "ids"
+  ]
+ }
+}

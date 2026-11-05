@@ -1,0 +1,634 @@
+{
+ "GET px.ads.linkedin.com/collect/ none": {
+  "verdict": "allow",
+  "note": ""
+ },
+ "POST www.linkedin.com/0Izljq5ib39looT ct:text/plain": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/0Izljq5ib39looT opaque": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/8BBxP6knx-6eJVc4Ddp ct:text/plain": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/8BBxP6knx-6eJVc4Ddp opaque": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/B5478zqVn_wjIQ8EUBm ct:text/plain": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/B5478zqVn_wjIQ8EUBm opaque": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/L0NGpK1-oHPEMoo ct:text/plain": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/L0NGpK1-oHPEMoo opaque": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/Pa1FOe_96X54V ct:text/plain": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/Pa1FOe_96X54V opaque": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/QaQ2j_5ARh7 ct:text/plain": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/QaQ2j_5ARh7 opaque": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/T7CEY3FI_fQwIkaK0 ct:text/plain": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/T7CEY3FI_fQwIkaK0 opaque": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/abwh8FQWk0 ct:text/plain": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/abwh8FQWk0 opaque": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/djxfEtYTn-SPc8l7aJp ct:text/plain": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/djxfEtYTn-SPc8l7aJp opaque": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/flagship-web/feed/ json:isPrefetch,requestedArguments": {
+  "verdict": "allow",
+  "note": "flagship-web page-load data (isPrefetch,requestedArguments)"
+ },
+ "POST www.linkedin.com/flagship-web/in/test-user-0000/ json:isPrefetch,requestedArguments": {
+  "verdict": "allow",
+  "note": "flagship-web page-load data (isPrefetch,requestedArguments)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/app-config json:": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/component?componentId=com.linkedin.sdui.generated.profile.dsl.impl.profileCardsActivity&parentSpanId={v}&sduiid=com.linkedin.sdui.generated.profile.dsl.impl.profileCardsActivity json:clientArguments,componentId": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/component?componentId=com.linkedin.sdui.generated.profile.dsl.impl.profileCardsAboveActivity&parentSpanId={v}&sduiid=com.linkedin.sdui.generated.profile.dsl.impl.profileCardsAboveActivity json:clientArguments,componentId": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/component?componentId=com.linkedin.sdui.generated.profile.dsl.impl.browsemapRecommendedEntitySection&parentSpanId={v}&sduiid=com.linkedin.sdui.generated.profile.dsl.impl.browsemapRecommendedEntitySection json:clientArguments,componentId": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/component?componentId=com.linkedin.sdui.generated.profile.dsl.impl.pymkRecommendedEntitySection&parentSpanId={v}&sduiid=com.linkedin.sdui.generated.profile.dsl.impl.pymkRecommendedEntitySection json:clientArguments,componentId": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/component?componentId=com.linkedin.sdui.generated.profile.dsl.impl.productRecommendedEntitySection&parentSpanId={v}&sduiid=com.linkedin.sdui.generated.profile.dsl.impl.productRecommendedEntitySection json:clientArguments,componentId": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/component?componentId=com.linkedin.sdui.generated.jobseeker.dsl.impl.jobSearchBox&parentSpanId={v}&sduiid=com.linkedin.sdui.generated.jobseeker.dsl.impl.jobSearchBox json:clientArguments,componentId": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/component?componentId=com.linkedin.sdui.generated.search.dsl.impl.lazyLoadedFilterBar&parentSpanId={v}&sduiid=com.linkedin.sdui.generated.search.dsl.impl.lazyLoadedFilterBar json:clientArguments,componentId": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/component?componentId=com.linkedin.sdui.generated.profile.dsl.impl.profileCardsBelowActivityPart1WithoutExp&parentSpanId={v}&sduiid=com.linkedin.sdui.generated.profile.dsl.impl.profileCardsBelowActivityPart1WithoutExp json:clientArguments,componentId": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/component?componentId=com.linkedin.sdui.generated.profile.dsl.impl.profileTopCardSection&parentSpanId={v}&sduiid=com.linkedin.sdui.generated.profile.dsl.impl.profileTopCardSection json:clientArguments,componentId": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/component?componentId=com.linkedin.sdui.generated.profile.dsl.impl.suggestedForYouTopLevelSection&parentSpanId={v}&sduiid=com.linkedin.sdui.generated.profile.dsl.impl.suggestedForYouTopLevelSection json:clientArguments,componentId": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/component?componentId=com.linkedin.sdui.generated.profile.dsl.impl.educationTopLevelSection&parentSpanId={v}&sduiid=com.linkedin.sdui.generated.profile.dsl.impl.educationTopLevelSection json:clientArguments,componentId": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/component?componentId=com.linkedin.sdui.generated.profile.dsl.impl.experienceTopLevelSection&parentSpanId={v}&sduiid=com.linkedin.sdui.generated.profile.dsl.impl.experienceTopLevelSection json:clientArguments,componentId": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/component?componentId=com.linkedin.sdui.generated.comments.dsl.impl.submitCommentButton&parentSpanId={v}&sduiid=com.linkedin.sdui.generated.comments.dsl.impl.submitCommentButton json:clientArguments,componentId": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/navigation?screenId=com.linkedin.sdui.flagshipnav.profile.ProfileEditIntroForm&sduiid=com.linkedin.sdui.flagshipnav.profile.ProfileEditIntroForm json:clientArguments,isModal": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/navigation?screenId=com.linkedin.sdui.flagshipnav.sharing.ShareCompose&sduiid=com.linkedin.sdui.flagshipnav.sharing.ShareCompose json:clientArguments,isModal": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/navigation?screenId=com.linkedin.sdui.flagshipnav.trustverifications.VerificationNbaDialog&sduiid=com.linkedin.sdui.flagshipnav.trustverifications.VerificationNbaDialog json:clientArguments,isModal": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/navigation?screenId=com.linkedin.sdui.flagshipnav.profile.ProfileTopCardNbaPremiumUpsell&sduiid=com.linkedin.sdui.flagshipnav.profile.ProfileTopCardNbaPremiumUpsell json:clientArguments,isModal": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/pagination?parentSpanId={v}&sduiid=com.linkedin.sdui.pagers.feed.mainFeed json:clientArguments,pagerId,paginationRequest": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/pagination?parentSpanId={v}&sduiid=com.linkedin.sdui.search.blendedSearchResults json:clientArguments,pagerId,paginationRequest": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/pagination?parentSpanId={v}&sduiid=com.linkedin.sdui.pagers.mynetwork.scribeCohortsComponents json:clientArguments,pagerId,paginationRequest": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/pagination?parentSpanId={v}&sduiid=com.linkedin.sdui.pagers.jobseeker.jobsHomeFeedModuleList json:clientArguments,pagerId,paginationRequest": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/pagination?parentSpanId={v}&sduiid=com.linkedin.sdui.pagers.feed.mainFeed opaque": {
+  "verdict": "allow",
+  "note": "flagship-web RSC page data (component/pagination/navigation/app-config)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request?parentSpanId=?&sduiid=com.linkedin.sdui.impl.homenav.requests.getThirdPartyTrackingPixels json:requestId,requestedArguments,serverRequest,states": {
+  "verdict": "block",
+  "note": "MIXED: pre-codec fingerprint (key shape / observer, no body); superseded by li:rsc:* and never produced live now"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:r": {
+  "verdict": "allow",
+  "note": "flagship-web server-request read (codec)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[UpdatePlatform.addUpdateToFeedListRequest]": {
+  "verdict": "block",
+  "note": "flagship-web server-request write (codec) UpdatePlatform.addUpdateToFeedListRequest"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[comments.createComment]": {
+  "verdict": "block",
+  "note": "flagship-web server-request write (codec) comments.createComment"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[cooloff.activity]": {
+  "verdict": "allow",
+  "note": "infra.register.cooloff.activity: anti-abuse cool-off token, no user data; telemetry; allowed by allowedShapes"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[media.restoreTagPills]": {
+  "verdict": "block",
+  "note": "flagship-web server-request write (codec) media.restoreTagPills"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[profile.saveProfileIntroForm]": {
+  "verdict": "block",
+  "note": "flagship-web server-request write (codec) profile.saveProfileIntroForm"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[reactions.create]": {
+  "verdict": "block",
+  "note": "flagship-web server-request write (codec) reactions.create"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[reactions.delete]": {
+  "verdict": "block",
+  "note": "flagship-web server-request write (codec) reactions.delete"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[requests.updateSearchHistoryRequest]": {
+  "verdict": "allow",
+  "note": "saves the search to recent history: a read (labeling rules)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[sharing.CreatePost]": {
+  "verdict": "block",
+  "note": "flagship-web server-request write (codec) sharing.CreatePost"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[sharing.LaunchCreatePost]": {
+  "verdict": "block",
+  "note": "flagship-web server-request write (codec) sharing.LaunchCreatePost"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[sharing.LaunchSharebox]": {
+  "verdict": "allow",
+  "note": "opens the post composer (sets up a share session; nothing the user wrote is sent); allowed so the composer opens, sharing.CreatePost stays refused"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[sharing.TrackShareboxInteraction]": {
+  "verdict": "allow",
+  "note": "tracks clicks in the post composer; nothing the user wrote is stored (labeling rules)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[sharing.collaboratorResetOnDiscardAction]": {
+  "verdict": "allow",
+  "note": "resets the composer collaborator selection on discard: session state, like LaunchSharebox (labeling rules)"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[update.deletePost]": {
+  "verdict": "block",
+  "note": "flagship-web server-request write (codec) update.deletePost"
+ },
+ "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[update.saveState]": {
+  "verdict": "block",
+  "note": "flagship-web server-request write (codec) update.saveState"
+ },
+ "POST www.linkedin.com/li/track ct:text/plain": {
+  "verdict": "allow",
+  "note": ""
+ },
+ "POST www.linkedin.com/li/track opaque": {
+  "verdict": "allow",
+  "note": ""
+ },
+ "POST www.linkedin.com/litms/api/events/ext-tag-load json:eventSource,eventType,pageKey,profileName,referrer,tags": {
+  "verdict": "allow",
+  "note": "infrastructure telemetry (telemetryAllow)"
+ },
+ "POST www.linkedin.com/litms/api/events/tms-load json:eventSource,profileName,referrer,version": {
+  "verdict": "allow",
+  "note": "infrastructure telemetry (telemetryAllow)"
+ },
+ "POST www.linkedin.com/lix/treatmentsV2 form:evaluationContext,explicitUrnLiXList,ids": {
+  "verdict": "allow",
+  "note": "experiment treatment evaluation (flags for the page)"
+ },
+ "POST www.linkedin.com/lix/treatmentsV2 opaque": {
+  "verdict": "allow",
+  "note": "experiment treatment evaluation (flags for the page)"
+ },
+ "POST www.linkedin.com/psettings/seen-receipts json:csrfToken,seenReceiptsEnabled": {
+  "verdict": "block",
+  "note": "implicit: messaging read-receipts setting posted on messaging load"
+ },
+ "POST www.linkedin.com/realtime/realtimeFrontendClientConnectivityTracking?action=sendHeartbeat json:actorUrn,clientId,contextUrns,isFirstHeartbeat,isLastHeartbeat,mpName,mpVersion,realtimeSessionId": {
+  "verdict": "allow",
+  "note": "infrastructure telemetry (telemetryAllow)"
+ },
+ "POST www.linkedin.com/realtime/realtimeFrontendClientConnectivityTracking?action=sendHeartbeat json:clientId,isFirstHeartbeat,isLastHeartbeat,mpName,mpVersion,realtimeSessionId": {
+  "verdict": "allow",
+  "note": "infrastructure telemetry (telemetryAllow)"
+ },
+ "POST www.linkedin.com/sensorCollect/?action=reportMetrics form:metrics": {
+  "verdict": "allow",
+  "note": "infrastructure telemetry (telemetryAllow)"
+ },
+ "POST www.linkedin.com/sensorCollect/?action=reportMetrics json:debug,metrics": {
+  "verdict": "allow",
+  "note": "infrastructure telemetry (telemetryAllow)"
+ },
+ "POST www.linkedin.com/sensorCollect/?action=reportMetrics json:metrics": {
+  "verdict": "allow",
+  "note": "infrastructure telemetry (telemetryAllow)"
+ },
+ "POST www.linkedin.com/tapi0asdc2MApgzQ ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapi0asdc2MApgzQ opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapiC402qQteQ2uF ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapiC402qQteQ2uF opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapiH6D6Fat0G3Bw ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapiH6D6Fat0G3Bw opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapiKvjhQoPyZD9x ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapiKvjhQoPyZD9x opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapiLotS6xVxTqhH ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapiLotS6xVxTqhH opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapiONydx7xFGjD6 ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapiONydx7xFGjD6 opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapiVLt480myf7gK ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapiVLt480myf7gK opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapicO5CCyvdixNl ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapicO5CCyvdixNl opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapifqXu2U90CU64 ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapifqXu2U90CU64 opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapihTN5Wnw4VQoY ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapihTN5Wnw4VQoY opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapii4MbU7Cp7KAs ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapii4MbU7Cp7KAs opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapilGk8jmEQKbfg ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapilGk8jmEQKbfg opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapiqo2aew2TzJCX ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapiqo2aew2TzJCX opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapivHM0A0s1UoLe ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapivHM0A0s1UoLe opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapivXk6B6min7N0 ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapivXk6B6min7N0 opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapiydNDkBLWjSUT ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tapiydNDkBLWjSUT opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tlixN4EgIxYWFYU9 ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tlixN4EgIxYWFYU9 opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tmed4KZa2keFJV6P ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tmed4KZa2keFJV6P opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tmedj50LbNziebEV ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tmedj50LbNziebEV opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tmedxTwXLp1obOld ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/tmedxTwXLp1obOld opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11y0TBexGqbwfME ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11y4RusOFiHW6hy ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11y4RusOFiHW6hy opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11y7IqNg9BIRRoX ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11y7n8VvqzIKnip ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11yAz9Fj2U497dd ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11yIM131gpSbTbZ ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11yIM131gpSbTbZ opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11yPtE1FFfU2Q8v ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11yPtE1FFfU2Q8v opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11ySDT4dJsiuiba ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11ySDT4dJsiuiba opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11yWLjSmM7IAL6K ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11yWLjSmM7IAL6K opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11yYTE4hT0FtItm ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11yYTE4hT0FtItm opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11yYyf7Tz6LQSB6 ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11yYyf7Tz6LQSB6 opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11yf4LhJXI5ZZPq ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11yf4LhJXI5ZZPq opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11yfLbXAweQWcUV ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11yfLbXAweQWcUV opaque": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11ynVaWXULMARjz ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/to11yrunS38WWHfXE ct:application/json": {
+  "verdict": "allow",
+  "note": "obfuscated telemetry beacon; telemetryAllow prefix wildcard"
+ },
+ "POST www.linkedin.com/txloS0O-EpSzo7u ct:text/plain": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/txloS0O-EpSzo7u opaque": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/voyager/api/feed/dash/followingStates/urn:li:fsd_followingState:urn:li:fsd_company:3154 json:patch": {
+  "verdict": "block",
+  "note": "follow/unfollow company (json:patch)"
+ },
+ "POST www.linkedin.com/voyager/api/graphql?action=execute&queryId=voyagerIdentityDashPrivacySettings.d9fe47027bbb27ea7193dc3bab51ad7f json:includeWebMetadata,queryId,variables": {
+  "verdict": "block",
+  "note": "Voyager GraphQL execute: all mutations share this fingerprint; reads are GET"
+ },
+ "POST www.linkedin.com/voyager/api/graphql?action=execute&queryId=inSessionRelevanceVoyagerFeedDashClientSignal.c1c9c08097afa4e02954945e9df54091 json:includeWebMetadata,queryId,variables": {
+  "verdict": "block",
+  "note": "Voyager GraphQL execute: all mutations share this fingerprint; reads are GET"
+ },
+ "POST www.linkedin.com/voyager/api/graphql?action=execute&queryId=voyagerSocialDashReactions.b731222600772fd42464c0fe19bd722b json:includeWebMetadata,queryId,variables": {
+  "verdict": "block",
+  "note": "Voyager GraphQL execute: all mutations share this fingerprint; reads are GET"
+ },
+ "POST www.linkedin.com/voyager/api/graphql?action=execute&queryId=voyagerContentcreationDashShares.c459f081c61de601a90d103fbea46496 json:includeWebMetadata,queryId,variables": {
+  "verdict": "block",
+  "note": "Voyager GraphQL execute: all mutations share this fingerprint; reads are GET"
+ },
+ "POST www.linkedin.com/voyager/api/graphql?action=execute&queryId=inSessionRelevanceVoyagerFeedDashClientSignal.d14b45e21b8bec350407b606edf9cba0 json:includeWebMetadata,queryId,variables": {
+  "verdict": "block",
+  "note": "Voyager GraphQL execute: all mutations share this fingerprint; reads are GET"
+ },
+ "POST www.linkedin.com/voyager/api/messaging/dash/presenceStatuses form:ids": {
+  "verdict": "allow",
+  "note": "presence lookup for listed member ids"
+ },
+ "POST www.linkedin.com/voyager/api/voyagerLegoDashWidgetActionEvents json:actionCategory,actionCount,trackingToken": {
+  "verdict": "allow",
+  "note": "Lego widget impression/action tracking"
+ },
+ "POST www.linkedin.com/voyager/api/voyagerLegoDashWidgetActionEvents json:actionCategory,trackingToken": {
+  "verdict": "allow",
+  "note": "Lego widget impression/action tracking"
+ },
+ "POST www.linkedin.com/voyager/api/voyagerLegoDashWidgetImpressionEvents json:trackingToken,visibility": {
+  "verdict": "allow",
+  "note": "Lego widget impression/action tracking"
+ },
+ "POST www.linkedin.com/yK3mp7ekPrWtfqGezYt ct:text/plain": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/yK3mp7ekPrWtfqGezYt opaque": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/ytDuE6rB-auBkHfqt ct:text/plain": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/ytDuE6rB-auBkHfqt opaque": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/zUklB8OWfeyL40l6OlM ct:text/plain": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/zUklB8OWfeyL40l6OlM opaque": {
+  "verdict": "allow",
+  "note": "gzip telemetry beacon on a random per-session path; not URL-fenceable, judge handles"
+ },
+ "POST www.linkedin.com/voyager/api/voyagerMessagingDashMessengerMessages?action=createMessage li:msg:w[send]": {
+  "verdict": "block",
+  "note": "send a message (decoded by the messaging codec)"
+ },
+ "POST www.linkedin.com/voyager/api/voyagerMessagingDashMessengerMessages?action=reactWithEmoji li:msg:w[react]": {
+  "verdict": "block",
+  "note": "react to a message with an emoji"
+ },
+ "POST www.linkedin.com/voyager/api/voyagerMessagingDashMessengerMessages?action=recall li:msg:w[recall]": {
+  "verdict": "block",
+  "note": "unsend (recall) one of your messages"
+ }
+}

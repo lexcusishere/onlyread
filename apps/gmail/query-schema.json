@@ -1,0 +1,30 @@
+{
+ "note": "Query keys folded out of write-capable fingerprints on these endpoints: values that change on every request (tokens, counters, span and session ids) and values that identify the account, session or client build rather than the operation (at: XSRF token, jsver: client build, cbl: client build label, permmsgid: message id, ik: account key, script: failing script URL (error report)). Reviewed by hand from `python3 harness/site/query_schema.py propose gmail` and the label sheet; keys that select the operation (act, view, queryId, componentId, action, \u2026) are never listed. See harness/site/query_schema.py.",
+ "volatile": {
+  "mail.google.com/cloudsearch/request": [
+   "at",
+   "zx"
+  ],
+  "mail.google.com/mail/u/{id}/": [
+   "_reqid",
+   "at",
+   "cbl",
+   "ik",
+   "jsver",
+   "permmsgid",
+   "rid"
+  ],
+  "mail.google.com/mail/u/{id}/jserror": [
+   "script"
+  ],
+  "mail.google.com/sync/u/{id}/i/bv": [
+   "c"
+  ],
+  "mail.google.com/sync/u/{id}/i/fd": [
+   "c"
+  ],
+  "mail.google.com/sync/u/{id}/st/s": [
+   "c"
+  ]
+ }
+}

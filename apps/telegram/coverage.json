@@ -1,0 +1,26 @@
+{
+ "testedOn": "2026-10-28",
+ "passes": [
+  "Chat list and live updates (incoming messages)",
+  "Open a chat and read its history",
+  "Search (chats, people and messages)",
+  "Bot and contact profiles"
+ ],
+ "refused": [
+  "Send a message",
+  "Reply to a message",
+  "React with an emoji",
+  "Edit a message",
+  "Pin a message",
+  "Delete a message",
+  "Save a draft (implicit)",
+  "Mark as read (implicit, allowed with read-tracking on)"
+ ],
+ "untested": [
+  "Typing indicator (Telegram Web sent none in a bot chat)",
+  "Channels and groups: joining, posting, settings",
+  "Media and file uploads",
+  "Account and privacy settings"
+ ],
+ "leakCheck": true
+}

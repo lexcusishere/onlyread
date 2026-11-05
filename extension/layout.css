@@ -1,0 +1,69 @@
+/* The settings page's layout, and the OnlyRead Pro account page's: a sidebar of topics beside one column of sections.
+   One file for both: the Pro service (the cloud repo) keeps a word-for-word copy, checked by its
+   scripts/extension-sync.mjs (`npm run check` fails when the copies differ; `npm run sync:extension` takes this one).
+   Change it here.
+
+   Markup: .page > .shell > nav.side (.top: .wordmark > img.mark + .product, then the topics' links: svg, words, .n)
+   and main.content (.content-top: the appearance switch's .seg, then the sections: section > header h2 + p).
+   Every rule but .page and .shell's own is under :where(.shell): it reaches nothing outside the shell (the Pro site's
+   other pages have sections of their own) and weighs no more than it did written plainly, so the pages' own rules
+   that override it (the extension's pro-mode, judge-setup and framed views) still do.
+   It uses the pages' own variables: --fg, --muted, --faint, --line-strong, --accent, --accent-ink, --chip, --display,
+   --body. */
+
+/* X's proportions: a 275px navigation column and a 990px content column (its feed and right column together), 1265px
+   in all, centred. */
+.page { max-width: 1305px; margin: 0 auto; padding: 0 20px 64px; }
+:where(.shell) .top { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 22px; }
+:where(.shell) .top .wordmark .mark { height: 26px; }
+:where(.shell) .top .wordmark .product { font: 600 12px/1 var(--body); color: var(--muted); padding: 5px 8px; border: 1px solid var(--line-strong); border-radius: 999px; }
+:where(.shell) .top .seg button { padding: 5px 10px; font-size: 12px; }
+
+/* Shell: sidebar of topics + content */
+.shell { display: grid; grid-template-columns: 275px minmax(0, 990px); gap: 0; align-items: start; }
+:where(.shell) .content { padding-top: 6px; } /* the appearance switch level with the logo */
+/* The navigation column as X's: the logo at its top, large items as pills that hug their words, the full height of the
+   window and held there. */
+/* Measured on x.com (2026-11-04): rows 58px apart, each a 50px pill with 12px padding, a 26px icon, 20px words at
+   regular weight 20px after it; the logo about 30px tall at the top. */
+/* As tall as its topics, not the window: a full-height column would be pushed up at the page's end, the logo with it. */
+:where(.shell) .side { position: sticky; top: 0; height: auto; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding: 6px 32px 20px 0; }
+:where(.shell) .side .top { display: contents; }
+:where(.shell) .side .top .wordmark { display: flex; align-items: center; gap: 10px; padding: 4px 12px 2px; }
+:where(.shell) .side .top .wordmark .mark { height: 50px; }
+:where(.shell) .side .top .wordmark .product { font-size: 13px; padding: 6px 10px; }
+:where(.shell) .content-top { display: flex; justify-content: flex-end; margin-bottom: -14px; }
+:where(.shell) .content-top .seg { padding: 4px; border-radius: 14px; }
+:where(.shell) .content-top .seg button { padding: 9px 16px; font-size: 14px; border-radius: 10px; }
+:where(.shell) .side a { display: flex; align-items: center; gap: 16px; padding: 10px; border-radius: 999px; color: var(--fg); text-decoration: none; font: 400 17px/22px var(--display); letter-spacing: -.01em; transition: background .2s, color .2s; }
+:where(.shell) .side a { padding-right: 16px; }
+:where(.shell) .side a:hover { background: color-mix(in srgb, var(--fg) 7%, transparent); text-decoration: none; }
+:where(.shell) .side a.on { font-weight: 700; }
+:where(.shell) .side a.on svg { color: var(--accent); stroke-width: 2.4; }
+:where(.shell) .side a .n { margin-left: 2px; font: 700 12px/1 var(--body); color: var(--accent-ink); background: var(--chip); padding: 4px 8px; border-radius: 999px; }
+:where(.shell) .side a .n:empty { display: none; }
+:where(.shell) .side svg { width: 22px; height: 22px; flex: none; stroke-width: 1.9; }
+@media (max-width: 1100px) {
+  .shell { grid-template-columns: 220px minmax(0, 1fr); }
+  :where(.shell) .side { padding-right: 20px; }
+  :where(.shell) .side a { gap: 12px; padding: 9px 16px 9px 10px; font-size: 16px; }
+  :where(.shell) .side svg { width: 20px; height: 20px; }
+}
+:where(.shell) .content { display: grid; grid-template-columns: minmax(0, 1fr); gap: 34px; min-width: 0; }
+:where(.shell) section { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; scroll-margin-top: 16px; }
+:where(.shell) section > header { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+:where(.shell) section > header h2 { font-size: 18px; font-weight: 800; }
+:where(.shell) section > header p { margin: 0; color: var(--muted); font-size: 13px; flex-basis: 100%; }
+
+@media (max-width: 760px) {
+  .shell { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  /* Phone width: the logo and the appearance switch on one line, the topics as small pills under them. */
+  :where(.shell) .side { position: static; height: auto; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 4px; padding: 14px 0 4px; min-width: 0; max-width: 100%; }
+  :where(.shell) .side .top { display: flex; width: 100%; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+  :where(.shell) .side .top .wordmark { padding: 0; }
+  :where(.shell) .side .top .wordmark .mark { height: 30px; }
+  :where(.shell) .content-top .seg button { padding: 6px 11px; font-size: 12.5px; }
+  :where(.shell) .side a { white-space: nowrap; gap: 8px; padding: 7px 12px; font: 600 13px/1.2 var(--body); }
+  :where(.shell) .side svg { width: 16px; height: 16px; }
+  :where(.shell) .content { padding-top: 6px; }
+}

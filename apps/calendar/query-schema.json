@@ -1,0 +1,49 @@
+{
+ "note": "Query keys folded out of write-capable fingerprints on these endpoints: values that change on every request (tokens, counters, span and session ids) and values that identify the account, session or client build rather than the operation (key: Google web client key, at: XSRF token, authuser: account index). Reviewed by hand from `python3 harness/site/query_schema.py propose calendar` and the label sheet; keys that select the operation (act, view, queryId, componentId, action, \u2026) are never listed. See harness/site/query_schema.py.",
+ "volatile": {
+  "appsgenaiserver-pa.clients6.google.com/v1/genai/quotaSummary": [
+   "key"
+  ],
+  "appsgrowthpromo-pa.clients6.google.com/v1/promotion/FetchRecommendation": [
+   "key"
+  ],
+  "calendar-pa.clients6.google.com/$rpc/google.internal.calendar.v1.TimeZoneService/ListSuggestedTimeZones": [
+   "$httpHeaders"
+  ],
+  "calendar.google.com/calendar/cloudsearch/request": [
+   "at",
+   "authuser",
+   "zx"
+  ],
+  "espresso-pa.clients6.google.com/v1/prewarm": [
+   "key"
+  ],
+  "feedback-pa.clients6.google.com/v1/survey/startup_config": [
+   "key"
+  ],
+  "feedback-pa.clients6.google.com/v1/survey/trigger": [
+   "key"
+  ],
+  "signaler-pa.clients6.google.com/punctual/multi-watch/channel": [
+   "AID",
+   "RID",
+   "SID",
+   "gsessionid",
+   "key",
+   "zx"
+  ],
+  "signaler-pa.clients6.google.com/punctual/v1/chooseServer": [
+   "key"
+  ],
+  "signaler-pa.clients6.google.com/punctual/v1/refreshCreds": [
+   "gsessionid",
+   "key"
+  ],
+  "taskassist-pa.clients6.google.com/v2/taskassist:compose": [
+   "key"
+  ],
+  "workspaceui-pa.clients6.google.com/v1/udpConsent:fetchCompiled": [
+   "key"
+  ]
+ }
+}

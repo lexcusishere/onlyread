@@ -1,0 +1,49 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - run: npm ci
+      - run: pip install ruff==0.16.10
+      # typecheck, lint (Biome + Ruff), unit tests, fingerprint tests, build, and no API keys in the tree
+      - run: npm run check
+
+  e2e:
+    # The extension in a real browser, headless, no keys needed:
+    # - replay: every labeled request of the verified sites, against their real host names (served
+    #   locally): no write may reach the server;
+    # - fixture: interception itself (Layer 0 rules, the debugger, monitor vs enforce, the popup and
+    #   options pages) against a local test app.
+    # The live judge suite (e2e/live-judge.spec.ts) makes paid calls: live.yml, nightly, and `npm run e2e:live`.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run e2e:replay
+      - run: npx playwright test e2e/phase0.spec.ts e2e/phase1.spec.ts
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: e2e-traces
+          path: test-results/
+

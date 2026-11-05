@@ -1,0 +1,35 @@
+{
+ "note": "Query keys folded out of write-capable fingerprints on these endpoints: values that change on every request (tokens, counters, span and session ids) and values that identify the account, session or client build rather than the operation (__user: the signed-in account id, __hs: haste session, __rev: client revision, __spin_r: client revision, qpl_active_flow_ids: perf-logging flow ids). Reviewed by hand from `python3 harness/site/query_schema.py propose facebook` and the label sheet; keys that select the operation (act, view, queryId, componentId, action, \u2026) are never listed. See harness/site/query_schema.py.",
+ "volatile": {
+  "www.facebook.com/ajax/bnzai": [
+   "__crn",
+   "__hs",
+   "__hsi",
+   "__req",
+   "__rev",
+   "__s",
+   "__spin_r",
+   "__spin_t",
+   "__user",
+   "_callFlowletID",
+   "_triggerFlowletID",
+   "fb_dtsg",
+   "jazoest",
+   "lsd",
+   "qpl_active_flow_ids"
+  ],
+  "www.facebook.com/ajax/qm/": [
+   "__user",
+   "jazoest"
+  ],
+  "www.facebook.com/ajax/webstorage/process_keys/": [
+   "_triggerFlowletID"
+  ],
+  "www.facebook.com/static_resources/webworker/rsrc/": [
+   "__hs",
+   "__rev",
+   "__spin_r",
+   "__user"
+  ]
+ }
+}

@@ -1,0 +1,6 @@
+{
+ "name": "Facebook",
+ "description": "Browse the feed, profiles, pages, groups, search and marketplace. Refuses posts, reactions, comments, saves, edits, deletions and settings changes. Messenger is out of scope.",
+ "iconUrl": "https://www.facebook.com/favicon.ico",
+ "verified": true
+}

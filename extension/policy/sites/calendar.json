@@ -1,0 +1,350 @@
+{
+ "id": "calendar",
+ "name": "Google Calendar",
+ "domains": [
+  "calendar.google.com",
+  "calendar-pa.clients6.google.com",
+  "clients6.google.com"
+ ],
+ "verified": true,
+ "iconUrl": "https://www.gstatic.com/images/branding/product/2x/calendar_2020q4_48dp.png",
+ "description": "Browse calendars, events, search and settings. Refuses event changes, settings, calendar creation and deletion.",
+ "telemetryAllow": [
+  "/gen_204",
+  "/log?",
+  "/logstreamz",
+  "/jserror",
+  "/_/CalendarWebService/log",
+  "/csi",
+  "/beacon",
+  "play.google.com/log",
+  "/_/calendar/logging",
+  "google.internal.waa.v1.Waa"
+ ],
+ "blockedGetPaths": [
+  "action=RESPOND",
+  "/calendar/event?action=RESPOND"
+ ],
+ "blockedShapes": [
+  "gcal:sync:w",
+  "gtasks:sync:w",
+  "gmail:s:w"
+ ],
+ "allowedShapes": [
+  "gcal:sync:w[set:smartMailAck]"
+ ],
+ "websockets": "block",
+ "blockResponse": null,
+ "editorGuard": false,
+ "readTrackingShapes": [
+  "gcal:sync:w[set:defaultCalMode]",
+  "gcal:sync:w[set:goocalwebmat.darkModePromoDismissed]",
+  "gcal:sync:w[set:goocalwebmat.lastEventCreationDate]",
+  "gcal:sync:w[set:goocalwebmat.notificationPromptDismissed]",
+  "gcal:sync:w[set:goocalwebmat.onboardingWelcomeDoneTimestamp]",
+  "gcal:sync:w[set:goocalwebmat.usedNewCreationFlow]"
+ ],
+ "readPutPaths": [],
+ "cache": {
+  "POST addons-pa.clients6.google.com/$rpc/google.internal.apps.addons.v1.AddOnService/ListInstallations json[]:nannd": {
+   "verdict": "allow",
+   "note": ""
+  },
+  "POST appsgenaiserver-pa.clients6.google.com/v1/genai/quotaSummary?alt=protojson&key={v} json[]:nda": {
+   "verdict": "allow",
+   "note": "GenAI quota lookup"
+  },
+  "POST appsgrowthpromo-pa.clients6.google.com/$rpc/google.internal.apps.growth.promotion.v1.PromotionService/FetchRecommendations json[]:a": {
+   "verdict": "allow",
+   "note": "growth promo lookups"
+  },
+  "POST appsgrowthpromo-pa.clients6.google.com/$rpc/google.internal.apps.growth.promotion.v1.PromotionService/GetFreeToPaidPromo json[]:d": {
+   "verdict": "allow",
+   "note": "growth promo lookups"
+  },
+  "POST appsgrowthpromo-pa.clients6.google.com/v1/promotion/FetchRecommendation?alt=protojson&key={v} json[]:a": {
+   "verdict": "allow",
+   "note": "growth promo lookups"
+  },
+  "POST calendar-pa.clients6.google.com/$rpc/google.internal.calendar.v1.ConferencingService/ListAddOnConferenceSolutions json[]:": {
+   "verdict": "allow",
+   "note": ""
+  },
+  "POST calendar-pa.clients6.google.com/$rpc/google.internal.calendar.v1.ConflictSignalService/GetConflictSignals json[]:aa": {
+   "verdict": "allow",
+   "note": ""
+  },
+  "POST calendar-pa.clients6.google.com/$rpc/google.internal.calendar.v1.GenerativeAiService/GetUserEligibility json[]:s": {
+   "verdict": "allow",
+   "note": ""
+  },
+  "POST calendar-pa.clients6.google.com/$rpc/google.internal.calendar.v1.TimeZoneService/ListSuggestedTimeZones?$httpHeaders={v} json[]:ns": {
+   "verdict": "allow",
+   "note": ""
+  },
+  "POST calendar-pa.clients6.google.com/$rpc/google.internal.calendar.v1.VitalsService/CompareSchedules opaque": {
+   "verdict": "allow",
+   "note": "schedule comparison (opaque body: protobuf)"
+  },
+  "POST calendar.google.com/calendar/cloudsearch/request?at={v}&authuser={v}&client=calendar&cp=1&gs_id=3&gs_ri=calendar&gs_rn=5&hl=en&view=1&zx={v} form:log=json[]:sdndnnsnsann+": {
+   "verdict": "allow",
+   "note": "search logging"
+  },
+  "POST calendar.google.com/calendar/cloudsearch/request?at={v}&authuser={v}&client=calendar&cp=1&gs_id=3&gs_ri=calendar&gs_rn=5&hl=en&view=1&zx={v} form:request=json[]:sdsnnsnndddn+": {
+   "verdict": "allow",
+   "note": "search suggestions"
+  },
+  "POST calendar.google.com/calendar/u/{id}/check form:cwuik,f.req=json[]:dss,hl,secid": {
+   "verdict": "allow",
+   "note": "session/version check"
+  },
+  "POST calendar.google.com/calendar/u/{id}/clienthealth form:cwuik,f.req=json[]:ddndd,hl,secid": {
+   "verdict": "allow",
+   "note": "client health stats"
+  },
+  "POST calendar.google.com/calendar/u/{id}/createcalendar form:cwuik,f.req=json[]:ssss,hl,secid": {
+   "verdict": "block",
+   "note": "create secondary calendar"
+  },
+  "POST calendar.google.com/calendar/u/{id}/deletecalendar form:cwuik,f.req=json[]:s,hl,secid": {
+   "verdict": "block",
+   "note": "delete secondary calendar (Jev 0.98 live)"
+  },
+  "POST calendar.google.com/calendar/u/{id}/directory form:cwuik,did,hl,secid": {
+   "verdict": "allow",
+   "note": "directory lookup on calendar settings page"
+  },
+  "POST calendar.google.com/calendar/u/{id}/hello?cwuik=10 none": {
+   "verdict": "allow",
+   "note": "session hello / presence (Jev 0.25)"
+  },
+  "POST calendar.google.com/calendar/u/{id}/minievents form:cwuik,f.req=json[]:a,hl,secid": {
+   "verdict": "allow",
+   "note": "mini calendar event dots"
+  },
+  "POST calendar.google.com/calendar/u/{id}/scheduler form:ctz,cwuik,emf,hl,secid": {
+   "verdict": "allow",
+   "note": "appointment schedules read"
+  },
+  "POST calendar.google.com/calendar/u/{id}/search form:cwuik,f.req=json[]:sasss,hl,secid": {
+   "verdict": "allow",
+   "note": "event search"
+  },
+  "POST calendar.google.com/calendar/u/{id}/secondarycalendars?cwuik=10 form:f.req=json[]:naa": {
+   "verdict": "allow",
+   "note": "list secondary calendars (Jev 0.63-0.76 live: gray zone)"
+  },
+  "POST calendar.google.com/calendar/u/{id}/sync.fetcheventrange form:cwuik,f.req=json[]:a,hl,secid": {
+   "verdict": "allow",
+   "note": "event range fetch / prefetch"
+  },
+  "POST calendar.google.com/calendar/u/{id}/sync.fetchevents form:cwuik,f.req=json[]:a,hl,secid": {
+   "verdict": "allow",
+   "note": "event range fetch / prefetch"
+  },
+  "POST calendar.google.com/calendar/u/{id}/sync.prefetcheventrange form:cwuik,f.req=json[]:a,hl,secid": {
+   "verdict": "allow",
+   "note": "event range fetch / prefetch"
+  },
+  "POST calendar.google.com/calendar/u/{id}/sync.sync gcal:sync:r": {
+   "verdict": "allow",
+   "note": "decoded by codec: poll / fetch spec / sync token"
+  },
+  "POST calendar.google.com/calendar/u/{id}/sync.sync gcal:sync:w[event]": {
+   "verdict": "block",
+   "note": "decoded by codec: settings or event mutation (w[unparseable] = body truncated in the observation; the extension sees the full body)"
+  },
+  "POST calendar.google.com/calendar/u/{id}/sync.sync gcal:sync:w[set:birthdaysSelectedWeb]": {
+   "verdict": "block",
+   "note": "decoded by codec: settings or event mutation (w[unparseable] = body truncated in the observation; the extension sees the full body)"
+  },
+  "POST calendar.google.com/calendar/u/{id}/sync.sync gcal:sync:w[set:goocalwebmat.taskCompletionFromGridPromoDone,set:tasksTimeBlockDefaults]": {
+   "verdict": "block",
+   "note": "decoded by codec: settings or event mutation (w[unparseable] = body truncated in the observation; the extension sees the full body)"
+  },
+  "POST calendar.google.com/calendar/u/{id}/sync.sync gcal:sync:w[set:goocalwebmat.themePreference]": {
+   "verdict": "block",
+   "note": "decoded by codec: settings or event mutation (w[unparseable] = body truncated in the observation; the extension sees the full body)"
+  },
+  "POST calendar.google.com/calendar/u/{id}/sync.sync gcal:sync:w[set:googleClientVersion,set:smartMailAck,set:tasksOff]": {
+   "verdict": "block",
+   "note": "decoded by codec: settings or event mutation (w[unparseable] = body truncated in the observation; the extension sees the full body)"
+  },
+  "POST calendar.google.com/calendar/u/{id}/sync.sync gcal:sync:w[set:speedyMeetings]": {
+   "verdict": "block",
+   "note": "decoded by codec: settings or event mutation (w[unparseable] = body truncated in the observation; the extension sees the full body)"
+  },
+  "POST calendar.google.com/calendar/u/{id}/sync.sync gcal:sync:w[unparseable]": {
+   "verdict": "block",
+   "note": "decoded by codec: settings or event mutation (w[unparseable] = body truncated in the observation; the extension sees the full body)"
+  },
+  "POST calendar.google.com/calendar/u/{id}/trashcan form:action,cid,cwuik,eid,hl,secid;action=restore": {
+   "verdict": "block",
+   "note": "restore event from Trash"
+  },
+  "POST calendar.google.com/calendar/u/{id}/trashcan form:action,cid,cwuik,hl,secid;action=getevents": {
+   "verdict": "allow",
+   "note": "Trash page listing"
+  },
+  "POST espresso-pa.clients6.google.com/v1/prewarm?alt=protojson&key={v} json[]:a": {
+   "verdict": "allow",
+   "note": "prewarm"
+  },
+  "POST feedback-pa.clients6.google.com/v1/survey/startup_config?key={v} json[]:snd": {
+   "verdict": "allow",
+   "note": "HaTS survey config"
+  },
+  "POST feedback-pa.clients6.google.com/v1/survey/trigger?key={v} json[]:aa": {
+   "verdict": "allow",
+   "note": "HaTS survey trigger"
+  },
+  "POST ogads-pa.clients6.google.com/$rpc/google.internal.onegoogle.asyncdata.v1.AsyncDataService/GetAsyncData json[]:dsdssdnddssd+": {
+   "verdict": "allow",
+   "note": "OneGoogle bar data"
+  },
+  "POST peoplestack-pa.clients6.google.com/$rpc/peoplestack.PeopleStackAutocompleteService/Autocomplete json[]:dsad": {
+   "verdict": "allow",
+   "note": "people autocomplete"
+  },
+  "POST peoplestack-pa.clients6.google.com/$rpc/peoplestack.PeopleStackAutocompleteService/Lookup json[]:daa": {
+   "verdict": "allow",
+   "note": "people autocomplete"
+  },
+  "POST peoplestack-pa.clients6.google.com/$rpc/peoplestack.PeopleStackAutocompleteService/Warmup json[]:da": {
+   "verdict": "allow",
+   "note": "people autocomplete"
+  },
+  "POST peoplestack-pa.clients6.google.com/$rpc/social.people.backend.service.intelligence.proto.PeopleStackIntelligenceService/GetAssistiveFeatures json[]:aa": {
+   "verdict": "allow",
+   "note": "people intelligence lookup"
+  },
+  "POST peoplestackwebexperiments-pa.clients6.google.com/$rpc/peoplestackwebexperiments.PeopleStackExperimentsService/GetExperimentFlags json[]:dnas": {
+   "verdict": "allow",
+   "note": "experiments lookup"
+  },
+  "POST signaler-pa.clients6.google.com/punctual/multi-watch/channel?CVER=22&RID={v}&VER=8&gsessionid={v}&key={v}&t=1&zx={v} form:count,ofs,req0___data__=json[]:a": {
+   "verdict": "allow",
+   "note": "push notification channel (long poll / hanging POST); blocking it would degrade live updates"
+  },
+  "POST signaler-pa.clients6.google.com/punctual/multi-watch/channel?AID={v}&RID={v}&SID={v}&VER=8&gsessionid={v}&key={v}&t=1&zx={v} form:count,ofs,req0___data__=json[]:a": {
+   "verdict": "allow",
+   "note": "push notification channel (long poll / hanging POST); blocking it would degrade live updates"
+  },
+  "POST signaler-pa.clients6.google.com/punctual/multi-watch/channel?CVER=22&RID={v}&VER=8&gsessionid={v}&key={v}&t=1&zx={v} form:count,ofs,req0___data__=json[]:a,req1___data__=json[]:a": {
+   "verdict": "allow",
+   "note": "push notification channel (long poll / hanging POST); blocking it would degrade live updates"
+  },
+  "POST signaler-pa.clients6.google.com/punctual/multi-watch/channel?AID={v}&RID={v}&SID={v}&VER=8&gsessionid={v}&key={v}&t=1&zx={v} form:count,ofs,req0___data__=json[]:a,req1___data__=json[]:a": {
+   "verdict": "allow",
+   "note": "push notification channel (long poll / hanging POST); blocking it would degrade live updates"
+  },
+  "POST signaler-pa.clients6.google.com/punctual/multi-watch/channel?AID={v}&RID={v}&SID={v}&VER=8&gsessionid={v}&key={v}&t=2&zx={v} form:count,ofs,req0___data__=json[]:a,req1___data__=json[]:a": {
+   "verdict": "allow",
+   "note": "push notification channel (long poll / hanging POST); blocking it would degrade live updates"
+  },
+  "POST signaler-pa.clients6.google.com/punctual/multi-watch/channel?CVER=22&RID={v}&VER=8&gsessionid={v}&key={v}&t=1&zx={v} form:count,ofs,req0___data__=json[]:a,req1___data__=json[]:a,req2___data__=json[]:a": {
+   "verdict": "allow",
+   "note": "push notification channel (long poll / hanging POST); blocking it would degrade live updates"
+  },
+  "POST signaler-pa.clients6.google.com/punctual/multi-watch/channel?CVER=22&RID={v}&VER=8&gsessionid={v}&key={v}&t=1&zx={v} form:count,ofs,req0___data__=json[]:a,req1___data__=json[]:a,req2___data__=json[]:a,req3___data__=json[]:a": {
+   "verdict": "allow",
+   "note": "push notification channel (long poll / hanging POST); blocking it would degrade live updates"
+  },
+  "POST signaler-pa.clients6.google.com/punctual/multi-watch/channel?AID={v}&RID={v}&SID={v}&VER=8&gsessionid={v}&key={v}&t=1&zx={v} form:count,ofs,req0___data__=json[]:a,req1___data__=json[]:a,req2___data__=json[]:a,req3___data__=json[]:a": {
+   "verdict": "allow",
+   "note": "push notification channel (long poll / hanging POST); blocking it would degrade live updates"
+  },
+  "POST signaler-pa.clients6.google.com/punctual/multi-watch/channel?AID={v}&RID={v}&SID={v}&VER=8&gsessionid={v}&key={v}&t=1&zx={v} form:count,ofs,req0___data__=json[]:a,req1___data__=json[]:a,req2___data__=json[]:a,req3___data__=json[]:a,req4___data__=json[]:a,req5___data__=json[]:a": {
+   "verdict": "allow",
+   "note": "push channel"
+  },
+  "POST signaler-pa.clients6.google.com/punctual/multi-watch/channel?AID={v}&RID={v}&SID={v}&VER=8&gsessionid={v}&key={v}&t=2&zx={v} form:count,ofs,req0___data__=json[]:a,req1___data__=json[]:a,req2___data__=json[]:a,req3___data__=json[]:a,req4___data__=json[]:a,req5___data__=json[]:a": {
+   "verdict": "allow",
+   "note": "push channel"
+  },
+  "POST signaler-pa.clients6.google.com/punctual/multi-watch/channel?AID={v}&RID={v}&SID={v}&VER=8&gsessionid={v}&key={v}&t=1&zx={v} form:count,ofs,req0___data__=json[]:a,req1___data__=json[]:a,req2___data__=json[]:a,req3___data__=json[]:a,req4___data__=json[]:a,req5___data__=json[]:a,req6___data__=json[]:a,req7___data__=json[]:a": {
+   "verdict": "allow",
+   "note": "push channel"
+  },
+  "POST signaler-pa.clients6.google.com/punctual/multi-watch/channel?AID={v}&RID={v}&SID={v}&VER=8&gsessionid={v}&key={v}&t=2&zx={v} form:count,ofs,req0___data__=json[]:a,req1___data__=json[]:a,req2___data__=json[]:a,req3___data__=json[]:a,req4___data__=json[]:a,req5___data__=json[]:a,req6___data__=json[]:a,req7___data__=json[]:a": {
+   "verdict": "allow",
+   "note": "push channel"
+  },
+  "POST signaler-pa.clients6.google.com/punctual/multi-watch/channel?RID={v}&SID={v}&TYPE=terminate&VER=8&gsessionid={v}&key={v}&zx={v} none": {
+   "verdict": "allow",
+   "note": "push notification channel (long poll / hanging POST); blocking it would degrade live updates"
+  },
+  "POST signaler-pa.clients6.google.com/punctual/v1/chooseServer?key={v} json[]:adddd": {
+   "verdict": "allow",
+   "note": "push channel setup"
+  },
+  "POST signaler-pa.clients6.google.com/punctual/v1/chooseServer?key={v} json[]:anndd": {
+   "verdict": "allow",
+   "note": "push channel setup"
+  },
+  "POST signaler-pa.clients6.google.com/punctual/v1/refreshCreds?gsessionid={v}&key={v} json[]:s": {
+   "verdict": "allow",
+   "note": "push channel setup"
+  },
+  "POST tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync gtasks:sync:r": {
+   "verdict": "allow",
+   "note": "decoded by codec: poll / fetch spec / sync token"
+  },
+  "POST tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync gtasks:sync:w[7]": {
+   "verdict": "block",
+   "note": "decoded by codec: task mutation"
+  },
+  "POST waa-pa.clients6.google.com/$rpc/google.internal.waa.v1.Waa/Create json[]:s": {
+   "verdict": "allow",
+   "note": "anti-abuse token (Jev scored Create 0.92 live: false block risk)"
+  },
+  "POST waa-pa.clients6.google.com/$rpc/google.internal.waa.v1.Waa/Create opaque": {
+   "verdict": "allow",
+   "note": "anti-abuse token"
+  },
+  "POST waa-pa.clients6.google.com/$rpc/google.internal.waa.v1.Waa/Ping json[]:ssdd": {
+   "verdict": "allow",
+   "note": ""
+  },
+  "POST waa-pa.clients6.google.com/$rpc/google.internal.waa.v1.Waa/Ping opaque": {
+   "verdict": "allow",
+   "note": ""
+  },
+  "POST workspaceui-pa.clients6.google.com/v1/udpConsent:fetchCompiled?key={v} json[]:": {
+   "verdict": "allow",
+   "note": "consent config fetch"
+  },
+  "POST tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync gtasks:sync:w[2]": {
+   "verdict": "block",
+   "note": "decoded by codec: task mutation"
+  },
+  "POST calendar.google.com/calendar/u/{id}/sync.sync opaque": {
+   "verdict": "block",
+   "note": "same as sync.sync; body exceeded the 2 KB preview (large mutation payloads), so the harness saw it as opaque"
+  },
+  "POST calendar.google.com/calendar/u/{id}/customermembership form:cwuik,f.req=json[]:a,hl,secid": {
+   "verdict": "allow",
+   "note": "guest e-mail \u2192 Workspace customer membership lookup while adding guests; Jev 0.75\u20130.87 (sticky block in enforce: false block, fixed by this label)"
+  },
+  "POST calendar-pa.clients6.google.com/$rpc/google.internal.calendar.v1.UserStatusService/BatchGetEventUserStatus json[]:ad": {
+   "verdict": "allow",
+   "note": "guest status lookup for events"
+  },
+  "POST calendar-pa.clients6.google.com/$rpc/google.internal.calendar.v1.CseAuthorizationService/GetSettings json[]:a": {
+   "verdict": "allow",
+   "note": "client-side-encryption settings lookup"
+  },
+  "POST calendar-pa.clients6.google.com/$rpc/google.internal.calendar.v1.ConferencingService/GetMeetingSpaceSettings json[]:ssns": {
+   "verdict": "allow",
+   "note": "Meet space settings lookup"
+  },
+  "POST calendar-pa.clients6.google.com/$rpc/google.internal.calendar.v1.ConferencingService/CreateConferenceData json[]:an": {
+   "verdict": "block",
+   "note": "creates a Meet conference for an event (Jev 0.93, correct)"
+  },
+  "POST calendar-pa.clients6.google.com/$rpc/google.internal.calendar.v1.ConferencingService/CreateConferenceData json[]:anaand": {
+   "verdict": "block",
+   "note": "creates a Meet conference for an event"
+  }
+ }
+}

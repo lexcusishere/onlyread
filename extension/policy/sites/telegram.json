@@ -1,0 +1,33 @@
+{
+ "id": "telegram",
+ "name": "Telegram",
+ "domains": [
+  "web.telegram.org"
+ ],
+ "verified": true,
+ "iconUrl": "https://telegram.org/img/t_logo.png",
+ "description": "Read chats, search and profiles. Refuses sending, replies, reactions, edits, pins, deletes and drafts.",
+ "telemetryAllow": [],
+ "blockedGetPaths": [],
+ "blockedShapes": [],
+ "allowedShapes": [],
+ "websockets": "block",
+ "blockResponse": null,
+ "editorGuard": false,
+ "socketGuard": "telegram",
+ "readTrackingShapes": [
+  "telegram:w[messages.readHistory]",
+  "telegram:w[channels.readHistory]",
+  "telegram:w[messages.readMentions]",
+  "telegram:w[messages.readReactions]",
+  "telegram:w[messages.readMessageContents]",
+  "telegram:w[channels.readMessageContents]",
+  "telegram:w[messages.readDiscussion]",
+  "telegram:w[messages.readSavedHistory]",
+  "telegram:w[messages.setTyping]",
+  "telegram:w[stories.readStories]",
+  "telegram:w[stories.incrementStoryViews]"
+ ],
+ "readPutPaths": [],
+ "cache": {}
+}

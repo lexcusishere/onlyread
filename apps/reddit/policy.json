@@ -1,0 +1,34 @@
+{
+  "websockets": "block",
+  "targetDomains": [
+    "reddit.com",
+    "www.reddit.com",
+    "old.reddit.com"
+  ],
+  "telemetryAllow": [
+    "/gen_204",
+    "/log?",
+    "/logstreamz",
+    "/jserror",
+    "/csi",
+    "/beacon",
+    "play.google.com/log",
+    "google.internal.waa.v1.Waa",
+    "/collect",
+    "/telemetry",
+    "/analytics",
+    "/b/ss/",
+    "/TealeafTarget",
+    "/svc/shreddit/events",
+    "/svc/shreddit/perfMetrics",
+    "/svc/shreddit/client-errors",
+    "w3-reporting.reddit.com/reports",
+    "pi.reddit.com/v4/p",
+    "error-tracking.reddit.com/"
+  ],
+  "blockedGetPaths": [
+    "action=RESPOND",
+    "/calendar/event?action=RESPOND"
+  ],
+  "blockedShapes": []
+}

@@ -1,0 +1,28 @@
+{
+ "testedOn": "2026-09-27",
+ "passes": [
+  "Open the inbox and folders: Sent, Starred, Drafts, All mail, Trash",
+  "Open and read a message",
+  "Search mail",
+  "Open an invitation and see its RSVP buttons",
+  "Browse the settings pages",
+  "Autocomplete contacts while composing"
+ ],
+ "refused": [
+  "Star",
+  "Archive",
+  "Move to Trash",
+  "Snooze",
+  "Report spam",
+  "Create and apply a label",
+  "Mark as read when opening a message (implicit, allowed with read-tracking on)",
+  "Clear the unseen flag on inbox render (implicit, allowed with read-tracking on)",
+  "Compose and save a draft",
+  "Send",
+  "Reply",
+  "Change a setting",
+  "Create a filter",
+  "RSVP to an invitation (card buttons and the Yes/No/Maybe links)"
+ ],
+ "leakCheck": true
+}

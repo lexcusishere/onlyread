@@ -1,0 +1,184 @@
+{
+ "id": "gmail",
+ "name": "Gmail",
+ "domains": [
+  "mail.google.com",
+  "calendar.google.com"
+ ],
+ "verified": true,
+ "iconUrl": "https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_48dp.png",
+ "description": "Read mail, search and open messages. Refuses star, archive, trash, snooze, labels, drafts, send, replies and settings changes.",
+ "telemetryAllow": [
+  "/gen_204",
+  "/log?",
+  "/logstreamz",
+  "/jserror",
+  "/_/mail/logging",
+  "/csi",
+  "/beacon",
+  "play.google.com/log",
+  "google.internal.waa.v1.Waa",
+  "/mail/cspreport"
+ ],
+ "blockedGetPaths": [
+  "action=RESPOND",
+  "/calendar/event?action=RESPOND"
+ ],
+ "blockedShapes": [
+  "gcal:sync:w",
+  "gtasks:sync:w",
+  "gmail:s:w"
+ ],
+ "allowedShapes": [],
+ "websockets": "block",
+ "blockResponse": null,
+ "editorGuard": false,
+ "readTrackingShapes": [],
+ "readPutPaths": [],
+ "cache": {
+  "POST mail.google.com/mail/u/{id}/?_reqid={v}&cbl={v}&cfinact=7117&ik={v}&jsver={v}&mb=0&pcd=1&rid={v}&rt=j&ui=2&view=rcptc form:red": {
+   "verdict": "allow",
+   "note": "presence / keepalive (red=<account>)"
+  },
+  "POST mail.google.com/mail/u/{id}/?_reqid={v}&act=rsk&at={v}&cbl={v}&cfinact=7117&ik={v}&jsver={v}&mb=0&pcd=1&rid={v}&rt=j&ui=2&view=rcptc form:red": {
+   "verdict": "allow",
+   "note": "presence / keepalive (red=<account>)"
+  },
+  "POST mail.google.com/mail/u/{id}/?_reqid={v}&act=oestp&at={v}&cbl={v}&ik={v}&jsver={v}&mb=0&nsc=1&rid={v}&rt=j&ui=2&view=up form:stped=json[]:sddandnnd": {
+   "verdict": "allow",
+   "note": "client stats (legacy form post, JSON-valued field)"
+  },
+  "POST mail.google.com/mail/u/{id}/?_reqid={v}&act=oetsha&at={v}&cbl={v}&ik={v}&jsver={v}&mb=0&nsc=1&rid={v}&rt=j&ui=2&view=up form:tshe=json[]:sdda": {
+   "verdict": "allow",
+   "note": "client stats (legacy form post, JSON-valued field)"
+  },
+  "POST mail.google.com/mail/u/{id}/?_reqid={v}&cbl={v}&ik={v}&jsver={v}&mb=0&nsc=1&rid={v}&rt=j&ui=2&view=dd none": {
+   "verdict": "allow",
+   "note": "document / safe method"
+  },
+  "POST mail.google.com/mail/u/{id}/?_reqid={v}&act=uat&at={v}&cbl={v}&cfinact=7117&ik={v}&jsver={v}&mb=0&pcd=1&rid={v}&rt=j&ui=2&view=up none": {
+   "verdict": "allow",
+   "note": "document / safe method"
+  },
+  "POST mail.google.com/mail/u/{id}/?_reqid={v}&act=rfa&at={v}&cbl={v}&cfinact=7117&em=undefined&ik={v}&jsver={v}&mb=0&pcd=1&rid={v}&rt=c&ui=2&view=up none": {
+   "verdict": "allow",
+   "note": "document / safe method"
+  },
+  "POST mail.google.com/mail/u/{id}/?_reqid={v}&auto=1&cbl={v}&cfinact=7117&ik={v}&jsver={v}&mb=0&pcd=1&rid={v}&rt=j&ui=2&view=omni none": {
+   "verdict": "allow",
+   "note": "document / safe method"
+  },
+  "POST mail.google.com/mail/u/{id}/?_reqid={v}&auto=1&cbl={v}&cfinact=7117&ik={v}&jsver={v}&mb=0&pcd=1&rid={v}&rt=j&ui=2&view=mic none": {
+   "verdict": "allow",
+   "note": "document / safe method"
+  },
+  "POST mail.google.com/mail/u/{id}/?_reqid={v}&cbl={v}&cfinact=7117&ik={v}&jsver={v}&mb=0&pcd=1&permmsgid={v}&rid={v}&rt=j&ui=2&view=amd none": {
+   "verdict": "allow",
+   "note": "document / safe method"
+  },
+  "POST mail.google.com/mail/u/{id}/?_reqid={v}&act=rsk&at={v}&cbl={v}&cfinact=7117&ik={v}&jsver={v}&mb=0&pcd=1&rid={v}&rt=j&ui=2&view=up none": {
+   "verdict": "allow",
+   "note": "document / safe method"
+  },
+  "POST mail.google.com/mail/u/{id}/jserror?error=?&line=?&script={v} opaque": {
+   "verdict": "allow",
+   "note": "JS error report"
+  },
+  "POST mail.google.com/mail/u/{id}/logstreamz form:customData=json:chat_no_gmail_storage+gapi_version+mct+nt,defaultData=json:browser+build_label+compile_mode+customer_type+delegation_request+from_moose+gapi_version+hub_configuration+inbox_type+is_cached_html,impressionId": {
+   "verdict": "allow",
+   "note": ""
+  },
+  "POST mail.google.com/mail/u/{id}/logstreamz form:customData=json:latency+mct+window_type,defaultData=json:browser+build_label+compile_mode+customer_type+delegation_request+from_moose+gapi_version+hub_configuration+inbox_type+is_cached_html,impressionId": {
+   "verdict": "allow",
+   "note": ""
+  },
+  "POST mail.google.com/mail/u/{id}/waa opaque": {
+   "verdict": "allow",
+   "note": "anti-abuse token (legacy path)"
+  },
+  "POST mail.google.com/sync/u/{id}/i/bv?c={v}&hl=en&pt=ji&rt=r json[]:ana": {
+   "verdict": "allow",
+   "note": "sync engine: batch view"
+  },
+  "POST mail.google.com/sync/u/{id}/i/bv?c={v}&hl=en&pt=ji&rt=r json[]:anana": {
+   "verdict": "allow",
+   "note": "sync engine: batch view"
+  },
+  "POST mail.google.com/sync/u/{id}/i/fd?c={v}&hl=en&pt=ji&rt=r json[]:ad": {
+   "verdict": "allow",
+   "note": "sync engine: fetch data for threads/messages"
+  },
+  "POST mail.google.com/sync/u/{id}/i/s gmail:s:r": {
+   "verdict": "allow",
+   "note": "decoded by codec: poll / session init (element 1 null)"
+  },
+  "POST mail.google.com/sync/u/{id}/i/s gmail:s:w[-]": {
+   "verdict": "block",
+   "note": "decoded by codec: thread operation or send (labels in the shape)"
+  },
+  "POST mail.google.com/sync/u/{id}/i/s gmail:s:w[^a,^i,^k,^s]": {
+   "verdict": "block",
+   "note": "decoded by codec: thread operation or send (labels in the shape)"
+  },
+  "POST mail.google.com/sync/u/{id}/i/s gmail:s:w[^i,^u]": {
+   "verdict": "block",
+   "note": "decoded by codec: thread operation or send (labels in the shape)"
+  },
+  "POST mail.google.com/sync/u/{id}/i/s gmail:s:w[^r]": {
+   "verdict": "block",
+   "note": "decoded by codec: thread operation or send (labels in the shape)"
+  },
+  "POST mail.google.com/sync/u/{id}/i/s gmail:s:w[^t]": {
+   "verdict": "block",
+   "note": "decoded by codec: thread operation or send (labels in the shape)"
+  },
+  "POST mail.google.com/sync/u/{id}/i/s gmail:s:w[^u]": {
+   "verdict": "block",
+   "note": "decoded by codec: thread operation or send (labels in the shape)"
+  },
+  "POST mail.google.com/sync/u/{id}/i/s?c=1&hl=en&pt=ji&rt=r json[]:nnaad": {
+   "verdict": "allow",
+   "note": "sync poll [null,null,[cursor\u2026]]"
+  },
+  "POST mail.google.com/sync/u/{id}/i/s?c=5&hl=en&pt=ji&rt=r json[]:naaad": {
+   "verdict": "block",
+   "note": "thread operation [null,[[[op,[\"thread-\u2026\"]]]]]: star, read/unread, archive, trash, label, draft save"
+  },
+  "POST mail.google.com/mail/u/{id}/?_reqid={v}&cbl={v}&ik={v}&jsver={v}&mb=0&nsc=1&rid={v}&rt=j&ui=2&view=dd opaque": {
+   "verdict": "allow",
+   "note": "legacy form post without a decodable body (act= query param); review via judge"
+  },
+  "POST mail.google.com/sync/u/{id}/i/s?c=18&hl=en&pt=ji&rt=r json[]:aanad": {
+   "verdict": "block",
+   "note": "send / draft commit [[null,null,2],[[[op,[\"thread-\u2026\"]]]]]"
+  },
+  "POST mail.google.com/sync/u/{id}/i/s?c=0&hl=en&pt=ji&rt=r json[]:anaad": {
+   "verdict": "allow",
+   "note": "session init"
+  },
+  "POST mail.google.com/mail/u/{id}/jserror?error=?&line=?&script={v} form:trace": {
+   "verdict": "allow",
+   "note": "JS error report"
+  },
+  "POST mail.google.com/sync/u/{id}/cm json[]:ao": {
+   "verdict": "block",
+   "note": "RSVP from an invitation mail (Yes/No/Maybe): calendar response mutation. Jev 0.5x, Sonnet unsure \u2192 failed closed in enforce; labeled write so the cache decides."
+  },
+  "POST mail.google.com/sync/u/{id}/cm?c=13&hl=en&pt=ji&rt=r json[]:ao": {
+   "verdict": "block",
+   "note": "RSVP from an invitation mail (Yes/No/Maybe): calendar response mutation. Jev 0.5x, Sonnet unsure \u2192 failed closed in enforce; labeled write so the cache decides."
+  },
+  "POST mail.google.com/sync/u/{id}/st/s json[]:aa": {
+   "verdict": "block",
+   "note": "settings store mutation (Settings \u2192 Save Changes). Jev 0.86 live \u2014 one hundredth above the block threshold; labeled write so the cache decides."
+  },
+  "POST mail.google.com/sync/u/{id}/st/s?c={v}&hl=en&pt=ji&rt=r json[]:aa": {
+   "verdict": "block",
+   "note": "settings store mutation (Settings \u2192 Save Changes). Jev 0.86 live \u2014 one hundredth above the block threshold; labeled write so the cache decides."
+  },
+  "POST mail.google.com/mail/u/{id}/reauthchallenge json[]:dns": {
+   "verdict": "allow",
+   "note": "re-auth challenge probe (Google checks whether the session needs re-auth). Review band: Jev 0.33, Sonnet 0.02 allow. Changes no user data."
+  }
+ }
+}

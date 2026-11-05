@@ -1,0 +1,723 @@
+[
+ {
+  "name": "rest get list",
+  "method": "GET",
+  "url": "http://localhost:4173/api/items",
+  "hasBody": false,
+  "expected": "GET localhost/api/items none"
+ },
+ {
+  "name": "rest numeric id",
+  "method": "get",
+  "url": "https://App.Example.com/api/items/123?x=1&y=2&x=3",
+  "hasBody": false,
+  "expected": "GET app.example.com/api/items/{id} none",
+  "queryKeys": [
+   "x",
+   "y"
+  ]
+ },
+ {
+  "name": "uuid segment",
+  "method": "POST",
+  "url": "https://a.com/v1/orders/9f1c2b3a-1234-4abc-9def-0123456789ab/close",
+  "contentType": "application/json",
+  "body": "{}",
+  "hasBody": true,
+  "expected": "POST a.com/v1/orders/{id}/close json:"
+ },
+ {
+  "name": "hex segment",
+  "method": "POST",
+  "url": "https://a.com/docs/0123456789abcdef0123/rename",
+  "contentType": "application/json",
+  "body": "{\"title\":\"x\"}",
+  "hasBody": true,
+  "expected": "POST a.com/docs/{id}/rename json:title"
+ },
+ {
+  "name": "long token segment",
+  "method": "GET",
+  "url": "https://a.com/share/AbC123xyz789QwErTy456u",
+  "hasBody": false,
+  "expected": "GET a.com/share/{id} none"
+ },
+ {
+  "name": "word segment kept",
+  "method": "GET",
+  "url": "https://a.com/reports/quarterly-summary",
+  "hasBody": false,
+  "expected": "GET a.com/reports/quarterly-summary none"
+ },
+ {
+  "name": "json keys sorted",
+  "method": "POST",
+  "url": "http://localhost/api/search",
+  "contentType": "application/json; charset=utf-8",
+  "body": "{\"q\":\"a\",\"limit\":10}",
+  "hasBody": true,
+  "expected": "POST localhost/api/search json:limit,q"
+ },
+ {
+  "name": "graphql query",
+  "method": "POST",
+  "url": "http://localhost/graphql",
+  "contentType": "application/json",
+  "body": "{\"query\":\"query { items { id } }\"}",
+  "hasBody": true,
+  "expected": "POST localhost/graphql gql:query:-"
+ },
+ {
+  "name": "graphql shorthand query",
+  "method": "POST",
+  "url": "http://localhost/graphql",
+  "contentType": "application/json",
+  "body": "{\"query\":\"{ items { id } }\"}",
+  "hasBody": true,
+  "expected": "POST localhost/graphql gql:query:-"
+ },
+ {
+  "name": "graphql mutation named",
+  "method": "POST",
+  "url": "http://localhost/graphql",
+  "contentType": "application/json",
+  "body": "{\"operationName\":\"CreateItem\",\"query\":\"mutation CreateItem { createItem { id } }\"}",
+  "hasBody": true,
+  "expected": "POST localhost/graphql gql:mutation:CreateItem"
+ },
+ {
+  "name": "graphql: the operation operationName selects decides the kind, not the first keyword",
+  "method": "POST",
+  "url": "http://localhost/graphql",
+  "contentType": "application/json",
+  "body": "{\"operationName\":\"SearchAll\",\"query\":\"query Pad { viewer { id } } mutation SearchAll { issueDelete(id: \\\"ISSUE-1\\\") { success } }\"}",
+  "hasBody": true,
+  "expected": "POST localhost/graphql gql:mutation:SearchAll"
+ },
+ {
+  "name": "graphql: several operations and none named is unknown",
+  "method": "POST",
+  "url": "http://localhost/graphql",
+  "contentType": "application/json",
+  "body": "{\"query\":\"query A { a } mutation B { b }\"}",
+  "hasBody": true,
+  "expected": "POST localhost/graphql gql:unknown:-"
+ },
+ {
+  "name": "graphql: an operationName the document does not define is unknown",
+  "method": "POST",
+  "url": "http://localhost/graphql",
+  "contentType": "application/json",
+  "body": "{\"operationName\":\"SearchAll\",\"query\":\"mutation Other { issueDelete(id: \\\"1\\\") { success } }\"}",
+  "hasBody": true,
+  "expected": "POST localhost/graphql gql:unknown:SearchAll"
+ },
+ {
+  "name": "graphql: fragments, comments and strings do not count as operations",
+  "method": "POST",
+  "url": "http://localhost/graphql",
+  "contentType": "application/json",
+  "body": "{\"operationName\":\"Q\",\"query\":\"# mutation X { y }\\nquery Q($s: String = \\\"} mutation {\\\") { ...F } fragment F on T { a }\"}",
+  "hasBody": true,
+  "expected": "POST localhost/graphql gql:query:Q"
+ },
+ {
+  "name": "graphql batch mixed",
+  "method": "POST",
+  "url": "http://localhost/graphql",
+  "contentType": "application/json",
+  "body": "[{\"query\":\"query { a }\"},{\"query\":\"mutation { b }\"}]",
+  "hasBody": true,
+  "expected": "POST localhost/graphql gql[]:query,mutation"
+ },
+ {
+  "name": "graphql raw content type",
+  "method": "POST",
+  "url": "http://localhost/graphql",
+  "contentType": "application/graphql",
+  "body": "mutation { x }",
+  "hasBody": true,
+  "expected": "POST localhost/graphql gql:mutation:-"
+ },
+ {
+  "name": "form urlencoded",
+  "method": "POST",
+  "url": "http://localhost/api/items",
+  "contentType": "application/x-www-form-urlencoded",
+  "body": "name=b&tag=x&name=c",
+  "hasBody": true,
+  "expected": "POST localhost/api/items form:name,tag"
+ },
+ {
+  "name": "multipart",
+  "method": "POST",
+  "url": "http://localhost/upload",
+  "contentType": "multipart/form-data; boundary=abc",
+  "body": "--abc...",
+  "hasBody": true,
+  "expected": "POST localhost/upload multipart"
+ },
+ {
+  "name": "opaque body unavailable",
+  "method": "POST",
+  "url": "http://localhost/rpc",
+  "contentType": "application/json",
+  "hasBody": true,
+  "expected": "POST localhost/rpc opaque"
+ },
+ {
+  "name": "json array of objects",
+  "method": "POST",
+  "url": "http://localhost/bulk",
+  "contentType": "application/json",
+  "body": "[{\"id\":1,\"v\":2}]",
+  "hasBody": true,
+  "expected": "POST localhost/bulk json[]:id,v"
+ },
+ {
+  "name": "non-json text",
+  "method": "POST",
+  "url": "http://localhost/x",
+  "contentType": "text/plain",
+  "body": "hello",
+  "hasBody": true,
+  "expected": "POST localhost/x ct:text/plain"
+ },
+ {
+  "name": "protobuf",
+  "method": "POST",
+  "url": "http://localhost/grpc/Svc/Do",
+  "contentType": "application/grpc-web+proto",
+  "body": "\u0000\u0001",
+  "hasBody": true,
+  "expected": "POST localhost/grpc/Svc/Do ct:application/grpc-web+proto"
+ },
+ {
+  "name": "no content type json",
+  "method": "POST",
+  "url": "http://localhost/rpc",
+  "body": "{\"op\":\"list\"}",
+  "hasBody": true,
+  "expected": "POST localhost/rpc json:op;op=list"
+ },
+ {
+  "name": "rpc discriminator create",
+  "method": "POST",
+  "url": "http://localhost/rpc",
+  "contentType": "application/json",
+  "body": "{\"op\":\"create\",\"name\":\"r\"}",
+  "hasBody": true,
+  "expected": "POST localhost/rpc json:name,op;op=create"
+ },
+ {
+  "name": "rpc discriminator delete",
+  "method": "POST",
+  "url": "http://localhost/rpc",
+  "contentType": "application/json",
+  "body": "{\"op\":\"delete\",\"id\":1}",
+  "hasBody": true,
+  "expected": "POST localhost/rpc json:id,op;op=delete"
+ },
+ {
+  "name": "json-rpc method",
+  "method": "POST",
+  "url": "https://a.com/jsonrpc",
+  "contentType": "application/json",
+  "body": "{\"jsonrpc\":\"2.0\",\"method\":\"tickets.close\",\"params\":{\"id\":9},\"id\":1}",
+  "hasBody": true,
+  "expected": "POST a.com/jsonrpc json:id,jsonrpc,method,params;method=tickets.close"
+ },
+ {
+  "name": "discriminator with long free text is unknown (review R3)",
+  "method": "POST",
+  "url": "https://a.com/x",
+  "contentType": "application/json",
+  "body": "{\"action\":\"this is a long free text value that is not an enum\",\"q\":1}",
+  "hasBody": true,
+  "expected": "POST a.com/x json:action,q;action=?"
+ },
+ {
+  "name": "two discriminators ordered by key list",
+  "method": "POST",
+  "url": "https://a.com/x",
+  "contentType": "application/json",
+  "body": "{\"type\":\"task\",\"action\":\"archive\"}",
+  "hasBody": true,
+  "expected": "POST a.com/x json:action,type;action=archive;type=task"
+ },
+ {
+  "name": "positional array: gmail-style body on a non-decoded endpoint, sync poll",
+  "method": "POST",
+  "url": "https://mail.google.com/sync/u/2/i/bv?hl=en&c=3",
+  "contentType": "application/json",
+  "body": "[null,null,[1,1074,null,null,[null,0],null,1],[1790448686615,0,null,0,22],2]",
+  "hasBody": true,
+  "expected": "POST mail.google.com/sync/u/{id}/i/bv?c={v}&hl=en json[]:nnaad"
+ },
+ {
+  "name": "positional array: gmail-style body on a non-decoded endpoint, draft write",
+  "method": "POST",
+  "url": "https://mail.google.com/sync/u/2/i/bv?hl=en&c=5",
+  "contentType": "application/json",
+  "body": "[null,[[[1,[\"thread-a:r-1\",[null]]]]]]",
+  "hasBody": true,
+  "expected": "POST mail.google.com/sync/u/{id}/i/bv?c={v}&hl=en json[]:na"
+ },
+ {
+  "name": "positional array: gmail-style body on a non-decoded endpoint, send",
+  "method": "POST",
+  "url": "https://mail.google.com/sync/u/2/i/bv?hl=en&c=18",
+  "contentType": "application/json",
+  "body": "[[null,null,2],[[[6,[\"thread-a:r-1\"]]]]]",
+  "hasBody": true,
+  "expected": "POST mail.google.com/sync/u/{id}/i/bv?c={v}&hl=en json[]:aa"
+ },
+ {
+  "name": "positional array: scalars",
+  "method": "POST",
+  "url": "https://a.com/rpc",
+  "contentType": "application/json",
+  "body": "[\"op\",12,true,null]",
+  "hasBody": true,
+  "expected": "POST a.com/rpc json[]:sdbn"
+ },
+ {
+  "name": "form field carrying JSON array (Google f.req)",
+  "method": "POST",
+  "url": "https://calendar.google.com/calendar/u/2/sync.prefetcheventrange?hl=en",
+  "contentType": "application/x-www-form-urlencoded",
+  "body": "cwuik=abc&f.req=%5B%5B%5Bnull%2C3%5D%2C%22x%22%5D%2Cnull%5D&hl=en&secid=zzz",
+  "hasBody": true,
+  "expected": "POST calendar.google.com/calendar/u/{id}/sync.prefetcheventrange?hl=en form:cwuik,f.req=json[]:an,hl,secid"
+ },
+ {
+  "name": "form discriminator field",
+  "method": "POST",
+  "url": "https://calendar.google.com/calendar/u/2/trashcan",
+  "contentType": "application/x-www-form-urlencoded",
+  "body": "action=restore&cid=abc&cwuik=k&hl=en&secid=s",
+  "hasBody": true,
+  "expected": "POST calendar.google.com/calendar/u/{id}/trashcan form:action,cid,cwuik,hl,secid;action=restore"
+ },
+ {
+  "name": "form field with non-JSON bracket value stays plain",
+  "method": "POST",
+  "url": "https://a.com/f",
+  "contentType": "application/x-www-form-urlencoded",
+  "body": "q=%5Bnot+json&x=1",
+  "hasBody": true,
+  "expected": "POST a.com/f form:q,x"
+ },
+ {
+  "name": "gmail fetch endpoint keeps generic shape",
+  "method": "POST",
+  "url": "https://mail.google.com/sync/u/2/i/fd?hl=en",
+  "contentType": "application/json",
+  "body": "[[[\"thread-a:r-9999999999999999997\", 1]], 1]",
+  "hasBody": true,
+  "expected": "POST mail.google.com/sync/u/{id}/i/fd?hl=en json[]:ad"
+ },
+ {
+  "name": "R2 query-selected read",
+  "method": "POST",
+  "url": "https://example.com/rpc?action=read",
+  "contentType": "application/json",
+  "body": "{\"id\":1}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc?action=read json:id"
+ },
+ {
+  "name": "R2 query-selected write",
+  "method": "POST",
+  "url": "https://example.com/rpc?action=delete",
+  "contentType": "application/json",
+  "body": "{\"id\":1}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc?action=delete json:id"
+ },
+ {
+  "name": "R2 repeated discriminator values",
+  "method": "POST",
+  "url": "https://example.com/rpc?action=read&action=delete",
+  "contentType": "application/json",
+  "body": "{\"id\":1}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc?action=? json:id"
+ },
+ {
+  "name": "R2 unrepresentable discriminator value",
+  "method": "POST",
+  "url": "https://example.com/rpc?op=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "contentType": "application/json",
+  "body": "{\"id\":1}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc?op=? json:id"
+ },
+ {
+  "name": "a write's query keys are sorted",
+  "method": "POST",
+  "url": "https://example.com/rpc?op=b&action=a&page=2",
+  "contentType": "application/json",
+  "body": "{\"id\":1}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc?action=a&op=b&page=2 json:id"
+ },
+ {
+  "name": "a write carries its whole query",
+  "method": "POST",
+  "url": "https://example.com/rpc?page=2&q=x",
+  "contentType": "application/json",
+  "body": "{\"id\":1}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc?page=2&q=x json:id"
+ },
+ {
+  "name": "R3 batch of reads",
+  "method": "POST",
+  "url": "https://example.com/batch",
+  "contentType": "application/json",
+  "body": "[{\"action\":\"read\",\"id\":1}]",
+  "hasBody": true,
+  "expected": "POST example.com/batch json[]:action,id;action=read"
+ },
+ {
+  "name": "R3 batch of writes",
+  "method": "POST",
+  "url": "https://example.com/batch",
+  "contentType": "application/json",
+  "body": "[{\"action\":\"delete\",\"id\":1}]",
+  "hasBody": true,
+  "expected": "POST example.com/batch json[]:action,id;action=delete"
+ },
+ {
+  "name": "R3 read then write",
+  "method": "POST",
+  "url": "https://example.com/batch",
+  "contentType": "application/json",
+  "body": "[{\"action\":\"read\",\"id\":1},{\"action\":\"delete\",\"id\":2}]",
+  "hasBody": true,
+  "expected": "POST example.com/batch json[]:action,id;action=delete|action,id;action=read"
+ },
+ {
+  "name": "R3 union of keys",
+  "method": "POST",
+  "url": "https://example.com/batch",
+  "contentType": "application/json",
+  "body": "[{\"a\":1},{\"b\":2}]",
+  "hasBody": true,
+  "expected": "POST example.com/batch json[]:a|b"
+ },
+ {
+  "name": "R3 batch longer than the inspection limit",
+  "method": "POST",
+  "url": "https://example.com/batch",
+  "contentType": "application/json",
+  "body": "[{\"action\": \"read\"}, {\"action\": \"read\"}, {\"action\": \"read\"}, {\"action\": \"read\"}, {\"action\": \"read\"}, {\"action\": \"read\"}, {\"action\": \"read\"}, {\"action\": \"read\"}, {\"action\": \"read\"}, {\"action\": \"read\"}, {\"action\": \"read\"}, {\"action\": \"read\"}, {\"action\": \"delete\"}]",
+  "hasBody": true,
+  "expected": "POST example.com/batch json[]:action;action=read|more=?"
+ },
+ {
+  "name": "R3 mixed element types are positional",
+  "method": "POST",
+  "url": "https://example.com/batch",
+  "contentType": "application/json",
+  "body": "[{\"a\":1},2]",
+  "hasBody": true,
+  "expected": "POST example.com/batch json[]:od"
+ },
+ {
+  "name": "R3 empty array",
+  "method": "POST",
+  "url": "https://example.com/batch",
+  "contentType": "application/json",
+  "body": "[]",
+  "hasBody": true,
+  "expected": "POST example.com/batch json[]:"
+ },
+ {
+  "name": "R2 repeated selector, other order",
+  "method": "POST",
+  "url": "https://example.com/rpc?action=delete&action=read",
+  "contentType": "application/json",
+  "body": "{\"id\":1}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc?action=? json:id"
+ },
+ {
+  "name": "R2 repeated identical selector",
+  "method": "POST",
+  "url": "https://example.com/rpc?op=read&op=read",
+  "contentType": "application/json",
+  "body": "{\"id\":1}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc?op=? json:id"
+ },
+ {
+  "name": "R3 value with a space (read)",
+  "method": "POST",
+  "url": "https://example.com/batch",
+  "contentType": "application/json",
+  "body": "[{\"action\":\"read items\",\"id\":1}]",
+  "hasBody": true,
+  "expected": "POST example.com/batch json[]:action,id;action=?"
+ },
+ {
+  "name": "R3 read then an unrepresentable operation",
+  "method": "POST",
+  "url": "https://example.com/batch",
+  "contentType": "application/json",
+  "body": "[{\"action\":\"read\",\"id\":1},{\"action\":\"delete items\",\"id\":2}]",
+  "hasBody": true,
+  "expected": "POST example.com/batch json[]:action,id;action=?|action,id;action=read"
+ },
+ {
+  "name": "R3 numeric operation code",
+  "method": "POST",
+  "url": "https://example.com/rpc",
+  "contentType": "application/json",
+  "body": "{\"op\":7,\"id\":1}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc json:id,op;op=7"
+ },
+ {
+  "name": "R3 fractional operation code",
+  "method": "POST",
+  "url": "https://example.com/rpc",
+  "contentType": "application/json",
+  "body": "{\"op\":7.5,\"id\":1}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc json:id,op;op=?"
+ },
+ {
+  "name": "R3 overlength operation name",
+  "method": "POST",
+  "url": "https://example.com/rpc",
+  "contentType": "application/json",
+  "body": "{\"action\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc json:action;action=?"
+ },
+ {
+  "name": "R3 object-valued discriminator",
+  "method": "POST",
+  "url": "https://example.com/rpc",
+  "contentType": "application/json",
+  "body": "{\"type\":{\"k\":1}}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc json:type;type=?"
+ },
+ {
+  "name": "R3 null discriminator is absent",
+  "method": "POST",
+  "url": "https://example.com/rpc",
+  "contentType": "application/json",
+  "body": "{\"mode\":null}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc json:mode"
+ },
+ {
+  "name": "R3 boolean discriminator",
+  "method": "POST",
+  "url": "https://example.com/rpc",
+  "contentType": "application/json",
+  "body": "{\"mode\":true}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc json:mode;mode=true"
+ },
+ {
+  "name": "R3 entries keep their own operation",
+  "method": "POST",
+  "url": "https://example.com/batch",
+  "contentType": "application/json",
+  "body": "[{\"action\":\"read\",\"a\":1},{\"action\":\"delete\",\"b\":2}]",
+  "hasBody": true,
+  "expected": "POST example.com/batch json[]:a,action;action=read|action,b;action=delete"
+ },
+ {
+  "name": "R2 repeated form selector",
+  "method": "POST",
+  "url": "https://example.com/form",
+  "contentType": "application/x-www-form-urlencoded",
+  "body": "action=read&action=delete",
+  "hasBody": true,
+  "expected": "POST example.com/form form:action;action=?"
+ },
+ {
+  "name": "R3 unrepresentable form selector",
+  "method": "POST",
+  "url": "https://example.com/form",
+  "contentType": "application/x-www-form-urlencoded",
+  "body": "action=read+items",
+  "hasBody": true,
+  "expected": "POST example.com/form form:action;action=?"
+ },
+ {
+  "name": "write query: unlisted selector read",
+  "method": "POST",
+  "url": "https://example.com/rpc?procedure=read",
+  "contentType": "application/json",
+  "body": "{\"id\":1}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc?procedure=read json:id"
+ },
+ {
+  "name": "write query: unlisted selector delete",
+  "method": "POST",
+  "url": "https://example.com/rpc?procedure=delete",
+  "contentType": "application/json",
+  "body": "{\"id\":1}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc?procedure=delete json:id"
+ },
+ {
+  "name": "write query: ids, uuids and tokens are kept (no folding by spelling)",
+  "method": "POST",
+  "url": "https://example.com/rpc?id=123&u=123e4567-e89b-12d3-a456-426614174000&t=abcDEF123456ghiJKL7890",
+  "contentType": "application/json",
+  "body": "{\"id\":1}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc?id=123&t=abcDEF123456ghiJKL7890&u=123e4567-e89b-12d3-a456-426614174000 json:id"
+ },
+ {
+  "name": "write query: a secret-named value is unknown, never stored",
+  "method": "POST",
+  "url": "https://example.com/rpc?csrf=abc&x=1",
+  "contentType": "application/json",
+  "body": "{\"id\":1}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc?csrf=?&x=1 json:id"
+ },
+ {
+  "name": "write query: free text is unknown",
+  "method": "POST",
+  "url": "https://example.com/search?q=hello%20world",
+  "contentType": "application/json",
+  "body": "{\"id\":1}",
+  "hasBody": true,
+  "expected": "POST example.com/search?q=? json:id"
+ },
+ {
+  "name": "write query: empty value",
+  "method": "POST",
+  "url": "https://example.com/rpc?flag=",
+  "contentType": "application/json",
+  "body": "{\"id\":1}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc?flag= json:id"
+ },
+ {
+  "name": "write query: repeated key is unknown",
+  "method": "POST",
+  "url": "https://example.com/rpc?tag=a&tag=b",
+  "contentType": "application/json",
+  "body": "{\"id\":1}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc?tag=? json:id"
+ },
+ {
+  "name": "read query keeps only selectors",
+  "method": "GET",
+  "url": "https://example.com/list?page=2&action=list",
+  "hasBody": false,
+  "expected": "GET example.com/list?action=list none"
+ },
+ {
+  "name": "schema: a volatile token is folded on its reviewed endpoint",
+  "method": "POST",
+  "url": "https://www.facebook.com/ajax/bnzai?__req=1f&fb_dtsg=NAfy-token:12:1700000000&__a=1",
+  "contentType": "application/x-www-form-urlencoded",
+  "body": "q=1",
+  "hasBody": true,
+  "expected": "POST www.facebook.com/ajax/bnzai?__a=1&__req={v}&fb_dtsg={v} form:q"
+ },
+ {
+  "name": "schema: the same key elsewhere keeps its value",
+  "method": "POST",
+  "url": "https://www.facebook.com/api/other?__req=1f",
+  "contentType": "application/x-www-form-urlencoded",
+  "body": "q=1",
+  "hasBody": true,
+  "expected": "POST www.facebook.com/api/other?__req=1f form:q"
+ },
+ {
+  "name": "schema: Gmail's act selects the operation and is never folded",
+  "method": "POST",
+  "url": "https://mail.google.com/mail/u/0/?act=tr&rid=abc123&_reqid=77",
+  "contentType": "application/x-www-form-urlencoded",
+  "body": "t=1",
+  "hasBody": true,
+  "expected": "POST mail.google.com/mail/u/{id}/?_reqid={v}&act=tr&rid={v} form:t"
+ },
+ {
+  "name": "write query: an email is unknown, never stored",
+  "method": "POST",
+  "url": "https://example.com/rpc?em=ana%40example.com",
+  "contentType": "application/json",
+  "body": "{\"id\":1}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc?em=? json:id"
+ },
+ {
+  "name": "write query: a long dotted name stays",
+  "method": "POST",
+  "url": "https://example.com/rpc?c=com.example.ui.generated.profile.actions.deleteExperienceItem",
+  "contentType": "application/json",
+  "body": "{\"id\":1}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc?c=com.example.ui.generated.profile.actions.deleteExperienceItem json:id"
+ },
+ {
+  "name": "write query: numeric selector action=1",
+  "method": "POST",
+  "url": "https://example.com/rpc?action=1",
+  "contentType": "application/json",
+  "body": "{\"id\":1}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc?action=1 json:id"
+ },
+ {
+  "name": "write query: numeric selector action=2",
+  "method": "POST",
+  "url": "https://example.com/rpc?action=2",
+  "contentType": "application/json",
+  "body": "{\"id\":1}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc?action=2 json:id"
+ },
+ {
+  "name": "write query: numeric selector procedure=2",
+  "method": "POST",
+  "url": "https://example.com/rpc?procedure=2",
+  "contentType": "application/json",
+  "body": "{\"id\":1}",
+  "hasBody": true,
+  "expected": "POST example.com/rpc?procedure=2 json:id"
+ },
+ {
+  "name": "numbered form fields are one field",
+  "method": "POST",
+  "url": "https://www.facebook.com/ajax/bulk-route-definitions/",
+  "contentType": "application/x-www-form-urlencoded",
+  "body": "route_urls[0]=%2Fa&route_urls[1]=%2Fb&route_urls[2]=%2Fc&__a=1",
+  "hasBody": true,
+  "expected": "POST www.facebook.com/ajax/bulk-route-definitions/ form:__a,route_urls[]"
+ },
+ {
+  "name": "numbered fields: two and five items share a shape",
+  "method": "POST",
+  "url": "https://www.facebook.com/ajax/bulk-route-definitions/",
+  "contentType": "application/x-www-form-urlencoded",
+  "body": "route_urls[0]=%2Fa&route_urls[1]=%2Fb&route_urls[2]=%2Fc&route_urls[3]=%2Fd&route_urls[4]=%2Fe&__a=1",
+  "hasBody": true,
+  "expected": "POST www.facebook.com/ajax/bulk-route-definitions/ form:__a,route_urls[]"
+ },
+ {
+  "name": "nested numbered form fields",
+  "method": "POST",
+  "url": "https://app.test/f",
+  "contentType": "application/x-www-form-urlencoded",
+  "body": "items[0][id]=1&items[1][id]=2",
+  "hasBody": true,
+  "expected": "POST app.test/f form:items[][id]"
+ }
+]

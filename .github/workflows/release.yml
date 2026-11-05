@@ -1,0 +1,134 @@
+# Builds the release zips, attaches them to a GitHub release, and uploads the store zip to the Chrome Web Store (store job).
+# - Pushing a tag `v<version>` (matching package.json and the manifest) runs every check, the headless e2e suites,
+#   builds the zips with `npm run release`, and attaches them to that tag's release. A release that doesn't
+#   exist yet is created as a draft with generated notes; one that does (a draft written by hand) gets its
+#   zips replaced. Publishing the draft stays a person's step.
+# - Running it by hand (Actions → release → Run workflow) does the same checks and build and keeps the zips
+#   as a workflow artifact, without touching any release.
+name: release
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm run e2e:replay
+      - run: npx playwright test e2e/phase0.spec.ts e2e/phase1.spec.ts e2e/signin.spec.ts
+      - uses: actions/upload-artifact@v7
+        if: failure()
+        with:
+          name: e2e-traces
+          path: test-results/
+
+  build:
+    needs: e2e
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+      - run: npm ci
+      - run: pip install ruff==0.16.10
+      - name: Tag matches the version
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          version=$(node -p "require('./package.json').version")
+          if [ "${GITHUB_REF_NAME}" != "v${version}" ]; then
+            echo "::error::tag ${GITHUB_REF_NAME} does not match package.json version ${version}"
+            exit 1
+          fi
+      # typecheck, lint, unit and fingerprint tests, build, key scrub; then the distribution build, verified
+      # (no dev code, manifest version and permissions, a clean tree) and zipped into bundles/
+      - run: npm run release
+      - name: Checksums
+        run: cd bundles && sha256sum *.zip > SHA256SUMS.txt && cat SHA256SUMS.txt
+      - uses: actions/upload-artifact@v7
+        with:
+          name: onlyread-bundles
+          path: bundles/
+      - name: Attach to the release
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" bundles/*.zip bundles/SHA256SUMS.txt --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" bundles/*.zip bundles/SHA256SUMS.txt --draft --verify-tag \
+              --title "OnlyRead ${GITHUB_REF_NAME#v}" --generate-notes
+          fi
+
+  store:
+    # A release tag's store zip goes up to the Chrome Web Store as the item's new draft, and stops there: submitting it
+    # for review stays a person's step, in the developer dashboard. The key lives in the `chrome-web-store` environment,
+    # which only `v*` tags may use (and, once the repository is public, only after its required reviewer approves).
+    # Pull requests never get it: no secret reaches a workflow run for a fork's pull request.
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: build
+    runs-on: ubuntu-latest
+    environment: chrome-web-store
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: onlyread-bundles
+          path: bundles
+      - name: Upload to the Chrome Web Store (no submission)
+        env:
+          KEY: ${{ secrets.CWS_SERVICE_ACCOUNT_KEY }}
+          PUBLISHER: ${{ vars.CWS_PUBLISHER_ID }}
+          ITEM: foajfkjhcigaillohhdbfadobkhpddij
+        run: |
+          # The service account's key signs a request for a ten-minute token for the store's API only (Google's OAuth
+          # JWT exchange): no other Google API, role or third-party action is involved, and the token is masked.
+          TOKEN=$(node -e '
+            const crypto = require("node:crypto");
+            const k = JSON.parse(process.env.KEY);
+            const now = Math.floor(Date.now() / 1000);
+            const part = (o) => Buffer.from(JSON.stringify(o)).toString("base64url");
+            const unsigned = `${part({ alg: "RS256", typ: "JWT" })}.${part({ iss: k.client_email, scope: "https://www.googleapis.com/auth/chromewebstore", aud: k.token_uri, iat: now, exp: now + 600 })}`;
+            const jwt = `${unsigned}.${crypto.sign("RSA-SHA256", Buffer.from(unsigned), k.private_key).toString("base64url")}`;
+            fetch(k.token_uri, { method: "POST", body: new URLSearchParams({ grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer", assertion: jwt }) })
+              .then((r) => r.json())
+              .then((j) => { if (!j.access_token) { console.error(j.error_description ?? j.error ?? "no token"); process.exit(1); } process.stdout.write(j.access_token); });
+          ')
+          echo "::add-mask::$TOKEN"
+          zip="bundles/onlyread-${GITHUB_REF_NAME#v}-webstore.zip"
+          test -f "$zip" || { echo "::error::$zip is missing"; exit 1; }
+          test -n "$PUBLISHER" || { echo "::error::set the repository variable CWS_PUBLISHER_ID"; exit 1; }
+          api="https://chromewebstore.googleapis.com"
+          curl -sS --fail-with-body -X POST -H "Authorization: Bearer $TOKEN" -T "$zip" \
+            "$api/upload/v2/publishers/$PUBLISHER/items/$ITEM:upload" > upload.json
+          jq '{uploadState, crxVersion}' upload.json
+          state=$(jq -r '.uploadState' upload.json)
+          # A large package is processed after the upload answers: its state is asked for until it settles.
+          for i in $(seq 1 40); do
+            [ "$state" = "IN_PROGRESS" ] || break
+            sleep 15
+            curl -sS --fail-with-body -H "Authorization: Bearer $TOKEN" \
+              "$api/v2/publishers/$PUBLISHER/items/$ITEM:fetchStatus" > status.json
+            state=$(jq -r '.lastAsyncUploadState' status.json)
+            echo "upload: $state"
+          done
+          [ "$state" = "SUCCEEDED" ] || { echo "::error::the store did not take the upload ($state)"; exit 1; }
+          echo "::notice::OnlyRead ${GITHUB_REF_NAME#v} is uploaded to the Chrome Web Store as a draft. Submit it for review in the developer dashboard."

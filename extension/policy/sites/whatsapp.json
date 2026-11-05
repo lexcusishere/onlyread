@@ -1,0 +1,46 @@
+{
+ "id": "whatsapp",
+ "name": "WhatsApp",
+ "domains": [
+  "web.whatsapp.com"
+ ],
+ "verified": true,
+ "iconUrl": "https://static.whatsapp.net/rsrc.php/yd/r/PfkSLByWV8O.webp",
+ "description": "Read chats, groups and contacts. Refuses sending, media, reactions, edits, pins, deletes, chat settings and group changes.",
+ "telemetryAllow": [
+  "/gen_204",
+  "/log?",
+  "/logstreamz",
+  "/jserror",
+  "/csi",
+  "/beacon",
+  "play.google.com/log",
+  "google.internal.waa.v1.Waa",
+  "/collect",
+  "/telemetry",
+  "/analytics",
+  "/b/ss/",
+  "/TealeafTarget",
+  "/ajax/bz"
+ ],
+ "blockedGetPaths": [
+  "action=RESPOND",
+  "/calendar/event?action=RESPOND"
+ ],
+ "blockedShapes": [],
+ "allowedShapes": [],
+ "websockets": "block",
+ "blockResponse": null,
+ "editorGuard": false,
+ "socketGuard": "whatsapp",
+ "readTrackingShapes": [
+  "whatsapp:receipt:w[read]",
+  "whatsapp:receipt:w[read-self]",
+  "whatsapp:receipt:w[played]",
+  "whatsapp:receipt:w[played-self]",
+  "whatsapp:chatstate:w[composing]",
+  "whatsapp:chatstate:w[paused]"
+ ],
+ "readPutPaths": [],
+ "cache": {}
+}

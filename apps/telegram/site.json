@@ -1,0 +1,6 @@
+{
+ "name": "Telegram",
+ "description": "Read chats, search and profiles. Refuses sending, replies, reactions, edits, pins, deletes and drafts.",
+ "iconUrl": "https://telegram.org/img/t_logo.png",
+ "verified": true
+}

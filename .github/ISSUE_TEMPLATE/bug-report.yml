@@ -1,0 +1,58 @@
+name: Report a bug
+description: Something else OnlyRead did wrong, such as the settings, the popup or a notice.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Please **do not paste private data**: no email addresses, message text,
+        tokens, cookies or screenshots of your account.
+
+        A write that got through on a guarded site is a security issue: please
+        [report it privately](https://github.com/onlyreadai/onlyread/security/advisories/new) instead.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What happened?
+      options:
+        - The settings, popup or notice behaved wrongly
+        - Something else
+    validations:
+      required: true
+  - type: input
+    id: site
+    attributes:
+      label: Site
+      description: The site and the page, without any personal parts of the address.
+      placeholder: "Gmail, the inbox"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps
+      description: What you or the agent did, and what you expected instead.
+      placeholder: |
+        1. Asked Claude in Chrome to search my inbox
+        2. The search results never loaded
+        3. Expected the results to show
+    validations:
+      required: true
+  - type: input
+    id: agent
+    attributes:
+      label: Agent and browser
+      placeholder: "Claude in Chrome, Chrome 141 on macOS"
+  - type: input
+    id: version
+    attributes:
+      label: OnlyRead version
+      description: Shown at the bottom of the settings page.
+      placeholder: "1.0.0"
+  - type: dropdown
+    id: judge
+    attributes:
+      label: AI judge
+      options:
+        - OnlyRead Pro
+        - My own key (OpenRouter or Vercel AI Gateway)

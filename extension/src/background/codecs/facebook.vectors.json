@@ -1,0 +1,47 @@
+[
+ {
+  "name": "facebook graphql read (Query)",
+  "method": "POST",
+  "url": "https://www.facebook.com/api/graphql/",
+  "contentType": "application/x-www-form-urlencoded",
+  "hasBody": true,
+  "body": "av=100000000000001&__user=100000000000001&__a=1&__req=l&__comet_req=15&fb_dtsg=NAfw:15:1790589725&jazoest=25582&lsd=Q69S&__spin_r=1048620361&__spin_b=trunk&__crn=comet.fbweb.CometHomeRoute&fb_api_caller_class=RelayModern&fb_api_req_friendly_name=ProfileCometTimelineFeedRefetchQuery&server_timestamps=true&variables=%7B%22id%22%3A%22100000000000001%22%7D&doc_id=9948369021930229",
+  "expected": "POST www.facebook.com/api/graphql/ fb:gql:r"
+ },
+ {
+  "name": "facebook graphql read (PaginationQuery)",
+  "method": "POST",
+  "url": "https://www.facebook.com/api/graphql/",
+  "contentType": "application/x-www-form-urlencoded",
+  "hasBody": true,
+  "body": "av=100000000000001&__user=100000000000001&__a=1&__req=l&__comet_req=15&fb_dtsg=NAfw:15:1790589725&jazoest=25582&lsd=Q69S&__spin_r=1048620361&__spin_b=trunk&__crn=comet.fbweb.CometHomeRoute&fb_api_caller_class=RelayModern&fb_api_req_friendly_name=CometSaveDashboardAllItemsPaginationQuery&server_timestamps=true&variables=%7B%22id%22%3A%22100000000000001%22%7D&doc_id=9948369021930229",
+  "expected": "POST www.facebook.com/api/graphql/ fb:gql:r"
+ },
+ {
+  "name": "facebook graphql write (Mutation)",
+  "method": "POST",
+  "url": "https://www.facebook.com/api/graphql/",
+  "contentType": "application/x-www-form-urlencoded",
+  "hasBody": true,
+  "body": "av=100000000000001&__user=100000000000001&__a=1&__req=l&__comet_req=15&fb_dtsg=NAfw:15:1790589725&jazoest=25582&lsd=Q69S&__spin_r=1048620361&__spin_b=trunk&__crn=comet.fbweb.CometHomeRoute&fb_api_caller_class=RelayModern&fb_api_req_friendly_name=FriendingCometFriendsBadgeCountClearMutation&server_timestamps=true&variables=%7B%22input%22%3A%7B%7D%7D&doc_id=9948369021930229",
+  "expected": "POST www.facebook.com/api/graphql/ fb:gql:w[FriendingCometFriendsBadgeCountClearMutation]"
+ },
+ {
+  "name": "facebook graphql write: name without a Query suffix is a write",
+  "method": "POST",
+  "url": "https://www.facebook.com/api/graphql/",
+  "contentType": "application/x-www-form-urlencoded",
+  "hasBody": true,
+  "body": "av=100000000000001&__user=100000000000001&__a=1&__req=l&__comet_req=15&fb_dtsg=NAfw:15:1790589725&jazoest=25582&lsd=Q69S&__spin_r=1048620361&__spin_b=trunk&__crn=comet.fbweb.CometHomeRoute&fb_api_caller_class=RelayModern&fb_api_req_friendly_name=CometUFIFeedbackReact&server_timestamps=true&variables=%7B%22id%22%3A%22100000000000001%22%7D&doc_id=9948369021930229",
+  "expected": "POST www.facebook.com/api/graphql/ fb:gql:w[CometUFIFeedbackReact]"
+ },
+ {
+  "name": "facebook graphql no friendly name",
+  "method": "POST",
+  "url": "https://www.facebook.com/api/graphql/",
+  "contentType": "application/x-www-form-urlencoded",
+  "hasBody": true,
+  "body": "av=1&__user=1&doc_id=123&variables=%7B%7D",
+  "expected": "POST www.facebook.com/api/graphql/ fb:gql:w[unknown]"
+ }
+]

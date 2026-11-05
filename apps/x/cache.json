@@ -1,0 +1,510 @@
+{
+ "POST api.x.com/1.1/account/settings.json form:display_sensitive_media,include_alt_text_compose,include_ext_dm_av_call_settings,include_mention_filter,include_nsfw_admin_flag,include_nsfw_user_flag,include_ranked_timeline": {
+  "verdict": "block",
+  "note": "W11/W12: saves account settings (display_sensitive_media)"
+ },
+ "POST api.x.com/1.1/account/settings.json opaque": {
+  "verdict": "block",
+  "note": "W11/W12: saves account settings (display_sensitive_media)"
+ },
+ "POST api.x.com/1.1/flow/viewer.json form:debug,log=json[]:o": {
+  "verdict": "allow",
+  "note": "client_event logging (debug=true&log=[...])"
+ },
+ "POST api.x.com/1.1/flow/viewer.json form:debug,log=json[]:ooo": {
+  "verdict": "allow",
+  "note": "client_event logging (debug=true&log=[...])"
+ },
+ "POST api.x.com/1.1/flow/viewer.json none": {
+  "verdict": "allow",
+  "note": "client_event logging (debug=true&log=[...])"
+ },
+ "POST api.x.com/1.1/graphql/viewer_context.json form:category,log=json[]:o": {
+  "verdict": "allow",
+  "note": "performance logging (category=perftown)"
+ },
+ "POST api.x.com/1.1/live_pipeline/update_subscriptions form:sub_topics,unsub_topics": {
+  "verdict": "allow",
+  "note": "subscribes the page to live engagement counts of visible posts"
+ },
+ "POST api.x.com/1.1/live_pipeline/update_subscriptions opaque": {
+  "verdict": "allow",
+  "note": "subscribes the page to live engagement counts of visible posts"
+ },
+ "POST api.x.com/graphql/{id}/GenerateXChatTokenMutation json:variables": {
+  "verdict": "allow",
+  "note": "session token for the chat channel"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-0uetmq ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-0uetmq none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-0xod0u ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-0xod0u none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-15zy6r ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-15zy6r none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-19il25 ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-19il25 none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-2cu2zl ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-2cu2zl none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-3ngnul ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-3ngnul none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-4e1ktn ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-4e1ktn none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-4g9v34 ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-4g9v34 none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-6axhro ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-6axhro none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-9s5xnq ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-9s5xnq none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-akelmv ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-akelmv none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-cbnvsh ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-cbnvsh none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-dhmvo7 ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-dhmvo7 none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-el57yw ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-el57yw none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-ey4lip ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-ey4lip none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-flmg86 ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-flmg86 none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-geo4mv ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-geo4mv none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-hfmbvm ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-hfmbvm none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-kpadtv ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-kpadtv none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-naq5y8 ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-naq5y8 none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-o671fg ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-o671fg none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-p5vcw5 ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-p5vcw5 none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-q4zl1d ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-q4zl1d none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-qywyks ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-qywyks none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-saeqd4 ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-saeqd4 none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-tbn5zs ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-tbn5zs none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-tjs21s ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-tjs21s none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-up7odu ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-up7odu none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-v4byr1 ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-v4byr1 none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-x2dm04 ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-x2dm04 none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-xkyrms ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-xkyrms none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-xyp69f ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-xyp69f none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-ylfgvr ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-ylfgvr none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-ylrnby ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-ylrnby none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-zgjsmi ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-zgjsmi none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-zhom5n ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-zhom5n none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-zr1d6i ct:text/plain": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/cdn-cgi/challenge-platform/h/g/jsd/oneshot/4df4a60fa397/0.9999999999999999:1791486039:RY5pIxFihmOXzYzXlCH4apdg75Nu01YYCXZ7qevJNWs/jsdapi-zr1d6i none": {
+  "verdict": "allow",
+  "note": "Cloudflare bot-management challenge (random path per load)"
+ },
+ "POST x.com/i/api/1.1/flow/timeline.json form:debug,log=json[]:o": {
+  "verdict": "allow",
+  "note": "client_event logging (debug=true&log=[...])"
+ },
+ "POST x.com/i/api/1.1/flow/timeline.json form:debug,log=json[]:oo": {
+  "verdict": "allow",
+  "note": "client_event logging (debug=true&log=[...])"
+ },
+ "POST x.com/i/api/1.1/flow/timeline.json form:debug,log=json[]:ooo": {
+  "verdict": "allow",
+  "note": "client_event logging (debug=true&log=[...])"
+ },
+ "POST x.com/i/api/1.1/flow/timeline.json form:debug,log=json[]:oooo": {
+  "verdict": "allow",
+  "note": "client_event logging (debug=true&log=[...])"
+ },
+ "POST x.com/i/api/1.1/flow/timeline.json form:debug,log=json[]:ooooo": {
+  "verdict": "allow",
+  "note": "client_event logging (debug=true&log=[...])"
+ },
+ "POST x.com/i/api/1.1/flow/timeline.json form:debug,log=json[]:oooooo": {
+  "verdict": "allow",
+  "note": "client_event logging (debug=true&log=[...])"
+ },
+ "POST x.com/i/api/1.1/flow/timeline.json form:debug,log=json[]:ooooooo": {
+  "verdict": "allow",
+  "note": "client_event logging (debug=true&log=[...])"
+ },
+ "POST x.com/i/api/1.1/flow/timeline.json form:debug,log=json[]:oooooooo": {
+  "verdict": "allow",
+  "note": "client_event logging (debug=true&log=[...])"
+ },
+ "POST x.com/i/api/1.1/flow/timeline.json form:debug,log=json[]:ooooooooo": {
+  "verdict": "allow",
+  "note": "client_event logging (debug=true&log=[...])"
+ },
+ "POST x.com/i/api/1.1/flow/timeline.json form:debug,log=json[]:oooooooooo": {
+  "verdict": "allow",
+  "note": "client_event logging (debug=true&log=[...])"
+ },
+ "POST x.com/i/api/1.1/flow/timeline.json form:debug,log=json[]:ooooooooooo": {
+  "verdict": "allow",
+  "note": "client_event logging (debug=true&log=[...])"
+ },
+ "POST x.com/i/api/1.1/flow/timeline.json form:debug,log=json[]:oooooooooooo": {
+  "verdict": "allow",
+  "note": "client_event logging (debug=true&log=[...])"
+ },
+ "POST x.com/i/api/1.1/flow/timeline.json form:debug,log=json[]:oooooooooooo+": {
+  "verdict": "allow",
+  "note": "client_event logging (debug=true&log=[...])"
+ },
+ "POST x.com/i/api/1.1/flow/timeline.json none": {
+  "verdict": "allow",
+  "note": "client_event logging (debug=true&log=[...])"
+ },
+ "POST x.com/i/api/1.1/flow/timeline.json?keepalive=true form:debug,log=json[]:o": {
+  "verdict": "allow",
+  "note": "client_event logging (debug=true&log=[...])"
+ },
+ "POST x.com/i/api/1.1/flow/timeline.json?keepalive=true form:debug,log=json[]:oo": {
+  "verdict": "allow",
+  "note": "client_event logging (debug=true&log=[...])"
+ },
+ "POST x.com/i/api/1.1/flow/timeline.json?keepalive=true form:debug,log=json[]:ooo": {
+  "verdict": "allow",
+  "note": "client_event logging (debug=true&log=[...])"
+ },
+ "POST x.com/i/api/1.1/flow/timeline.json?keepalive=true none": {
+  "verdict": "allow",
+  "note": "client_event logging (debug=true&log=[...])"
+ },
+ "POST x.com/i/api/1.1/graphql/ces/p2 json:events,header": {
+  "verdict": "allow",
+  "note": "client event stream (events, header)"
+ },
+ "POST x.com/i/api/1.1/graphql/viewer_context.json form:category,log=json[]:o": {
+  "verdict": "allow",
+  "note": "performance logging (category=perftown)"
+ },
+ "POST x.com/i/api/1.1/graphql/viewer_context.json form:category,log=json[]:oo": {
+  "verdict": "allow",
+  "note": "performance logging (category=perftown)"
+ },
+ "POST x.com/i/api/1.1/graphql/viewer_context.json form:category,log=json[]:ooo": {
+  "verdict": "allow",
+  "note": "performance logging (category=perftown)"
+ },
+ "POST x.com/i/api/1.1/graphql/viewer_context.json form:category,log=json[]:oooo": {
+  "verdict": "allow",
+  "note": "performance logging (category=perftown)"
+ },
+ "POST x.com/i/api/1.1/graphql/viewer_context.json form:category,log=json[]:ooooo": {
+  "verdict": "allow",
+  "note": "performance logging (category=perftown)"
+ },
+ "POST x.com/i/api/1.1/graphql/viewer_context.json form:category,log=json[]:oooooo": {
+  "verdict": "allow",
+  "note": "performance logging (category=perftown)"
+ },
+ "POST x.com/i/api/1.1/graphql/viewer_context.json form:category,log=json[]:ooooooo": {
+  "verdict": "allow",
+  "note": "performance logging (category=perftown)"
+ },
+ "POST x.com/i/api/1.1/graphql/viewer_context.json?keepalive=true form:category,log=json[]:oo": {
+  "verdict": "allow",
+  "note": "performance logging (category=perftown)"
+ },
+ "POST x.com/i/api/1.1/graphql/viewer_context.json?keepalive=true form:category,log=json[]:ooo": {
+  "verdict": "allow",
+  "note": "performance logging (category=perftown)"
+ },
+ "POST x.com/i/api/1.1/graphql/viewer_context.json?keepalive=true form:category,log=json[]:oooo": {
+  "verdict": "allow",
+  "note": "performance logging (category=perftown)"
+ },
+ "POST x.com/i/api/1.1/graphql/viewer_context.json?keepalive=true form:category,log=json[]:oooooo": {
+  "verdict": "allow",
+  "note": "performance logging (category=perftown)"
+ },
+ "POST x.com/i/api/graphql/{id}/CreateBookmark json:queryId,variables": {
+  "verdict": "block",
+  "note": "W6: bookmark"
+ },
+ "POST x.com/i/api/graphql/{id}/CreateRetweet json:queryId,variables": {
+  "verdict": "block",
+  "note": "W4: repost"
+ },
+ "POST x.com/i/api/graphql/{id}/CreateTweet json:features,queryId,variables": {
+  "verdict": "block",
+  "note": "W1/W8: create a post or reply"
+ },
+ "POST x.com/i/api/graphql/{id}/DeleteBookmark json:queryId,variables": {
+  "verdict": "block",
+  "note": "W7: remove bookmark"
+ },
+ "POST x.com/i/api/graphql/{id}/DeleteRetweet json:queryId,variables": {
+  "verdict": "block",
+  "note": "W5: undo repost"
+ },
+ "POST x.com/i/api/graphql/{id}/DeleteTweet json:queryId,variables": {
+  "verdict": "block",
+  "note": "W13: delete a post or reply"
+ },
+ "POST x.com/i/api/graphql/{id}/FavoriteTweet json:queryId,variables": {
+  "verdict": "block",
+  "note": "W2: like"
+ },
+ "POST x.com/i/api/graphql/{id}/HomeLatestTimeline json:features,fieldToggles,queryId,variables": {
+  "verdict": "allow",
+  "note": "home feed fetched with POST (For you / Following)"
+ },
+ "POST x.com/i/api/graphql/{id}/HomeTimeline json:features,fieldToggles,queryId,variables": {
+  "verdict": "allow",
+  "note": "home feed fetched with POST (For you / Following)"
+ },
+ "POST x.com/i/api/graphql/{id}/PinTweet json:queryId,variables": {
+  "verdict": "block",
+  "note": "W9: pin to profile"
+ },
+ "POST x.com/i/api/graphql/{id}/PutClientEducationFlag json:queryId,variables": {
+  "verdict": "block",
+  "note": "implicit: saves that a new-user prompt was dismissed \u2014 read-tracking when read tracking is on (background/read-tracking.ts); refused by this verdict when it is off"
+ },
+ "POST x.com/i/api/graphql/{id}/UnfavoriteTweet json:queryId,variables": {
+  "verdict": "block",
+  "note": "W3: unlike"
+ },
+ "POST x.com/i/api/graphql/{id}/UnpinTweet json:queryId,variables": {
+  "verdict": "block",
+  "note": "W10: unpin"
+ },
+ "POST x.com/i/api/graphql/{id}/usePremiumPaywallOnLoadMutation json:queryId,variables": {
+  "verdict": "allow",
+  "note": "records that a Premium upsell was shown; tracks only"
+ }
+}

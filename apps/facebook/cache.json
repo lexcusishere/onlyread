@@ -1,0 +1,246 @@
+{
+ "POST www.facebook.com/ajax/bnzai?__a=1&__aaid=0&__ccg=GOOD&__comet_req=15&__crn={v}&__hs={v}&__hsi={v}&__req={v}&__rev={v}&__s={v}&__spin_b=trunk&__spin_r={v}&__spin_t={v}&__user={v}&dpr=2&fb_dtsg={v}&jazoest={v}&lsd={v}&ph=C3 form:post_0,post_1,q=json[]:oo,ts": {
+  "verdict": "allow",
+  "note": "logging/telemetry endpoint (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/bnzai?__a=1&__aaid=0&__ccg=GOOD&__comet_req=15&__crn={v}&__hs={v}&__hsi={v}&__req={v}&__rev={v}&__s={v}&__spin_b=trunk&__spin_r={v}&__spin_t={v}&__user={v}&dpr=2&fb_dtsg={v}&jazoest={v}&lsd={v}&ph=C3 form:post_0,q=json[]:o,ts": {
+  "verdict": "allow",
+  "note": "logging/telemetry endpoint (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/bnzai?__a=1&__aaid=0&__ccg=GOOD&__comet_req=15&__crn={v}&__hs={v}&__hsi={v}&__req={v}&__rev={v}&__s={v}&__spin_b=trunk&__spin_r={v}&__spin_t={v}&__user={v}&dpr=2&fb_dtsg={v}&jazoest={v}&lsd={v}&ph=C3 form:q=json[]:o,ts": {
+  "verdict": "allow",
+  "note": "logging/telemetry endpoint (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/bnzai?__a=1&__aaid=0&__ccg=GOOD&__comet_req=15&__crn={v}&__hs={v}&__hsi={v}&__req={v}&__rev={v}&__s={v}&__spin_b=trunk&__spin_r={v}&__spin_t={v}&__user={v}&dpr=2&fb_dtsg={v}&jazoest={v}&lsd={v}&ph=C3 multipart": {
+  "verdict": "allow",
+  "note": "logging endpoint, multipart gzip event blobs (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/bnzai?__a=1&__aaid=0&__ccg=GOOD&__comet_req=15&__hs={v}&__hsi={v}&__req={v}&__rev={v}&__s={v}&__spin_b=trunk&__spin_r={v}&__spin_t={v}&__user={v}&dpr=2&fb_dtsg={v}&jazoest={v}&lsd={v}&ph=C3 multipart": {
+  "verdict": "allow",
+  "note": "logging endpoint, multipart gzip event blobs (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/bnzai?__a=1&__aaid=0&__ccg=GOOD&__comet_req=15&__crn={v}&__hs={v}&__hsi={v}&__req={v}&__rev={v}&__s={v}&__spin_b=trunk&__spin_r={v}&__spin_t={v}&__user={v}&dpr=2&fb_dtsg={v}&jazoest={v}&lsd={v}&ph=C3&qpl_active_flow_ids={v} multipart": {
+  "verdict": "allow",
+  "note": "logging endpoint, multipart gzip event blobs (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/bnzai?__a=1&__aaid=0&__ccg=EXCELLENT&__comet_req=15&__crn={v}&__hs={v}&__hsi={v}&__req={v}&__rev={v}&__s={v}&__spin_b=trunk&__spin_r={v}&__spin_t={v}&__user={v}&dpr=2&fb_dtsg={v}&jazoest={v}&lsd={v}&ph=C3 multipart": {
+  "verdict": "allow",
+  "note": "logging endpoint, multipart gzip event blobs (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/bnzai?__a=1&__aaid=0&__ccg=GOOD&__comet_req=1&__crn={v}&__hs={v}&__hsi={v}&__req={v}&__rev={v}&__s={v}&__spin_b=trunk&__spin_r={v}&__spin_t={v}&__user={v}&_callFlowletID={v}&_triggerFlowletID={v}&dpr=2&fb_dtsg={v}&jazoest={v}&lsd={v}&ph=C3&qpl_active_e2e_trace_ids= multipart": {
+  "verdict": "allow",
+  "note": "logging endpoint, multipart gzip event blobs (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/bnzai?__a=1&__aaid=0&__ccg=GOOD&__comet_req=1&__crn={v}&__hs={v}&__hsi={v}&__req={v}&__rev={v}&__s={v}&__spin_b=trunk&__spin_r={v}&__spin_t={v}&__user={v}&dpr=2&fb_dtsg={v}&jazoest={v}&lsd={v}&ph=C3 multipart": {
+  "verdict": "allow",
+  "note": "logging endpoint, multipart gzip event blobs (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/bnzai?__a=1&__aaid=0&__ccg=GOOD&__comet_req=15&__crn={v}&__hs={v}&__hsi={v}&__req={v}&__rev={v}&__s={v}&__spin_b=trunk&__spin_r={v}&__spin_t={v}&__user={v}&dpr=2&fb_dtsg={v}&jazoest={v}&lsd={v}&ph=C3 opaque": {
+  "verdict": "allow",
+  "note": "logging/telemetry endpoint (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/bulk-route-definitions/ form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,dpr,fb_dtsg,jazoest,lsd,qpl_active_flow_ids,route_urls[],routing_namespace": {
+  "verdict": "allow",
+  "note": "infrastructure read (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/bulk-route-definitions/ form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,dpr,fb_dtsg,jazoest,lsd,route_urls[],routing_namespace": {
+  "verdict": "allow",
+  "note": "infrastructure read: route definitions / relay early flush / worker resources (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/bulk-route-definitions/?_callFlowletID=0&_triggerFlowletID=1&qpl_active_e2e_trace_ids= form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,dpr,fb_dtsg,jazoest,lsd,route_urls[],routing_namespace": {
+  "verdict": "allow",
+  "note": "infrastructure read: route definitions / relay early flush / worker resources (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/bulk-route-definitions/ form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,dpr,fb_dtsg,jazoest,lsd,route_urls[],routing_namespace": {
+  "verdict": "allow",
+  "note": "infrastructure read: route definitions / relay early flush / worker resources (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/bulk-route-definitions/ form:__a,__aaid,__ccg,__comet_req,__crn,__dyn,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,dpr,fb_dtsg,jazoest,lsd,route_urls[],routing_namespace": {
+  "verdict": "allow",
+  "note": "infrastructure read: route definitions / relay early flush / worker resources (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/bulk-route-definitions/?_callFlowletID=0&_triggerFlowletID=1&qpl_active_e2e_trace_ids= form:__a,__aaid,__ccg,__comet_req,__crn,__dyn,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,dpr,fb_dtsg,jazoest,lsd,route_urls[],routing_namespace": {
+  "verdict": "allow",
+  "note": "infrastructure read: route definitions / relay early flush / worker resources (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/bulk-route-definitions/ opaque": {
+  "verdict": "allow",
+  "note": "infrastructure read: route definitions / relay early flush / worker resources (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/navigation/ form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,client_previous_actor_id,dpr,fb_dtsg,jazoest,lsd,route_url,routing_namespace": {
+  "verdict": "allow",
+  "note": "infrastructure read: route definitions / relay early flush / worker resources (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/navigation/?_callFlowletID=0&_triggerFlowletID=8799&qpl_active_e2e_trace_ids= form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,client_previous_actor_id,dpr,fb_dtsg,jazoest,lsd,route_url,routing_namespace": {
+  "verdict": "allow",
+  "note": "infrastructure read: route definitions / relay early flush / worker resources (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/qm/?__a=1&__comet_req=15&__user={v}&jazoest={v} form:client_start,event_id,fb_dtsg,marker_page_time,script_path,weight": {
+  "verdict": "allow",
+  "note": "logging/telemetry endpoint (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/qm/?__a=1&__comet_req=1&__user={v}&jazoest={v} form:client_start,event_id,fb_dtsg,marker_page_time,script_path,weight": {
+  "verdict": "allow",
+  "note": "logging/telemetry endpoint (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/qm/?__a=1&__comet_req=15&__user={v}&jazoest={v} none": {
+  "verdict": "allow",
+  "note": "logging/telemetry endpoint (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/relay-ef/ form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,dpr,fb_dtsg,jazoest,lsd,queries[]": {
+  "verdict": "allow",
+  "note": "infrastructure read: route definitions / relay early flush / worker resources (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/relay-ef/?_callFlowletID=7856&_triggerFlowletID=7851&qpl_active_e2e_trace_ids= form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,dpr,fb_dtsg,jazoest,lsd,queries[]": {
+  "verdict": "allow",
+  "note": "infrastructure read: route definitions / relay early flush / worker resources (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/route-definition/ form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,client_previous_actor_id,dpr,fb_dtsg,jazoest,lsd,qpl_active_flow_ids,route_url,routing_namespace,trace_policy": {
+  "verdict": "allow",
+  "note": "infrastructure read: route definitions / relay early flush / worker resources (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/route-definition/ form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,client_previous_actor_id,dpr,fb_dtsg,jazoest,lsd,route_url,routing_namespace,trace_policy": {
+  "verdict": "allow",
+  "note": "infrastructure read: route definitions / relay early flush / worker resources (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/webstorage/process_keys/?state=0 form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,dpr,fb_dtsg,jazoest,local_storage[CacheStorageVersion],local_storage[RSTData],local_storage[Session],local_storage[_oz_bandwidthAndTTFBSamples],local_storage[_oz_bandwidthEstimate],local_storage[ares_last_signal_flush],local_storage[armadillo_msgr_data_loss_stats],local_storage[banzai:last_storage_flush],local_storage[bdz_playback_state],local_storage[hb_timestamp],local_storage[last_headload_time],local_storage[mw_encrypted_backups_restore_upsell_first_impression_time_key],local_storage[ps:100000000000001:00000000-0000-4000-8000-000000000001],local_storage[screen_time_period_logging_facebook],local_storage[signal_flush_timestamp],logtime,lsd,session_storage[TabId],session_storage[alcei],session_storage[alcsid],session_storage[ps:tabID]": {
+  "verdict": "allow",
+  "note": "logging/telemetry endpoint (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/webstorage/process_keys/?state=0 form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,dpr,fb_dtsg,jazoest,local_storage[CacheStorageVersion],local_storage[RSTData],local_storage[Session],local_storage[_oz_bandwidthAndTTFBSamples],local_storage[_oz_bandwidthEstimate],local_storage[ares_last_signal_flush],local_storage[armadillo_msgr_data_loss_stats],local_storage[banzai:last_storage_flush],local_storage[bdz_playback_state],local_storage[hb_timestamp],local_storage[last_headload_time],local_storage[mw_encrypted_backups_restore_upsell_first_impression_time_key],local_storage[screen_time_period_logging_facebook],local_storage[signal_flush_timestamp],logtime,lsd,session_storage[TabId],session_storage[alcei],session_storage[alcsid],session_storage[ps:tabID]": {
+  "verdict": "allow",
+  "note": "logging/telemetry endpoint (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/webstorage/process_keys/?state=0 form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,dpr,fb_dtsg,jazoest,local_storage[RSTData],local_storage[Session],local_storage[_oz_bandwidthAndTTFBSamples],local_storage[_oz_bandwidthEstimate],local_storage[ares_last_signal_flush],local_storage[armadillo_msgr_data_loss_stats],local_storage[banzai:last_storage_flush],local_storage[bdz_playback_state],local_storage[hb_timestamp],local_storage[last_headload_time],local_storage[mw_encrypted_backups_restore_upsell_first_impression_time_key],local_storage[ps:100000000000001:00000000-0000-4000-8000-000000000001],local_storage[screen_time_period_logging_facebook],local_storage[signal_flush_timestamp],logtime,lsd,session_storage[TabId],session_storage[alcei],session_storage[alcsid]": {
+  "verdict": "allow",
+  "note": "logging/telemetry endpoint (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/webstorage/process_keys/?state=0 form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,dpr,fb_dtsg,jazoest,local_storage[RSTData],local_storage[Session],local_storage[_oz_bandwidthAndTTFBSamples],local_storage[_oz_bandwidthEstimate],local_storage[ares_last_signal_flush],local_storage[armadillo_msgr_data_loss_stats],local_storage[banzai:last_storage_flush],local_storage[bdz_playback_state],local_storage[hb_timestamp],local_storage[last_headload_time],local_storage[mw_encrypted_backups_restore_upsell_first_impression_time_key],local_storage[ps:100000000000001:00000000-0000-4000-8000-000000000001],local_storage[screen_time_period_logging_facebook],local_storage[signal_flush_timestamp],logtime,lsd,session_storage[TabId],session_storage[alcei],session_storage[alcsid],session_storage[ps:tabID]": {
+  "verdict": "allow",
+  "note": "logging/telemetry endpoint (telemetryAllow)"
+ },
+ "POST www.facebook.com/ajax/webstorage/process_keys/?_callFlowletID=0&_triggerFlowletID={v}&qpl_active_e2e_trace_ids=&state=0 form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,dpr,fb_dtsg,jazoest,local_storage[RSTData],local_storage[Session],local_storage[_oz_bandwidthAndTTFBSamples],local_storage[_oz_bandwidthEstimate],local_storage[ares_last_signal_flush],local_storage[armadillo_msgr_data_loss_stats],local_storage[banzai:last_storage_flush],local_storage[bdz_playback_state],local_storage[hb_timestamp],local_storage[last_headload_time],local_storage[mw_encrypted_backups_restore_upsell_first_impression_time_key],local_storage[ps:100000000000001:00000000-0000-4000-8000-000000000001],local_storage[screen_time_period_logging_facebook],local_storage[signal_flush_timestamp],logtime,lsd,session_storage[TabId],session_storage[alcei],session_storage[alcsid],session_storage[ps:tabID]": {
+  "verdict": "allow",
+  "note": "logging/telemetry endpoint (telemetryAllow)"
+ },
+ "POST www.facebook.com/api/graphql/ fb:gql:r": {
+  "verdict": "allow",
+  "note": "Relay GraphQL query (codec)"
+ },
+ "POST www.facebook.com/api/graphql/ fb:gql:w[CometPrivacySelectorSavePrivacyMutation]": {
+  "verdict": "block",
+  "note": "Relay GraphQL mutation (codec) CometPrivacySelectorSavePrivacyMutation"
+ },
+ "POST www.facebook.com/api/graphql/ fb:gql:w[CometSetDarkModeSettingMutation]": {
+  "verdict": "block",
+  "note": "Relay GraphQL mutation (codec) CometSetDarkModeSettingMutation"
+ },
+ "POST www.facebook.com/api/graphql/ fb:gql:w[CometUFIFeedbackReactMutation]": {
+  "verdict": "block",
+  "note": "Relay GraphQL mutation (codec) CometUFIFeedbackReactMutation"
+ },
+ "POST www.facebook.com/api/graphql/ fb:gql:w[ComposerStoryCreateMutation]": {
+  "verdict": "block",
+  "note": "Relay GraphQL mutation (codec) ComposerStoryCreateMutation"
+ },
+ "POST www.facebook.com/api/graphql/ fb:gql:w[ComposerStoryEditMutation]": {
+  "verdict": "block",
+  "note": "Relay GraphQL mutation (codec) ComposerStoryEditMutation"
+ },
+ "POST www.facebook.com/api/graphql/ fb:gql:w[ProfileCometBioFieldSaveMutation]": {
+  "verdict": "block",
+  "note": "Relay GraphQL mutation (codec) ProfileCometBioFieldSaveMutation"
+ },
+ "POST www.facebook.com/api/graphql/ fb:gql:w[ProfilePromptQuickPromotionMutation]": {
+  "verdict": "block",
+  "note": "Relay GraphQL mutation (codec) ProfilePromptQuickPromotionMutation"
+ },
+ "POST www.facebook.com/api/graphql/ fb:gql:w[useCometTrashPostMutation]": {
+  "verdict": "block",
+  "note": "Relay GraphQL mutation (codec) useCometTrashPostMutation"
+ },
+ "POST www.facebook.com/api/graphql/ fb:gql:w[useCometUFICreateCommentMutation]": {
+  "verdict": "block",
+  "note": "Relay GraphQL mutation (codec) useCometUFICreateCommentMutation"
+ },
+ "POST www.facebook.com/api/graphql/ fb:gql:w[useContentCollectionAddFeedObjectsMutation]": {
+  "verdict": "block",
+  "note": "Relay GraphQL mutation (codec) useContentCollectionAddFeedObjectsMutation"
+ },
+ "POST www.facebook.com/api/graphql/ fb:gql:w[useHasResolvedConflictingPrivacySettingsMutation]": {
+  "verdict": "block",
+  "note": "Relay GraphQL mutation (codec) useHasResolvedConflictingPrivacySettingsMutation"
+ },
+ "POST www.facebook.com/api/graphql/ fb:gql:w[useUnsaveStoryMutation]": {
+  "verdict": "block",
+  "note": "Relay GraphQL mutation (codec) useUnsaveStoryMutation"
+ },
+ "POST www.facebook.com/api/graphql/ form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,av,doc_id,dpr,fb_api_analytics_tags=json[]:s,fb_api_caller_class,fb_api_req_friendly_name,fb_dtsg,jazoest,lsd,qpl_active_flow_ids,server_timestamps,variables=json:": {
+  "verdict": "block",
+  "note": "MIXED: pre-codec key-shape fingerprint for every GraphQL op; superseded by fb:gql:*"
+ },
+ "POST www.facebook.com/api/graphql/ form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,av,doc_id,dpr,fb_api_analytics_tags=json[]:s,fb_api_caller_class,fb_api_req_friendly_name,fb_dtsg,jazoest,lsd,qpl_active_flow_ids,server_timestamps,variables=json:count+environment+scale": {
+  "verdict": "block",
+  "note": "MIXED: pre-codec key-shape fingerprint for every GraphQL op; superseded by fb:gql:*"
+ },
+ "POST www.facebook.com/api/graphql/ form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,av,doc_id,dpr,fb_api_analytics_tags=json[]:s,fb_api_caller_class,fb_api_req_friendly_name,fb_dtsg,jazoest,lsd,qpl_active_flow_ids,server_timestamps,variables=json:first": {
+  "verdict": "block",
+  "note": "MIXED: pre-codec key-shape fingerprint for every GraphQL op; superseded by fb:gql:*"
+ },
+ "POST www.facebook.com/api/graphql/ form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,av,doc_id,dpr,fb_api_caller_class,fb_api_req_friendly_name,fb_dtsg,jazoest,lsd,server_timestamps,variables=json:": {
+  "verdict": "block",
+  "note": "MIXED: pre-codec key-shape fingerprint for every GraphQL op; superseded by fb:gql:*"
+ },
+ "POST www.facebook.com/api/graphql/ form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,av,doc_id,dpr,fb_api_caller_class,fb_api_req_friendly_name,fb_dtsg,jazoest,lsd,server_timestamps,variables=json:__relay_internal__pv__CometFeedShareMedia_shouldPrefetchShareImagerelayprovider+__relay_internal__pv__CometFeedStory_enable_post_permalink_white_space_clickrelayprovider+__relay_internal__pv__CometFeedStory_enable_reactor_facepilerelayprovider+__relay_internal__pv__CometFeedStory_enable_social_bubblesrelayprovider+__relay_internal__pv__CometImmersivePhotoCanUserDisable3DMotionrelayprovider+__relay_internal__pv__CometUFICommentActionLinksRewriteEnabledrelayprovider+__relay_internal__pv__CometUFICommentAutoTranslationTyperelayprovider+__relay_internal__pv__CometUFICommentAvatarStickerAnimatedImagerelayprovider+__relay_internal__pv__CometUFIReactionsEnableShortNamerelayprovider+__relay_internal__pv__CometUFIShareActionMigrationrelayprovider+__relay_internal__pv__CometUFISingleLineUFIrelayprovider+__relay_internal__pv__CometUFI_dedicated_comment_routable_dialog_gkrelayprovider+__relay_internal__pv__FBReelsIFUTileContent_reelsIFUPlayOnHoverrelayprovider+__relay_internal__pv__FBReelsMediaFooter_comet_enable_reels_ads_gkrelayprovider+__relay_internal__pv__FBReels_deprecate_short_form_video_context_gkrelayprovider+__relay_internal__pv__FBReels_enable_view_dubbed_audio_type_gkrelayprovider+__relay_internal__pv__GHLShouldChangeAdIdFieldNamerelayprovider+__relay_internal__pv__GHLShouldChangeSponsoredDataFieldNamerelayprovider+__relay_internal__pv__GroupsCometGYSJFeedItemHeightrelayprovider+__relay_internal__pv__IsMergQAPollsrelayprovider+__relay_internal__pv__IsWorkUserrelayprovider+__relay_internal__pv__ShouldEnableBakedInTextStoriesrelayprovider+__relay_internal__pv__StoriesShouldEnablePhotosensitiveContentWarningrelayprovider+__relay_internal__pv__StoriesShouldIncludeFbNotesrelayprovider+__relay_internal__pv__TestPilotShouldIncludeDemoAdUseCaserelayprovider+__relay_internal__pv__WorkCometIsEmployeeGKProviderrelayprovider+__relay_internal__pv__relay_provider_comet_ufi_ssr_seo_deferrelayprovider+afterTime+beforeTime+count+cursor+feedLocation+feedbackSource+focusCommentID+id+memorializedSplitTimeFilter+omitPinnedPost+postedBy+privacy+privacySelectorRenderLocation+referringStoryRenderLocation+renderLocation+run_with_continuation_key+scale+stream_count+taggedInOnly+trackingCode+useDefaultActor": {
+  "verdict": "block",
+  "note": "MIXED: pre-codec key-shape fingerprint for every GraphQL op; superseded by fb:gql:*"
+ },
+ "POST www.facebook.com/api/graphql/?_callFlowletID=4982&_triggerFlowletID=1&qpl_active_e2e_trace_ids= form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,av,doc_id,dpr,fb_api_caller_class,fb_api_req_friendly_name,fb_dtsg,jazoest,lsd,server_timestamps,variables=json:bookmarkIDs": {
+  "verdict": "block",
+  "note": "MIXED: pre-codec key-shape fingerprint for every GraphQL op; superseded by fb:gql:*"
+ },
+ "POST www.facebook.com/api/graphql/ form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,av,doc_id,dpr,fb_api_caller_class,fb_api_req_friendly_name,fb_dtsg,jazoest,lsd,server_timestamps,variables=json:bookmarkIDs+hasBookmark+hasTopTab+input": {
+  "verdict": "block",
+  "note": "MIXED: pre-codec key-shape fingerprint for every GraphQL op; superseded by fb:gql:*"
+ },
+ "POST www.facebook.com/api/graphql/ form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,av,doc_id,dpr,fb_api_caller_class,fb_api_req_friendly_name,fb_dtsg,jazoest,lsd,server_timestamps,variables=json:content_filter+count+cursor+scale+use_case": {
+  "verdict": "block",
+  "note": "MIXED: pre-codec key-shape fingerprint for every GraphQL op; superseded by fb:gql:*"
+ },
+ "POST www.facebook.com/api/graphql/ form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,av,doc_id,dpr,fb_api_caller_class,fb_api_req_friendly_name,fb_dtsg,jazoest,lsd,server_timestamps,variables=json:count+environment+scale": {
+  "verdict": "block",
+  "note": "MIXED: pre-codec key-shape fingerprint for every GraphQL op; superseded by fb:gql:*"
+ },
+ "POST www.facebook.com/api/graphql/?_callFlowletID=0&_triggerFlowletID=1&qpl_active_e2e_trace_ids= form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,av,doc_id,dpr,fb_api_caller_class,fb_api_req_friendly_name,fb_dtsg,jazoest,lsd,server_timestamps,variables=json:find": {
+  "verdict": "block",
+  "note": "MIXED: pre-codec key-shape fingerprint for every GraphQL op; superseded by fb:gql:*"
+ },
+ "POST www.facebook.com/api/graphql/ form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,av,doc_id,dpr,fb_api_caller_class,fb_api_req_friendly_name,fb_dtsg,jazoest,lsd,server_timestamps,variables=json:first": {
+  "verdict": "block",
+  "note": "MIXED: pre-codec key-shape fingerprint for every GraphQL op; superseded by fb:gql:*"
+ },
+ "POST www.facebook.com/api/graphql/ form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,av,doc_id,dpr,fb_api_caller_class,fb_api_req_friendly_name,fb_dtsg,jazoest,lsd,server_timestamps,variables=json:id": {
+  "verdict": "block",
+  "note": "MIXED: pre-codec key-shape fingerprint for every GraphQL op; superseded by fb:gql:*"
+ },
+ "POST www.facebook.com/api/graphql/ form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hs,__hsdp,__hsi,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,av,doc_id,dpr,fb_api_caller_class,fb_api_req_friendly_name,fb_dtsg,jazoest,lsd,server_timestamps,variables=json:": {
+  "verdict": "block",
+  "note": "MIXED: pre-codec key-shape fingerprint for every GraphQL op; superseded by fb:gql:*"
+ },
+ "POST www.facebook.com/static_resources/webworker/rsrc/?worker_module=MAWMainV4WebWorkerBundle form:__a,__aaid,__ccg,__comet_req,__crn,__hs,__hsi,__req,__rev,__s,__spin_b,__spin_r,__spin_t,__user,dpr,fb_dtsg,jazoest,lsd": {
+  "verdict": "allow",
+  "note": "infrastructure read: route definitions / relay early flush / worker resources (telemetryAllow)"
+ },
+ "POST www.facebook.com/static_resources/webworker/rsrc/?_callFlowletID=0&_triggerFlowletID=1&qpl_active_e2e_trace_ids=&worker_module=MAWMainV4WebWorkerBundle form:__a,__aaid,__ccg,__comet_req,__crn,__hs,__hsi,__req,__rev,__s,__spin_b,__spin_r,__spin_t,__user,dpr,fb_dtsg,jazoest,lsd": {
+  "verdict": "allow",
+  "note": "infrastructure read: route definitions / relay early flush / worker resources (telemetryAllow)"
+ },
+ "POST www.facebook.com/static_resources/webworker/rsrc/?worker_module=MAWMainV4WebWorkerBundle form:__a,__aaid,__ccg,__comet_req,__crn,__hs,__hsi,__req,__rev,__s,__spin_b,__spin_r,__spin_t,__user,dpr,fb_dtsg,jazoest,lsd,qpl_active_flow_ids": {
+  "verdict": "allow",
+  "note": "infrastructure read: route definitions / relay early flush / worker resources (telemetryAllow)"
+ },
+ "POST www.facebook.com/notifications/settings/push/mute/state/?appid=1443096165982425&check_reconciliation=true&push_endpoint=? form:__a,__aaid,__ccg,__comet_req,__crn,__csr,__dyn,__hblp,__hs,__hsdp,__hsi,__jssesw,__req,__rev,__s,__sjsp,__spin_b,__spin_r,__spin_t,__user,dpr,fb_dtsg,jazoest,lsd": {
+  "verdict": "allow",
+  "note": "push-notification check on page load (check_reconciliation): reads whether this browser's push registration is muted and still current; refused, Facebook only skips the sync (2026-11-05, a live session)"
+ }
+}

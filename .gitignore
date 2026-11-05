@@ -1,0 +1,31 @@
+# dependencies and build output
+node_modules/
+extension/dist/
+# release zips (npm run bundle)
+bundles/
+
+# test and harness output
+extension/bench/cases.json
+test-results/
+harness/eval/
+# per-model scores from harness/judge/judge_llm.mts
+apps/*/scores.llm.*
+# Mind2Web raw dump samples (CC BY 4.0; may contain annotators' session data): local only
+harness/eval/mind2web/
+__pycache__/
+.ruff_cache/
+
+# raw recordings of real accounts: never published (harness/chrome/launch.sh writes to the root sessions/)
+**/sessions/
+
+# secrets (API keys, instance id, the owner's identifiers)
+.env
+.env.*
+
+# local machine and editor state
+.DS_Store
+.claude/settings.local.json
+# agent skills stay local
+.claude/skills/
+.agents/
+.impeccable/

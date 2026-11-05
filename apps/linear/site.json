@@ -1,0 +1,6 @@
+{
+ "name": "Linear",
+ "description": "Read issues, projects, cycles and views. Refuses issue, project, comment, reaction and settings mutations.",
+ "iconUrl": "https://linear.app/favicon.ico",
+ "verified": true
+}

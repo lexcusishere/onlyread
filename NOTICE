@@ -1,0 +1,41 @@
+OnlyRead
+Copyright 2026 OnlyRead AI (In Formation)
+
+OnlyRead's source code is licensed under the GNU Affero General Public License v3.0 only (see LICENSE).
+Contributions are accepted under the Contributor License Agreement (see CLA.md).
+
+Brand assets, not covered by the AGPL
+-------------------------------------
+The OnlyRead name, logo, monogram and wordmark are trademarks of OnlyRead AI (In Formation) and are not licensed
+under the AGPL (see TRADEMARK.md; AGPL-3.0 section 7(e)). The following files are those marks, all rights reserved:
+
+  extension/assets/icon-16.png
+  extension/assets/icon-32.png
+  extension/assets/icon-48.png
+  extension/assets/icon-128.png
+  extension/assets/wordmark.png
+  extension/assets/wordmark-small.png
+  docs/images/icon.png
+  docs/images/wordmark.png
+  docs/images/social-preview.png
+
+A fork may keep these files only as TRADEMARK.md allows; otherwise it must replace them with its own.
+
+Third-party names and logos
+---------------------------
+These files show logos of other companies, only to name their products. Those names and logos belong to their
+owners, are not licensed under the AGPL, and their appearance does not imply endorsement:
+
+  extension/assets/providers/openrouter.png   (OpenRouter)
+  extension/assets/providers/vercel.png       (Vercel)
+  extension/icons/gmail.png                   (Google)
+  extension/icons/calendar.png                (Google)
+  docs/images/linkedin-logo.png               (LinkedIn)
+  docs/images/chrome-web-store-badge.png      (Google; Chrome is a trademark of Google LLC)
+
+Third-party software
+--------------------
+- Fonts: DM Sans and Manrope (extension/assets/fonts/), under the SIL Open Font License 1.1; their license texts
+  are extension/assets/fonts/OFL-DMSans.txt and OFL-Manrope.txt.
+- npm packages bundled into the extension's scripts: listed with their licenses in THIRD_PARTY_NOTICES.txt, which
+  the build writes (scripts/build.mjs) and every release includes.

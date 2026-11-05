@@ -1,0 +1,65 @@
+name: Report a false block
+description: OnlyRead refused something that only reads, such as a search, a page or a list that stopped loading.
+title: "False block: "
+labels: ["false block"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Please **do not paste private data**: no email addresses, message text,
+        tokens, cookies or screenshots of your account.
+
+        A write that got through on a guarded site is a security issue: please
+        [report it privately](https://github.com/onlyreadai/onlyread/security/advisories/new) instead.
+  - type: input
+    id: site
+    attributes:
+      label: Site
+      description: The site and the page, without any personal parts of the address.
+      placeholder: "Gmail, the inbox"
+    validations:
+      required: true
+  - type: textarea
+    id: action
+    attributes:
+      label: What was refused
+      description: What you or the agent did, and what stopped working. The page's notice says what was refused.
+      placeholder: |
+        Asked Claude in Chrome to search my inbox; the results never loaded and the notice said
+        "a request on mail.google.com was refused".
+    validations:
+      required: true
+  - type: textarea
+    id: activity
+    attributes:
+      label: Activity entry
+      description: |
+        Optional. The settings page's Activity section lists what OnlyRead refused and what decided it. Copy the
+        row for this one, removing anything personal.
+      render: text
+  - type: dropdown
+    id: repeat
+    attributes:
+      label: Does it happen every time?
+      options:
+        - Every time
+        - Sometimes
+        - Once
+  - type: input
+    id: agent
+    attributes:
+      label: Agent and browser
+      placeholder: "Claude in Chrome, Chrome 141 on macOS"
+  - type: input
+    id: version
+    attributes:
+      label: OnlyRead version
+      description: Shown at the bottom of the settings page.
+      placeholder: "1.0.0"
+  - type: dropdown
+    id: judge
+    attributes:
+      label: AI judge
+      options:
+        - OnlyRead Pro
+        - My own key (OpenRouter or Vercel AI Gateway)

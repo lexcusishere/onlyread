@@ -1,0 +1,23 @@
+{
+  "targetDomains": [
+    "web.telegram.org"
+  ],
+  "websockets": "block",
+  "telemetryAllow": [],
+  "blockedGetPaths": [],
+  "blockedShapes": [],
+  "socketGuard": "telegram",
+  "readTrackingShapes": [
+    "telegram:w[messages.readHistory]",
+    "telegram:w[channels.readHistory]",
+    "telegram:w[messages.readMentions]",
+    "telegram:w[messages.readReactions]",
+    "telegram:w[messages.readMessageContents]",
+    "telegram:w[channels.readMessageContents]",
+    "telegram:w[messages.readDiscussion]",
+    "telegram:w[messages.readSavedHistory]",
+    "telegram:w[messages.setTyping]",
+    "telegram:w[stories.readStories]",
+    "telegram:w[stories.incrementStoryViews]"
+  ]
+}

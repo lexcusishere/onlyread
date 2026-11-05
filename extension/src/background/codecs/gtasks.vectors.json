@@ -1,0 +1,164 @@
+[
+ {
+  "name": "gtasks initial sync (read)",
+  "method": "POST",
+  "url": "https://tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync",
+  "contentType": "application/json+protobuf",
+  "body": "[[[[null, []], [[]], [null, null, []]], []], null, [null, [\"1126\"]], null, [\"cid\", [null, 4, \"calendar.web_x\", \"prod\", 3, 5, 2, null, 1]]]",
+  "hasBody": true,
+  "expected": "POST tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync gtasks:sync:r"
+ },
+ {
+  "name": "gtasks poll (read)",
+  "method": "POST",
+  "url": "https://tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync",
+  "contentType": "application/json+protobuf",
+  "body": "[[null, [[1790460245, 922911000]]], null, [null, [\"1094\"]], null, [\"cid\", [null, 4]]]",
+  "hasBody": true,
+  "expected": "POST tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync gtasks:sync:r"
+ },
+ {
+  "name": "gtasks task mutation (write)",
+  "method": "POST",
+  "url": "https://tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync",
+  "contentType": "application/json+protobuf",
+  "body": "[[null, [[1790465849, 930377000], null, [[[[\"YfXViCLKF0Pv66r0\", 3, \"wTnJciHE0EvR-j4p\", [1], null, null, [[null, [2, 3]], [null, \"onlyread task 1\"]]], [\"Ca4J3w6tGAwEH4cl\", 3, \"wTnJciHE0EvR-j4p\", [1, 1]], [\"PJzRc2FvCdEmrwGT\", 4, \"~default\", [1]]]]]]], null, [null, [\"1126\"]], null, [\"cid\", [null, 4]]]",
+  "hasBody": true,
+  "expected": "POST tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync gtasks:sync:w[3]"
+ },
+ {
+  "name": "gtasks recorded initial sync, every filter (read)",
+  "method": "POST",
+  "url": "https://tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync",
+  "contentType": "application/json+protobuf",
+  "body": "[[[[null,[]],[[]],[null,null,[]],[null,null,null,[]],[null,null,null,null,null,[]],[null,null,null,null,[null,null,[null,1,null,1,1,1]]],[null,null,null,null,[null,null,[1,null,null,1,1,1]]]],[]],null,[null,[\"1126\"]],null,[\"cid\",[null,4,\"calendar.web_x\",\"prod-02-eu.web\",3,5,2,null,1]]]",
+  "hasBody": true,
+  "expected": "POST tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync gtasks:sync:r"
+ },
+ {
+  "name": "gtasks poll with a trailing null (read)",
+  "method": "POST",
+  "url": "https://tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync",
+  "contentType": "application/json+protobuf",
+  "body": "[[null, [[1790460245, 922911000], null]], null, [null, [\"1094\"]], null, [\"cid\", [null, 4]]]",
+  "hasBody": true,
+  "expected": "POST tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync gtasks:sync:r"
+ },
+ {
+  "name": "gtasks mutations as a sparse-field object (not read)",
+  "method": "POST",
+  "url": "https://tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync",
+  "contentType": "application/json+protobuf",
+  "body": "[[null, [[1790460245, 922911000], null, {\"3\": [[\"t1\", 3, \"list\"]]}]], null, [null, [\"1094\"]], null, [\"cid\", [null, 4]]]",
+  "hasBody": true,
+  "expected": "POST tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync gtasks:sync:w[unknown]"
+ },
+ {
+  "name": "gtasks request[1] an object (not read)",
+  "method": "POST",
+  "url": "https://tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync",
+  "contentType": "application/json+protobuf",
+  "body": "[[null, {\"1\": [[1790460245, 922911000]]}], null, [null, [\"1094\"]], null, [\"cid\", [null, 4]]]",
+  "hasBody": true,
+  "expected": "POST tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync gtasks:sync:w[unknown]"
+ },
+ {
+  "name": "gtasks poll with a field at request[1][1] (not read)",
+  "method": "POST",
+  "url": "https://tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync",
+  "contentType": "application/json+protobuf",
+  "body": "[[null, [[1790460245, 922911000], [[\"t1\"]]]], null, [null, [\"1094\"]], null, [\"cid\", [null, 4]]]",
+  "hasBody": true,
+  "expected": "POST tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync gtasks:sync:w[unknown]"
+ },
+ {
+  "name": "gtasks poll with a time that is not one (not read)",
+  "method": "POST",
+  "url": "https://tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync",
+  "contentType": "application/json+protobuf",
+  "body": "[[null, [[\"t1\", 3]]], null, [null, [\"1094\"]], null, [\"cid\", [null, 4]]]",
+  "hasBody": true,
+  "expected": "POST tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync gtasks:sync:w[unknown]"
+ },
+ {
+  "name": "gtasks filters carrying a string (not read)",
+  "method": "POST",
+  "url": "https://tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync",
+  "contentType": "application/json+protobuf",
+  "body": "[[[[null, [\"t1\"]]], []], null, [null, [\"1094\"]], null, [\"cid\", [null, 4]]]",
+  "hasBody": true,
+  "expected": "POST tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync gtasks:sync:w[unknown]"
+ },
+ {
+  "name": "gtasks initial sync with a non-empty request[1] (not read)",
+  "method": "POST",
+  "url": "https://tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync",
+  "contentType": "application/json+protobuf",
+  "body": "[[[[null, []]], [[\"t1\"]]], null, [null, [\"1094\"]], null, [\"cid\", [null, 4]]]",
+  "hasBody": true,
+  "expected": "POST tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync gtasks:sync:w[unknown]"
+ },
+ {
+  "name": "gtasks request with a third field (not read)",
+  "method": "POST",
+  "url": "https://tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync",
+  "contentType": "application/json+protobuf",
+  "body": "[[null, [[1790460245, 922911000]], [[\"t1\"]]], null, [null, [\"1094\"]], null, [\"cid\", [null, 4]]]",
+  "hasBody": true,
+  "expected": "POST tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync gtasks:sync:w[unknown]"
+ },
+ {
+  "name": "gtasks poll with a field at body index 1: outside the request, unchecked (read)",
+  "method": "POST",
+  "url": "https://tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync",
+  "contentType": "application/json+protobuf",
+  "body": "[[null, [[1790460245, 922911000]]], [[\"t1\"]], [null, [\"1094\"]], null, [\"cid\", [null, 4]]]",
+  "hasBody": true,
+  "expected": "POST tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync gtasks:sync:r"
+ },
+ {
+  "name": "gtasks poll with a trailing object after the body: outside the request, unchecked (read)",
+  "method": "POST",
+  "url": "https://tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync",
+  "contentType": "application/json+protobuf",
+  "body": "[[null, [[1790460245, 922911000]]], null, [null, [\"1094\"]], null, [\"cid\", [null, 4]], {\"6\": [\"t1\"]}]",
+  "hasBody": true,
+  "expected": "POST tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync gtasks:sync:r"
+ },
+ {
+  "name": "gtasks poll with an array in the client info: outside the request, unchecked (read)",
+  "method": "POST",
+  "url": "https://tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync",
+  "contentType": "application/json+protobuf",
+  "body": "[[null, [[1790460245, 922911000]]], null, [null, [\"1094\"]], null, [\"cid\", [null, [\"t1\"]]]]",
+  "hasBody": true,
+  "expected": "POST tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync gtasks:sync:r"
+ },
+ {
+  "name": "gtasks body that is an object (not read)",
+  "method": "POST",
+  "url": "https://tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync",
+  "contentType": "application/json+protobuf",
+  "body": "{\"1\": [null, [[1790460245, 922911000]]]}",
+  "hasBody": true,
+  "expected": "POST tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync gtasks:sync:w[unknown]"
+ },
+ {
+  "name": "gtasks filters at the depth cap (read)",
+  "method": "POST",
+  "url": "https://tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync",
+  "contentType": "application/json+protobuf",
+  "body": "[[[[[[[[[[1]]]]]]]], []], null, [null, [\"1094\"]], null, [\"cid\", [null, 4]]]",
+  "hasBody": true,
+  "expected": "POST tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync gtasks:sync:r"
+ },
+ {
+  "name": "gtasks filters nested past the depth cap (not read)",
+  "method": "POST",
+  "url": "https://tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync",
+  "contentType": "application/json+protobuf",
+  "body": "[[[[[[[[[[[1]]]]]]]]], []], null, [null, [\"1094\"]], null, [\"cid\", [null, 4]]]",
+  "hasBody": true,
+  "expected": "POST tasks-pa.clients6.google.com/$rpc/google.internal.tasks.v1.TasksApiService/Sync gtasks:sync:w[unknown]"
+ }
+]

@@ -1,0 +1,190 @@
+{
+ "id": "linear",
+ "name": "Linear",
+ "domains": [
+  "linear.app"
+ ],
+ "verified": true,
+ "iconUrl": "https://linear.app/favicon.ico",
+ "description": "Read issues, projects, cycles and views. Refuses issue, project, comment, reaction and settings mutations.",
+ "telemetryAllow": [
+  "/collect",
+  "/beacon",
+  "sentry",
+  "datadog",
+  "segment",
+  "/analytics",
+  "/telemetry",
+  "s.linear.app"
+ ],
+ "blockedGetPaths": [],
+ "blockedShapes": [],
+ "allowedShapes": [],
+ "websockets": "allow",
+ "blockResponse": "reject",
+ "editorGuard": true,
+ "readTrackingShapes": [
+  "gql:mutation:ViewPreferencesCreate",
+  "gql:mutation:ViewPreferencesUpdate",
+  "gql:mutation:UserFlagUpdate"
+ ],
+ "readPutPaths": [],
+ "cache": {
+  "POST client-api.linear.app/graphql gql:mutation:AttachmentCreate": {
+   "verdict": "block",
+   "note": ""
+  },
+  "POST client-api.linear.app/graphql gql:mutation:CommentDelete": {
+   "verdict": "block",
+   "note": ""
+  },
+  "POST client-api.linear.app/graphql gql:mutation:CommentUpdate": {
+   "verdict": "block",
+   "note": ""
+  },
+  "POST client-api.linear.app/graphql gql:mutation:CreateCsvExportReport": {
+   "verdict": "block",
+   "note": "CSV export: creates an export report on the server; treated as a write like any other mutation"
+  },
+  "POST client-api.linear.app/graphql gql:mutation:CustomViewCreate": {
+   "verdict": "block",
+   "note": ""
+  },
+  "POST client-api.linear.app/graphql gql:mutation:DocumentContentUpdate": {
+   "verdict": "block",
+   "note": ""
+  },
+  "POST client-api.linear.app/graphql gql:mutation:DraftCreate": {
+   "verdict": "block",
+   "note": "server-side draft autosaved while typing a comment; a write the user never \"submitted\""
+  },
+  "POST client-api.linear.app/graphql gql:mutation:DraftDelete_CommentCreate": {
+   "verdict": "block",
+   "note": "comment submission \u2014 deliberate test write"
+  },
+  "POST client-api.linear.app/graphql gql:mutation:DraftDelete_ProjectUpdateCreate": {
+   "verdict": "block",
+   "note": ""
+  },
+  "POST client-api.linear.app/graphql gql:mutation:FavoriteCreate_UserSettingsUpdate": {
+   "verdict": "block",
+   "note": ""
+  },
+  "POST client-api.linear.app/graphql gql:mutation:IssueCreate_DocumentContentCreate": {
+   "verdict": "block",
+   "note": ""
+  },
+  "POST client-api.linear.app/graphql gql:mutation:IssueDeletes": {
+   "verdict": "block",
+   "note": ""
+  },
+  "POST client-api.linear.app/graphql gql:mutation:IssueLabelCreate": {
+   "verdict": "block",
+   "note": ""
+  },
+  "POST client-api.linear.app/graphql gql:mutation:IssueUnarchive": {
+   "verdict": "block",
+   "note": ""
+  },
+  "POST client-api.linear.app/graphql gql:mutation:IssueUpdate": {
+   "verdict": "block",
+   "note": "status change (stateId) \u2014 deliberate test write"
+  },
+  "POST client-api.linear.app/graphql gql:mutation:NotificationUpdate": {
+   "verdict": "block",
+   "note": "marks a notification read (and also archives/snoozes): one whose input is only readAt is read-tracking when read tracking is on (background/read-tracking.ts); any other use, and all of it with read tracking off, stays refused"
+  },
+  "POST client-api.linear.app/graphql gql:mutation:ProjectCreate_DocumentContentCreate": {
+   "verdict": "block",
+   "note": ""
+  },
+  "POST client-api.linear.app/graphql gql:mutation:ProjectDraftCreate": {
+   "verdict": "block",
+   "note": ""
+  },
+  "POST client-api.linear.app/graphql gql:mutation:ProjectDraftDelete": {
+   "verdict": "block",
+   "note": ""
+  },
+  "POST client-api.linear.app/graphql gql:mutation:ProjectDraftUpdate": {
+   "verdict": "block",
+   "note": ""
+  },
+  "POST client-api.linear.app/graphql gql:mutation:ProjectUpdate": {
+   "verdict": "block",
+   "note": ""
+  },
+  "POST client-api.linear.app/graphql gql:mutation:ReactionCreate": {
+   "verdict": "block",
+   "note": ""
+  },
+  "POST client-api.linear.app/graphql gql:mutation:SearchIndexWarmup": {
+   "verdict": "allow",
+   "note": "GraphQL *mutation* that only warms the search index; no business data changes. A mutation name is not a write."
+  },
+  "POST client-api.linear.app/graphql gql:mutation:UserFlagUpdate": {
+   "verdict": "block",
+   "note": ""
+  },
+  "POST client-api.linear.app/graphql gql:mutation:UserSettingsUpdate": {
+   "verdict": "block",
+   "note": ""
+  },
+  "POST client-api.linear.app/graphql gql:mutation:ViewPreferencesCreate": {
+   "verdict": "block",
+   "note": ""
+  },
+  "POST client-api.linear.app/graphql gql:query:-": {
+   "verdict": "allow",
+   "note": "GraphQL query"
+  },
+  "POST client-api.linear.app/graphql gql:query:ArchivedIntegrationsQuery": {
+   "verdict": "allow",
+   "note": "GraphQL query"
+  },
+  "POST client-api.linear.app/graphql gql:query:IconSuggestion": {
+   "verdict": "allow",
+   "note": ""
+  },
+  "POST client-api.linear.app/graphql gql:query:SearchAll": {
+   "verdict": "allow",
+   "note": ""
+  },
+  "POST client-api.linear.app/graphql gql:query:SearchCombined": {
+   "verdict": "allow",
+   "note": "GraphQL query"
+  },
+  "POST client-api.linear.app/graphql gql:query:SyncCheck": {
+   "verdict": "allow",
+   "note": "GraphQL query"
+  },
+  "POST client-api.linear.app/graphql gql:query:WorkspaceAuthorizedApplicationsWithAppUserQuery": {
+   "verdict": "allow",
+   "note": "GraphQL query"
+  },
+  "POST client-api.linear.app/sync/archived_models json:clientDatabaseId,issueFilter,last,modelClass,teamId,trashOption": {
+   "verdict": "allow",
+   "note": "sync engine: fetch archived/deleted models for the Recently deleted view"
+  },
+  "POST client-api.linear.app/sync/batch json:clientDatabaseId,firstSyncId,requests": {
+   "verdict": "allow",
+   "note": "sync engine: batch fetch of model rows by indexed key; no state change"
+  },
+  "POST client-api.linear.app/sync/bootstrap_subscriptions json:clientDatabaseId,initialize,subscriptions": {
+   "verdict": "allow",
+   "note": "sync engine: registers the client for sync streams on app load; no business data changes. Jev scored 0.73 (false positive) \u2014 kept as human allow in the cache and covered by the review band."
+  },
+  "POST client-api.linear.app/sync/dependents json:clientDatabaseId,firstSyncId,identifiers,includeDependent,modelName": {
+   "verdict": "allow",
+   "note": "sync engine: fetch dependent model rows"
+  },
+  "POST s.linear.app/tunnel ct:text/plain": {
+   "verdict": "allow",
+   "note": "Sentry tunnel (client_report / envelopes); not business data"
+  },
+  "POST s.linear.app/tunnel opaque": {
+   "verdict": "allow",
+   "note": "Sentry tunnel as seen by the observer (no content-type)"
+  }
+ }
+}

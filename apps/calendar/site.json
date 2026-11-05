@@ -1,0 +1,6 @@
+{
+ "name": "Google Calendar",
+ "description": "Browse calendars, events, search and settings. Refuses event changes, settings, calendar creation and deletion.",
+ "iconUrl": "https://www.gstatic.com/images/branding/product/2x/calendar_2020q4_48dp.png",
+ "verified": true
+}

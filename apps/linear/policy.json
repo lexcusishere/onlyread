@@ -1,0 +1,24 @@
+{
+  "targetDomains": [
+    "linear.app"
+  ],
+  "telemetryAllow": [
+    "/collect",
+    "/beacon",
+    "sentry",
+    "datadog",
+    "segment",
+    "/analytics",
+    "/telemetry",
+    "s.linear.app"
+  ],
+  "blockedGetPaths": [],
+  "readTrackingShapes": [
+    "gql:mutation:ViewPreferencesCreate",
+    "gql:mutation:ViewPreferencesUpdate",
+    "gql:mutation:UserFlagUpdate"
+  ],
+  "websockets": "allow",
+  "blockResponse": "reject",
+  "editorGuard": true
+}

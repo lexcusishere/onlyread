@@ -1,0 +1,61 @@
+{
+  "websockets": "block",
+  "targetDomains": [
+    "facebook.com"
+  ],
+  "telemetryAllow": [
+    "/ajax/bnzai",
+    "/ajax/bootloader-endpoint/",
+    "/ajax/browser_error_reports/",
+    "/ajax/bulk-route-definitions/",
+    "/ajax/bz",
+    "/ajax/cometlogging/",
+    "/ajax/haste-response/",
+    "/ajax/imagelogging/",
+    "/ajax/navigation/",
+    "/ajax/presence/",
+    "/ajax/qm",
+    "/ajax/relay-ef/",
+    "/ajax/route-definition/",
+    "/ajax/webstorage/process_keys/",
+    "/analytics",
+    "/beacon",
+    "/collect",
+    "/csi",
+    "/gen_204",
+    "/jserror",
+    "/log?",
+    "/logstreamz",
+    "/privacy_sandbox/",
+    "/static_resources/webworker/rsrc/",
+    "/telemetry",
+    "google.internal.waa.v1.Waa",
+    "play.google.com/log",
+    "www.facebook.com/tr"
+  ],
+  "blockedGetPaths": [
+    "/calendar/event?action=RESPOND",
+    "action=RESPOND"
+  ],
+  "blockedShapes": [
+    "gcal:sync:w",
+    "gtasks:sync:w",
+    "gmail:s:w",
+    "li:rsc:w",
+    "fb:gql:w"
+  ],
+  "allowedShapes": [],
+  "readTrackingShapes": [
+    "fb:gql:w[CometAddTypeaheadRecentSearchMutation]",
+    "fb:gql:w[CometRecordProductUsageMutationMutation]",
+    "fb:gql:w[CometUFILiveTypingBroadcastMutation_StartMutation]",
+    "fb:gql:w[CometUFILiveTypingBroadcastMutation_StopMutation]",
+    "fb:gql:w[FBScreenTimeLogger_syncMutation]",
+    "fb:gql:w[FBUnifiedVideoSeenStateMutation]",
+    "fb:gql:w[FriendingCometFriendsBadgeCountClearMutation]",
+    "fb:gql:w[storiesUpdateSeenStateMutation]",
+    "fb:gql:w[useHasSeenUnifiedVideoCreationPrivacyDisclaimerMutation]",
+    "fb:gql:w[useIncrementLinkSharingDisclosureImpressionCountMutation]",
+    "fb:gql:w[useMWEBAutoEBLogHighFrictionUpsellOnVisibleMutation]"
+  ]
+}

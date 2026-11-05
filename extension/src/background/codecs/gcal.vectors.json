@@ -1,0 +1,56 @@
+[
+ {
+  "name": "gcal sync poll (no ops)",
+  "method": "POST",
+  "url": "https://calendar.google.com/calendar/u/2/sync.sync?hl=en&c=3&rt=r",
+  "contentType": "application/x-www-form-urlencoded",
+  "body": "cwuik=k&f.req=%5B%5B%5Bnull%2C3%2C%22calendar.web_x%22%2Cnull%2Cnull%2Cnull%2Cnull%2C1%2Cnull%2C%22WEB%22%2C%22prod%22%2C1%2Cnull%2Cnull%2Cnull%2C0%5D%2C%22s%22%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2C%5B%5D%2Cnull%2C%5B%5B1%2C2%2Cnull%2Cnull%5D%5D%2Cnull%2Cnull%2Cnull%2C%5Bnull%2C1%2C2%2C3%2C4%2Cnull%2C5%2C6%5D%5D%2C20000%5D&hl=en&secid=s",
+  "hasBody": true,
+  "expected": "POST calendar.google.com/calendar/u/{id}/sync.sync gcal:sync:r"
+ },
+ {
+  "name": "gcal sync fetch spec + token (read)",
+  "method": "POST",
+  "url": "https://calendar.google.com/calendar/u/2/sync.sync?hl=en&c=3&rt=r",
+  "contentType": "application/x-www-form-urlencoded",
+  "body": "cwuik=k&f.req=%5B%5B%5Bnull%2C3%2C%22calendar.web_x%22%2Cnull%2Cnull%2Cnull%2Cnull%2C1%2Cnull%2C%22WEB%22%2C%22prod%22%2C1%2Cnull%2Cnull%2Cnull%2C0%5D%2C%22s%22%2Cnull%2Cnull%2C%5B%5B5%2Cnull%2C%5B%5Bnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2C%5B4%5D%5D%2C%22a%40b.com%22%5D%2Cnull%2Cnull%2C21%5D%2C%5B2%2Cnull%2Cnull%2C%5B%22Cn4KFHRlc3R1c2VyQGV4YW1wbGUuY29t%22%5D%2Cnull%2C368%5D%5D%2Cnull%2Cnull%2C%5B%5D%2Cnull%2C%5B%5B1%2C2%2Cnull%2Cnull%5D%5D%2Cnull%2Cnull%2Cnull%2C%5Bnull%2C1%2C2%2C3%2C4%2Cnull%2C5%2C6%5D%5D%2C20000%5D&hl=en&secid=s",
+  "hasBody": true,
+  "expected": "POST calendar.google.com/calendar/u/{id}/sync.sync gcal:sync:r"
+ },
+ {
+  "name": "gcal settings mutation (view mode)",
+  "method": "POST",
+  "url": "https://calendar.google.com/calendar/u/2/sync.sync?hl=en&c=3&rt=r",
+  "contentType": "application/x-www-form-urlencoded",
+  "body": "cwuik=k&f.req=%5B%5B%5Bnull%2C3%2C%22calendar.web_x%22%2Cnull%2Cnull%2Cnull%2Cnull%2C1%2Cnull%2C%22WEB%22%2C%22prod%22%2C1%2Cnull%2Cnull%2Cnull%2C0%5D%2C%22s%22%2Cnull%2Cnull%2C%5B%5B5%2C%5B%5B%5B%22defaultCalMode%22%2C%22month%22%5D%5D%5D%2Cnull%2Cnull%2Cnull%2C64%5D%5D%2Cnull%2Cnull%2C%5B%5D%2Cnull%2C%5B%5B1%2C2%2Cnull%2Cnull%5D%5D%2Cnull%2Cnull%2Cnull%2C%5Bnull%2C1%2C2%2C3%2C4%2Cnull%2C5%2C6%5D%5D%2C20000%5D&hl=en&secid=s",
+  "hasBody": true,
+  "expected": "POST calendar.google.com/calendar/u/{id}/sync.sync gcal:sync:w[set:defaultCalMode]"
+ },
+ {
+  "name": "gcal event create",
+  "method": "POST",
+  "url": "https://calendar.google.com/calendar/u/2/sync.sync?hl=en&c=3&rt=r",
+  "contentType": "application/x-www-form-urlencoded",
+  "body": "cwuik=k&f.req=%5B%5B%5Bnull%2C3%2C%22calendar.web_x%22%2Cnull%2Cnull%2Cnull%2Cnull%2C1%2Cnull%2C%22WEB%22%2C%22prod%22%2C1%2Cnull%2Cnull%2Cnull%2C0%5D%2C%22s%22%2Cnull%2Cnull%2C%5B%5B5%2Cnull%2C%5B%5Bnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2C%5B4%5D%5D%2C%22a%40b.com%22%5D%2Cnull%2Cnull%2C21%5D%2C%5B3%2Cnull%2C%5B%5Bnull%2Cnull%2C%5B%22evt123abc%22%2Cnull%2Cnull%2C%5B%5Bnull%2Cnull%2C%5Bnull%2C%22%22%5D%5D%5D%5D%5D%2C%22a%40b.com%22%5D%2Cnull%2Cnull%2C9%5D%5D%2Cnull%2Cnull%2C%5B%5D%2Cnull%2C%5B%5B1%2C2%2Cnull%2Cnull%5D%5D%2Cnull%2Cnull%2Cnull%2C%5Bnull%2C1%2C2%2C3%2C4%2Cnull%2C5%2C6%5D%5D%2C20000%5D&hl=en&secid=s",
+  "hasBody": true,
+  "expected": "POST calendar.google.com/calendar/u/{id}/sync.sync gcal:sync:w[event]"
+ },
+ {
+  "name": "gcal event delete + settings",
+  "method": "POST",
+  "url": "https://calendar.google.com/calendar/u/2/sync.sync?hl=en&c=3&rt=r",
+  "contentType": "application/x-www-form-urlencoded",
+  "body": "cwuik=k&f.req=%5B%5B%5Bnull%2C3%2C%22calendar.web_x%22%2Cnull%2Cnull%2Cnull%2Cnull%2C1%2Cnull%2C%22WEB%22%2C%22prod%22%2C1%2Cnull%2Cnull%2Cnull%2C0%5D%2C%22s%22%2Cnull%2Cnull%2C%5B%5B7%2Cnull%2C%5B%5Bnull%2C%5B%22evt123abc%22%2Cnull%2Cnull%2C%5B%5Bnull%5D%5D%2C0%5D%5D%2C%22a%40b.com%22%5D%2Cnull%2Cnull%2C103%5D%2C%5B5%2C%5B%5B%5B%22defaultCalMode%22%2C%22month%22%5D%5D%5D%2Cnull%2Cnull%2Cnull%2C64%5D%2C%5B5%2Cnull%2C%5B%5Bnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2Cnull%2C%5B4%5D%5D%2C%22a%40b.com%22%5D%2Cnull%2Cnull%2C21%5D%5D%2Cnull%2Cnull%2C%5B%5D%2Cnull%2C%5B%5B1%2C2%2Cnull%2Cnull%5D%5D%2Cnull%2Cnull%2Cnull%2C%5Bnull%2C1%2C2%2C3%2C4%2Cnull%2C5%2C6%5D%5D%2C20000%5D&hl=en&secid=s",
+  "hasBody": true,
+  "expected": "POST calendar.google.com/calendar/u/{id}/sync.sync gcal:sync:w[event,set:defaultCalMode]"
+ },
+ {
+  "name": "gcal unparseable f.req fails closed",
+  "method": "POST",
+  "url": "https://calendar.google.com/calendar/u/2/sync.sync?hl=en&c=3&rt=r",
+  "contentType": "application/x-www-form-urlencoded",
+  "body": "cwuik=k&f.req=%5B%5Bnull&hl=en",
+  "hasBody": true,
+  "expected": "POST calendar.google.com/calendar/u/{id}/sync.sync gcal:sync:w[unparseable]"
+ }
+]

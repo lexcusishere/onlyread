@@ -1,0 +1,43 @@
+name: live
+
+# The live AI judge suite (e2e/live-judge.spec.ts): Jev and the review model called for real through OpenRouter, with
+# the shipped settings. It watches a service we do not run (its API, the model staying available, its speed against
+# OnlyRead's time limit), so it runs on a schedule and by hand, never on a push. Paid calls (about 25 a run), on the
+# repository's OPENROUTER_API_KEY secret; without one the run says so and stops. A failure names its kind: OpenRouter
+# slow or unreachable (retried twice first), or a wrong verdict (ours to look into).
+
+on:
+  schedule:
+    - cron: '17 4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  live-judge:
+    runs-on: ubuntu-latest
+    env:
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+    steps:
+      - id: key
+        run: |
+          if [ -z "$OPENROUTER_API_KEY" ]; then echo "::notice::No OPENROUTER_API_KEY secret: the live judge suite did not run."; echo "set=false" >> "$GITHUB_OUTPUT"; else echo "set=true" >> "$GITHUB_OUTPUT"; fi
+      - if: steps.key.outputs.set == 'true'
+        uses: actions/checkout@v7
+      - if: steps.key.outputs.set == 'true'
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - if: steps.key.outputs.set == 'true'
+        run: npm ci
+      - if: steps.key.outputs.set == 'true'
+        run: npx playwright install --with-deps chromium
+      - if: steps.key.outputs.set == 'true'
+        run: npm run e2e:live
+      - if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: live-judge-traces
+          path: test-results/

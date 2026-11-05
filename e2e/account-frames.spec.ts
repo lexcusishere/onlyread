@@ -1,0 +1,85 @@
+// This browser's Activity and Security framed on the Pro account page (PLAN-PRO-UI step 3): the content script puts the
+// extension's own settings page in a frame where the page asks, only for the account this browser is signed in to;
+// the page's scripts cannot read into it; opened anywhere else the framed page stays blank. Against the mock Pro
+// service, whose /__frames page stands in for the account page.
+import { test, expect } from '@playwright/test';
+import { Harness } from './helpers';
+
+test.describe.configure({ mode: 'serial' });
+
+const h = new Harness(4243);
+const extPage = (name: string) => `chrome-extension://${new URL(h.sw.url()).host}/${name}`;
+const framesPage = (account: string) => `${h.base}/cloud/__frames?account=${encodeURIComponent(account)}`;
+const state = (page: import('@playwright/test').Page, id: string) => page.locator(`#${id}`).getAttribute('data-onlyread-state');
+
+test.beforeAll(async () => {
+  await h.start({ mode: 'enforce', customSites: [{ id: 'other.example', name: 'Other', domains: ['other.example'], enabled: true }] });
+  await h.setPolicy({ cloud: { serviceUrl: `${h.base}/cloud`, timeoutMs: 8000 }, judge: { provider: 'cloud', byok: { id: 'openrouter' }, timeoutMs: 3000, llmTimeoutMs: 6000 } });
+});
+test.afterAll(async () => { await h.stop(); });
+
+test('signed out, nothing is framed: the page keeps its own words and learns why', async () => {
+  const page = await h.ctx.newPage();
+  await page.goto(framesPage('test.user@example.com'));
+  await expect.poll(() => state(page, 'activity')).toBe('signed-out');
+  await expect(page.locator('#activity')).toHaveText("Install OnlyRead to see this browser's activity.");
+  await expect(page.locator('iframe')).toHaveCount(0);
+  await page.close();
+});
+
+test('signed in, the account\'s page frames Activity and Security, sized to their content and unreadable by the page', async () => {
+  // No AI judge yet: the settings page is only the way to set one, and its Pro button signs in.
+  await h.assumeJudge(false);
+  const options = await h.ctx.newPage();
+  await options.goto(extPage('options.html'));
+  await options.locator('#gate-signin').click();
+  await expect(options).toHaveURL(`${h.base}/cloud/account`, { timeout: 15_000 }); // signed in, on to the account page
+  await options.close();
+
+  const page = await h.ctx.newPage();
+  await page.goto(framesPage('Test.User@example.com')); // the address as the page writes it: case does not matter
+  await expect.poll(() => state(page, 'activity')).toBe('framed');
+  await expect.poll(() => state(page, 'security')).toBe('framed');
+  const activity = page.frameLocator('#activity iframe');
+  await expect(activity.locator('#activity')).toBeVisible({ timeout: 10_000 });
+  // One section: no sidebar, no header, no other section.
+  await expect(activity.locator('#side')).toBeHidden();
+  await expect(activity.locator('header.top')).toBeHidden();
+  await expect(activity.locator('#guarded-sites')).toBeHidden();
+  await expect(page.frameLocator('#security iframe').locator('#security')).toBeVisible();
+  // The frame told the page its height.
+  await expect.poll(async () => page.locator('#activity iframe').evaluate((f) => (f as HTMLIFrameElement).style.height)).not.toBe('240px');
+  // The page's own code dropping the frame (a re-render): the extension puts it back.
+  await page.evaluate(() => { document.querySelector('#activity')!.replaceChildren(); });
+  await expect(page.locator('#activity iframe')).toHaveCount(1);
+  await expect(activity.locator('#activity')).toBeVisible();
+  // Which row of the account's Browsers list this browser is: its sign-in's id, for this account's page only.
+  const ask = (account: string) => page.evaluate((acct) => new Promise<unknown>((resolve) => {
+    addEventListener('message', function on(e) { if (e.data?.source === 'onlyread-extension' && e.data.type === 'this-browser') { removeEventListener('message', on); resolve(e.data); } });
+    postMessage({ source: 'onlyread-pro', type: 'which-browser', account: acct }, location.origin);
+  }), account);
+  expect(await ask('test.user@example.com')).toMatchObject({ family: expect.stringMatching(/^[0-9a-f-]{36}$/) });
+  expect(await ask('someone.else@example.com')).toEqual({ source: 'onlyread-extension', type: 'this-browser', reason: 'other-account' });
+  // The page's own scripts cannot read inside.
+  expect(await page.evaluate(() => {
+    const f = document.querySelector('#activity iframe') as HTMLIFrameElement;
+    try { return f.contentDocument === null && f.contentWindow?.document === undefined; } catch { return true; }
+  })).toBe(true);
+  await page.close();
+});
+
+test('another account\'s page gets no frame', async () => {
+  const page = await h.ctx.newPage();
+  await page.goto(framesPage('someone.else@example.com'));
+  await expect.poll(() => state(page, 'activity')).toBe('other-account');
+  await expect(page.locator('iframe')).toHaveCount(0);
+  await page.close();
+});
+
+test('opened on its own, the framed page stays blank', async () => {
+  const page = await h.ctx.newPage();
+  await page.goto(`${extPage('options.html')}?framed=1#activity`);
+  await page.waitForTimeout(1500);
+  expect(await page.evaluate(() => document.body.children.length)).toBe(0);
+  await page.close();
+});

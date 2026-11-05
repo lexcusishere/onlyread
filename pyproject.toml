@@ -1,0 +1,18 @@
+# The measurement harness (harness/): Python 3.11+, standard library only, so there is nothing to install.
+# This file pins the Python version and configures the linter (ruff); it is not a package.
+[project]
+name = "onlyread-harness"
+version = "1.0.0"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.ruff]
+target-version = "py311"
+line-length = 140
+extend-exclude = ["harness/eval"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B"]
+# The harness's compact style (several statements per line, long lines, short names, imports after the
+# sys.path setup that reaches lib/) is deliberate; the rules that find bugs (pyflakes, bugbear) stay on.
+ignore = ["E401", "E402", "E501", "E701", "E702", "E731", "E741"]

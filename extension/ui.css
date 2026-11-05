@@ -1,0 +1,138 @@
+/* Shared look for the popup, the settings page and the setup window: the OnlyRead brand (pink
+   gradient, Manrope headings, DM Sans text). Fonts are bundled (assets/fonts, SIL OFL 1.1). */
+@font-face { font-family: "Manrope"; src: url("assets/fonts/manrope.woff2") format("woff2"); font-weight: 400 800; font-display: swap; }
+@font-face { font-family: "DM Sans"; src: url("assets/fonts/dm-sans.woff2") format("woff2"); font-weight: 400 700; font-display: swap; }
+
+:root {
+  color-scheme: light;
+  --fg: #1d1320; --muted: #74687a; --faint: #a79ba9;
+  --bg: #faf7f9; --card: #ffffff; --card-2: #fdf9fb; --line: #eee4ea; --line-strong: #e0d3db;
+  --accent: #db2777; --accent-2: #f472b6; --accent-ink: #be185d; --chip: #fdeef5;
+  /* --ok is the positive state (guarded, working, test passed): the brand pink, never green. */
+  --ok: #be185d; --warn: #c2410c; --danger: #dc2626;
+  --grad: linear-gradient(135deg, #f472b6 0%, #db2777 55%, #be185d 100%);
+  /* The same glow, shadows and radii as the Pro site (cloud/app/globals.css), so the two read as one product. */
+  --glow: radial-gradient(900px 420px at 50% -160px, rgba(244, 114, 182, .22), transparent 70%);
+  --shadow: 0 1px 2px rgba(58, 16, 40, .05), 0 4px 16px -4px rgba(58, 16, 40, .08);
+  --shadow-lg: 0 2px 4px rgba(58, 16, 40, .05), 0 24px 56px -18px rgba(58, 16, 40, .22);
+  --btn-shadow: 0 8px 20px -8px rgba(219, 39, 119, .65), inset 0 1px 0 rgba(255, 255, 255, .22);
+  --radius: 16px;
+  --display: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --body: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, monospace;
+}
+/* Dark palette: by system preference unless the user forced Light, and always when the user forced Dark.
+   Kept in sync with extension/src/shared/theme.ts, which stamps data-theme on <html>. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --fg: #f5eef3; --muted: #a797a5; --faint: #6f6170;
+    --bg: #0d0a0f; --card: #161118; --card-2: #1b151e; --line: #2a2130; --line-strong: #3a2e40;
+    --accent: #ec4899; --accent-2: #f9a8d4; --accent-ink: #f472b6; --chip: #2c1524;
+    --ok: #f472b6; --warn: #fb923c; --danger: #f87171;
+    --glow: radial-gradient(900px 420px at 50% -160px, rgba(236, 72, 153, .20), transparent 70%);
+    --shadow: 0 1px 0 rgba(255, 255, 255, .03) inset, 0 8px 24px -10px rgba(0, 0, 0, .6);
+    --shadow-lg: 0 1px 0 rgba(255, 255, 255, .04) inset, 0 28px 60px -20px rgba(0, 0, 0, .8);
+    --btn-shadow: 0 10px 24px -10px rgba(236, 72, 153, .75), inset 0 1px 0 rgba(255, 255, 255, .18);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --fg: #f5eef3; --muted: #a797a5; --faint: #6f6170;
+  --bg: #0d0a0f; --card: #161118; --card-2: #1b151e; --line: #2a2130; --line-strong: #3a2e40;
+  --accent: #ec4899; --accent-2: #f9a8d4; --accent-ink: #f472b6; --chip: #2c1524;
+  --ok: #f472b6; --warn: #fb923c; --danger: #f87171;
+  --glow: radial-gradient(900px 420px at 50% -160px, rgba(236, 72, 153, .20), transparent 70%);
+  --shadow: 0 1px 0 rgba(255, 255, 255, .03) inset, 0 8px 24px -10px rgba(0, 0, 0, .6);
+  --shadow-lg: 0 1px 0 rgba(255, 255, 255, .04) inset, 0 28px 60px -20px rgba(0, 0, 0, .8);
+  --btn-shadow: 0 10px 24px -10px rgba(236, 72, 153, .75), inset 0 1px 0 rgba(255, 255, 255, .18);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; font: 13px/1.5 var(--body); color: var(--fg); background: var(--bg);
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+h1, h2, h3, h4, .name, .display { font-family: var(--display); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+:focus-visible { outline: 2px solid color-mix(in srgb, var(--accent) 55%, transparent); outline-offset: 2px; }
+
+/* Brand: the wordmark wherever there is room; the monogram only where a square mark is needed */
+.wordmark { display: flex; align-items: center; gap: 9px; margin-right: auto; }
+.wordmark .mark { height: 18px; width: auto; display: block; }
+
+.icon-btn { border: 0; background: transparent; color: var(--muted); cursor: pointer; padding: 6px; border-radius: 10px; display: inline-flex; transition: background .15s, color .15s; }
+.icon-btn:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); color: var(--accent); }
+
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+
+.site { display: flex; align-items: center; gap: 12px; padding: 12px; }
+.logo { width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center; background: var(--card-2); border: 1px solid var(--line); flex: none; overflow: hidden; }
+.logo svg, .logo img { width: 22px; height: 22px; }
+.meta { min-width: 0; flex: 1; }
+.name { font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.sub { color: var(--muted); font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+
+.switch { position: relative; width: 42px; height: 24px; flex: none; }
+.switch input { opacity: 0; width: 0; height: 0; position: absolute; }
+.switch span { position: absolute; inset: 0; background: var(--line-strong); border-radius: 999px; transition: background .2s; cursor: pointer; }
+.switch span::before { content: ""; position: absolute; width: 18px; height: 18px; left: 3px; top: 3px; background: #fff; border-radius: 50%; box-shadow: 0 1px 3px rgba(0, 0, 0, .25); transition: transform .2s cubic-bezier(.3, .7, .4, 1.2); }
+.switch input:checked + span { background: var(--grad); box-shadow: 0 4px 12px -4px rgba(219, 39, 119, .6); }
+.switch input:checked + span::before { transform: translateX(18px); }
+.switch input:focus-visible + span { outline: 2px solid color-mix(in srgb, var(--accent) 55%, transparent); outline-offset: 2px; }
+.switch input:disabled + span { cursor: not-allowed; }
+
+.btn { font: 600 12.5px/1 var(--body); padding: 9px 14px; border-radius: 12px; border: 1px solid var(--line-strong); background: var(--card); color: var(--fg); cursor: pointer; transition: transform .12s, box-shadow .15s, border-color .15s, background .15s; white-space: nowrap; }
+.btn:hover { border-color: var(--faint); }
+.btn:active { transform: translateY(1px); }
+.btn.primary { background: var(--grad); border-color: transparent; color: #fff; box-shadow: var(--btn-shadow); }
+.btn.primary:hover { filter: brightness(1.06); transform: translateY(-1px); }
+.btn.danger { color: var(--danger); }
+.btn.danger:hover { border-color: color-mix(in srgb, var(--danger) 45%, transparent); background: color-mix(in srgb, var(--danger) 6%, transparent); }
+.btn.ghost { border-color: transparent; background: transparent; color: var(--muted); }
+.btn.ghost:hover { color: var(--fg); background: color-mix(in srgb, var(--fg) 6%, transparent); }
+/* A button whose action is under way (Pro sign-in opening): a spinner before its label, and no second click. */
+.btn.busy { pointer-events: none; }
+.btn.busy::before { content: ''; display: inline-block; width: 11px; height: 11px; margin-right: 8px; vertical-align: -1px; border-radius: 50%; border: 2px solid currentColor; border-right-color: transparent; animation: spin .7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* The own-key provider picker (shared/byok-form.ts): two tiles, the chosen one in the accent. */
+.provider-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; }
+.provider-tile { display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: 13px; border: 1px solid var(--line-strong); background: var(--card-2); color: var(--fg); font: inherit; text-align: left; cursor: pointer; transition: border-color .15s, box-shadow .15s, background .15s, transform .12s; }
+.provider-tile:hover { border-color: var(--faint); }
+.provider-tile:active { transform: translateY(1px); }
+.provider-tile:focus-visible { outline: none; box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent); }
+.provider-tile[aria-checked="true"] { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 8%, var(--card-2)); box-shadow: 0 8px 22px -14px color-mix(in srgb, var(--accent) 70%, transparent); }
+.provider-tile img { width: 32px; height: 32px; border-radius: 9px; flex: none; }
+.pt-text { display: grid; gap: 2px; min-width: 0; }
+.pt-name { font-weight: 600; font-size: 13px; }
+.pt-tag { font-size: 12px; color: var(--muted); }
+.key-saved { display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; font-weight: 600; color: var(--ok); }
+.key-saved::before { content: ''; width: 12px; height: 12px; background: currentColor; -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>') center / contain no-repeat; mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>') center / contain no-repeat; }
+.key-saved[hidden] { display: none; }
+.key-link { margin-left: auto; font-weight: 500; }
+
+.empty { padding: 16px; color: var(--muted); font-size: 12.5px; }
+
+input[type=text], input[type=password] { font: inherit; font-size: 13px; padding: 9px 12px; border-radius: 11px; border: 1px solid var(--line-strong); background: var(--card-2); color: var(--fg); transition: border-color .15s, box-shadow .15s; }
+input::placeholder { color: var(--faint); }
+input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent); }
+
+/* Reduced motion: a slow spinner, no transitions */
+@media (prefers-reduced-motion: reduce) { .btn.busy::before { animation-duration: 2.4s; } * { transition: none !important; } }
+
+/* Guard every site: the allowed hosts (options.ts renderGuardAll). */
+#allow-list .row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+#allow-list .row .name { min-width: 0; overflow-wrap: anywhere; }
+
+/* A hover note beside a setting's name (options.html "Settings PIN"): shown on hover and on keyboard focus. */
+.info { position: relative; display: inline-grid; place-items: center; width: 16px; height: 16px; margin-left: 4px; border-radius: 50%; border: 1px solid currentColor; font: 600 10px/1 var(--body); color: var(--muted); cursor: help; vertical-align: 1px; }
+.info::after { content: attr(data-tip); position: absolute; left: 0; top: calc(100% + 8px); width: min(320px, 80vw); padding: 10px 12px; border-radius: 10px; background: var(--fg); color: var(--bg); font: 400 12.5px/1.45 var(--body); text-align: left; white-space: normal; box-shadow: var(--shadow-lg); opacity: 0; pointer-events: none; transition: opacity .15s; z-index: 10; }
+.info:hover::after, .info:focus-visible::after { opacity: 1; }
+
+/* A browser that belongs to an AI agent: managed from the account page, so nothing here is added (options.ts renderLock). */
+body.account-managed .add-row, body.account-managed .suggest { display: none; }
+
+/* What the AI judge is sent, and the agreement asked before any judge runs (setup and settings; background/consent.ts). */

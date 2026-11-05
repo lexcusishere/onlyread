@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Set up OnlyRead</title>
+<link rel="stylesheet" href="ui.css" />
+<link rel="stylesheet" href="welcome.css" />
+<style>
+  /* One window, no scroll: the window is sized to fit (background/messages.ts setupWindowBox), and a shorter one drops
+     the scene below. Only a screen too short for the open key form (660px) may scroll, so the form stays in reach. */
+  html { overflow: hidden; }
+  @media (max-height: 660px) { html { overflow: auto; } }
+  body { padding: 22px 28px 16px; max-width: 580px; margin: 0 auto; background: var(--glow), var(--bg); background-repeat: no-repeat; min-height: 100vh; display: flex; flex-direction: column; }
+  /* The judge step under the welcome; the scene has its own height (welcome.css), the window is sized to fit it all
+     (background/messages.ts setupWindowBox). */
+  #step-judge:not([hidden]) { flex: 1; display: flex; flex-direction: column; }
+  .lede { margin: 0 auto; max-width: 460px; color: var(--muted); font-size: 13.5px; line-height: 1.6; }
+  label { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; margin-bottom: 6px; color: var(--muted); }
+  label a { font-weight: 500; }
+  .field { margin-bottom: 12px; }
+  .field input { width: 100%; }
+  select { font: inherit; font-size: 13px; width: 100%; padding: 9px 12px; border-radius: 11px; border: 1px solid var(--line-strong); background: var(--card-2); color: var(--fg); }
+  select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent); }
+  .row { display: flex; gap: 8px; align-items: center; }
+  .row input { flex: 1; min-width: 0; font-family: var(--mono); font-size: 12px; }
+  .result:empty { display: none; }
+  .result { margin-top: 10px; font-size: 12px; color: var(--muted); }
+  .result.ok { color: var(--ok); } .result.err { color: var(--danger); } .result.warn { color: var(--warn); }
+  .foot { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; font-size: 12px; color: var(--muted); gap: 12px; }
+  .welcome-kit details.byok > summary { list-style: none; cursor: pointer; margin-bottom: 0; } /* closed: centred in its card */
+  details.byok > summary::-webkit-details-marker { display: none; }
+  details.byok > summary .chev { margin-left: auto; color: var(--muted); transition: transform .25s ease; }
+  .welcome-kit details.byok[open] > summary { margin-bottom: 14px; }
+  details.byok[open] > summary .chev { transform: rotate(90deg); }
+  details.byok[open] > :not(summary) { animation: step-in .35s ease-out both; }
+  /* Steps: one shown at a time, each coming in with a soft rise. */
+  .step[hidden] { display: none; }
+  .step.enter { animation: step-in .55s cubic-bezier(.2,.9,.25,1.15) both; }
+  @keyframes step-in { from { opacity: 0; transform: translateY(14px) scale(.985); } to { opacity: 1; transform: none; } }
+  .step-title { font: 800 20px/1.25 var(--display); letter-spacing: -0.02em; margin: 0 0 6px; text-align: center; text-wrap: balance; }
+  .step-lede { margin: 0 auto 18px; max-width: 440px; text-align: center; color: var(--muted); font-size: 13.5px; line-height: 1.6; }
+  .step-lede span { display: block; } /* one sentence per line */
+  /* Three to a row; a last row with fewer sits centred. */
+  .tiles { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+  .tiles .tile { flex: 0 0 calc((100% - 20px) / 3); box-sizing: border-box; min-width: 0; }
+  @media (max-width: 520px) { .tiles .tile { flex-basis: calc((100% - 10px) / 2); } }
+  .tile { display: flex; align-items: center; gap: 12px; padding: 14px; border-radius: 16px; border: 1px solid var(--line); background: var(--card);
+    cursor: pointer; text-align: left; font: inherit; color: var(--fg); transition: transform .18s cubic-bezier(.2,.9,.25,1.3), border-color .18s, box-shadow .18s;
+    animation: step-in .5s cubic-bezier(.2,.9,.25,1.15) both; animation-delay: calc(var(--i, 0) * 45ms); }
+  .tile:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); box-shadow: 0 14px 30px -18px rgba(219, 39, 119, .6); }
+  .tile:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .tile .logo { background: #fff; }
+  .tile .txt b { display: block; font-size: 13.5px; }
+  .tile .txt { min-width: 0; }
+  .tile .txt span { display: block; font-size: 11.5px; color: var(--muted); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } /* one line each */
+  .tile.busy { opacity: .6; pointer-events: none; }
+  .demo-note { margin: 14px 0 0; font-size: 12px; color: var(--muted); text-align: center; }
+
+  /* Short windows: the scene steps aside before the cards scroll. So does it with the key form open. */
+  @media (max-height: 768px) { .welcome-kit .scene { display: none; } } /* .welcome-kit: welcome.css nests its rules under it */
+  body:has(details.byok[open]) .scene, body:has(details.byok[open]) .pitch { display: none; }
+
+  /* ---- The Pro card: one call to action that asks to be pressed. */
+
+  /* The window opening: the welcome, the pitch, the scene and the two cards rise in one after another. */
+  @keyframes page-in { from { opacity: 0; transform: translateY(12px); } }
+  body > .hero, #step-judge > .pitch, #step-judge > .scene, #step-judge > .choice { animation: page-in .55s cubic-bezier(.2,.8,.3,1) backwards; }
+  #step-judge > .pitch { animation-delay: .08s; } #step-judge > .scene { animation-delay: .16s; } #step-judge > .choice.featured { animation-delay: .26s; } #step-judge > .byok { animation-delay: .34s; }
+  @media (prefers-reduced-motion: reduce) { .step.enter, .tile, body > .hero, #step-judge > * { animation: none !important; } .tile { opacity: 1; } }
+</style>
+</head>
+<body class="welcome-kit">
+  <div class="hero">
+    <div class="tile-logo"><img src="assets/icon-128.png" alt=""></div>
+    <h1 class="welcome">Welcome to <img src="assets/wordmark.png" alt="OnlyRead"></h1>
+  </div>
+
+  <section class="step" id="step-judge">
+  <p class="pitch"><span>Your AI agent <b>reads, searches and summarizes</b>.</span><span>Anything that would <b>send, post or delete</b> is <u>refused before it leaves the browser</u>.</span></p>
+
+  <div class="scene" aria-hidden="true"></div>
+
+  <div class="card choice featured">
+    <div class="choice-head">
+      <div class="choice-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a5 5 0 0 1-.6-9.96A6 6 0 0 1 18 8a4.5 4.5 0 0 1-.5 9H7z"/></svg></div>
+      <div><h2>OnlyRead Pro</h2><div class="tag">1,000 free requests. No API key, no credit card</div></div>
+    </div>
+    <div class="row">
+      <button id="cloud-signin" class="btn primary cta">Start free with Pro<svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <button id="cloud-subscribe" class="btn" hidden>Get Pro</button>
+    </div>
+    <div id="cloud-result" class="result"></div>
+    <p class="fine">By starting, you agree the AI judge checks your requests according to our <a href="https://onlyread.ai/privacy/" target="_blank" rel="noopener">Privacy Policy ↗</a></p>
+  </div>
+
+  <details class="card choice byok">
+    <summary class="choice-head">
+      <div class="choice-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M10.8 12.2 20 3M17 6l3 3M15 8l2 2"/></svg></div>
+      <div><h2>Your own key</h2><div class="tag">Free, you pay OpenRouter or Vercel directly</div></div>
+      <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+    </summary>
+    <div class="field">
+      <label id="byok-provider-label">Provider</label>
+      <div class="provider-tiles" id="byok-tiles" role="radiogroup" aria-labelledby="byok-provider-label"></div>
+      <select id="byok-provider" hidden></select>
+    </div>
+    <div class="field">
+      <label for="api-key">API key <span class="key-saved" id="byok-saved" hidden>Key saved</span><a class="key-link" id="byok-keylink" target="_blank" rel="noopener">Get a key ↗</a></label>
+      <input id="api-key" type="password" autocomplete="off" />
+    </div>
+    <div class="row"><button id="save-key" class="btn primary">Save and test</button></div>
+    <div id="key-result" class="result"></div>
+    <p class="fine">By saving, you agree the AI judge checks your requests according to our <a href="https://onlyread.ai/privacy/" target="_blank" rel="noopener">Privacy Policy ↗</a></p>
+  </details>
+
+  <div class="foot">
+    <span></span>
+    <span><button id="done" class="btn primary" hidden>Next</button></span>
+  </div>
+  </section>
+
+  <!-- The first-run demo (background/demo.ts): try OnlyRead on a real site. -->
+  <section class="step" id="step-demo" hidden>
+    <h2 class="step-title">See it protect a real site</h2>
+    <p class="step-lede"><span>Try one small change on a site you use.</span><span>OnlyRead stops it, as it would stop an AI agent.</span></p>
+    <div class="tiles" id="demo-tiles"></div>
+    <p class="demo-note">Chrome shows a debugging banner during the demo. It goes away when the demo ends.</p>
+    <div class="result" id="demo-result"></div>
+    <div class="foot"><span></span><span><button id="demo-skip" class="btn ghost">Skip demo</button></span></div>
+  </section>
+
+  <script src="dist/setup.js"></script>
+</body>
+</html>

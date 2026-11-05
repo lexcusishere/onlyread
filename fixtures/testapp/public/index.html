@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>OnlyRead fixture</title>
+<style>
+  body { font: 14px/1.5 -apple-system, system-ui, sans-serif; max-width: 760px; margin: 32px auto; padding: 0 16px; color: #111; }
+  h1 { font-size: 20px; } h2 { font-size: 15px; margin-top: 24px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px; }
+  button { font: inherit; padding: 8px 10px; border: 1px solid #ccc; border-radius: 6px; background: #fafafa; cursor: pointer; text-align: left; }
+  button.write { border-color: #e0a0a0; background: #fff5f5; }
+  pre { background: #f4f4f4; padding: 12px; border-radius: 6px; max-height: 260px; overflow: auto; font-size: 12px; }
+  form { display: flex; gap: 8px; align-items: center; }
+  input { font: inherit; padding: 6px 8px; border: 1px solid #ccc; border-radius: 6px; }
+</style>
+</head>
+<body>
+  <h1>OnlyRead fixture app</h1>
+  <p>Each button issues one request type. Red buttons change server state. Results appear below.</p>
+
+  <h2>Reads</h2>
+  <div class="grid">
+    <button data-req="GET /api/items">GET /api/items</button>
+    <button data-req="POST /api/search" data-body='{"q":"a"}'>POST /api/search (read)</button>
+    <button data-req="POST /graphql" data-body='{"query":"query { items { id name } }"}'>POST /graphql query</button>
+    <button data-req="POST /rpc" data-body='{"op":"list"}'>POST /rpc list</button>
+    <button data-req="POST /collect" data-body='{"event":"view"}'>POST /collect (telemetry)</button>
+  </div>
+
+  <h2>Writes</h2>
+  <div class="grid">
+    <button class="write" data-req="POST /api/items" data-body='{"name":"new"}'>POST /api/items (create)</button>
+    <button class="write" data-req="PUT /api/items/1" data-body='{"name":"renamed"}'>PUT /api/items/1</button>
+    <button class="write" data-req="PATCH /api/items/1" data-body='{"read":true}'>PATCH /api/items/1</button>
+    <button class="write" data-req="DELETE /api/items/1">DELETE /api/items/1</button>
+    <button class="write" data-req="POST /graphql" data-body='{"query":"mutation { createItem(name: \"x\") { id } }","variables":{"name":"x"}}'>POST /graphql mutation</button>
+    <button class="write" data-req="POST /graphql" data-body='[{"query":"query { items { id } }"},{"query":"mutation { createItem(name: \"b\") { id } }"}]'>POST /graphql batch (mixed)</button>
+    <button class="write" data-req="POST /rpc" data-body='{"op":"create","name":"r"}'>POST /rpc create</button>
+    <button class="write" data-req="GET /mark-read/1">GET /mark-read/1 (side effect)</button>
+    <button class="write" id="ws">WebSocket /ws</button>
+  </div>
+
+  <h2>Form submit</h2>
+  <form id="form" method="post" action="/api/items">
+    <input name="name" value="from-form" />
+    <button class="write" type="submit">Submit form (POST)</button>
+  </form>
+
+  <h2>Upload</h2>
+  <form id="upload" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <button class="write" type="submit">Upload (multipart POST)</button>
+  </form>
+
+  <h2>Result</h2>
+  <pre id="out">—</pre>
+
+<script>
+  const out = document.getElementById('out');
+  const show = (label, value) => { out.textContent = `${label}\n${typeof value === 'string' ? value : JSON.stringify(value, null, 2)}`; };
+  for (const btn of document.querySelectorAll('button[data-req]')) {
+    btn.addEventListener('click', async () => {
+      const [method, url] = btn.dataset.req.split(' ');
+      const body = btn.dataset.body;
+      try {
+        const res = await fetch(url, { method, headers: body ? { 'content-type': 'application/json' } : {}, body });
+        const text = await res.text();
+        show(`${method} ${url} → ${res.status}`, text);
+      } catch (e) {
+        show(`${method} ${url} → BLOCKED (${e.name}: ${e.message})`, '');
+      }
+    });
+  }
+  document.getElementById('ws').addEventListener('click', () => {
+    const ws = new WebSocket(`ws://${location.host}/ws`);
+    ws.onopen = () => { ws.send('ping'); };
+    ws.onmessage = (m) => { show('WS /ws → open, echo', m.data); ws.close(); };
+    ws.onerror = () => show('WS /ws → BLOCKED or failed', '');
+  });
+  document.getElementById('upload').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    try {
+      const res = await fetch('/upload', { method: 'POST', body: fd });
+      show(`POST /upload → ${res.status}`, await res.text());
+    } catch (err) { show(`POST /upload → BLOCKED (${err.name})`, ''); }
+  });
+</script>
+</body>
+</html>

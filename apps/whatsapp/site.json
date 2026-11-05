@@ -1,0 +1,6 @@
+{
+ "name": "WhatsApp",
+ "description": "Read chats, groups and contacts. Refuses sending, media, reactions, edits, pins, deletes, chat settings and group changes.",
+ "iconUrl": "https://static.whatsapp.net/rsrc.php/yd/r/PfkSLByWV8O.webp",
+ "verified": true
+}

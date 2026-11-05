@@ -1,0 +1,7 @@
+{
+ "name": "Gmail",
+ "description": "Read mail, search and open messages. Refuses star, archive, trash, snooze, labels, drafts, send, replies and settings changes.",
+ "iconUrl": "https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_48dp.png",
+ "verified": true,
+ "domainsNote": "The profile also covers `calendar.google.com`: the Yes, No and Maybe links in an invitation email apply the RSVP there with a plain GET (`/calendar/event?action=RESPOND`), and the rule that refuses it holds only on a guarded domain."
+}

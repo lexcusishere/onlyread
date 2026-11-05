@@ -1,0 +1,362 @@
+[
+ {
+  "name": "linkedin rsc read fetchComment",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"com.linkedin.sdui.feed.update.comments.fetchComment\", \"serverRequest\": {\"requestId\": \"com.linkedin.sdui.feed.update.comments.fetchComment\", \"requestedArguments\": {\"$type\": \"proto.sdui.actions.requests.RequestedArguments\", \"payload\": {}}}, \"states\": []}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:r"
+ },
+ {
+  "name": "linkedin rsc read getThirdPartyTrackingPixels",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"com.linkedin.sdui.impl.homenav.requests.getThirdPartyTrackingPixels\", \"serverRequest\": {\"requestId\": \"com.linkedin.sdui.impl.homenav.requests.getThirdPartyTrackingPixels\", \"requestedArguments\": {\"$type\": \"proto.sdui.actions.requests.RequestedArguments\", \"payload\": {}}}, \"states\": []}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:r"
+ },
+ {
+  "name": "linkedin rsc read feedBadgeRequest (suffix)",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"com.linkedin.sdui.impl.feedscreen.requests.feedBadgeRequest\", \"serverRequest\": {\"requestId\": \"com.linkedin.sdui.impl.feedscreen.requests.feedBadgeRequest\", \"requestedArguments\": {\"$type\": \"proto.sdui.actions.requests.RequestedArguments\", \"payload\": {}}}, \"states\": []}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:r"
+ },
+ {
+  "name": "linkedin rsc read industryTypeaheadRequest",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"com.linkedin.sdui.impl.profile.industryTypeaheadRequest\", \"serverRequest\": {\"requestId\": \"com.linkedin.sdui.impl.profile.industryTypeaheadRequest\", \"requestedArguments\": {\"$type\": \"proto.sdui.actions.requests.RequestedArguments\", \"payload\": {}}}, \"states\": []}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:r"
+ },
+ {
+  "name": "linkedin rsc read searchHomeRequestAction",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"com.linkedin.sdui.search.requests.searchHomeRequestAction\", \"serverRequest\": {\"requestId\": \"com.linkedin.sdui.search.requests.searchHomeRequestAction\", \"requestedArguments\": {\"$type\": \"proto.sdui.actions.requests.RequestedArguments\", \"payload\": {}}}, \"states\": []}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:r"
+ },
+ {
+  "name": "linkedin rsc read feedUpdateControlMenuRequest (exact)",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"feedUpdateControlMenuRequest\", \"serverRequest\": {\"requestId\": \"feedUpdateControlMenuRequest\", \"requestedArguments\": {\"$type\": \"proto.sdui.actions.requests.RequestedArguments\", \"payload\": {}}}, \"states\": []}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:r"
+ },
+ {
+  "name": "linkedin rsc write reactions.create",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"com.linkedin.sdui.reactions.create\", \"serverRequest\": {\"requestId\": \"com.linkedin.sdui.reactions.create\", \"requestedArguments\": {\"$type\": \"proto.sdui.actions.requests.RequestedArguments\", \"payload\": {}}}, \"states\": []}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[reactions.create]"
+ },
+ {
+  "name": "linkedin rsc write CreatePost",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"com.linkedin.sdui.requests.sharing.CreatePost\", \"serverRequest\": {\"requestId\": \"com.linkedin.sdui.requests.sharing.CreatePost\", \"requestedArguments\": {\"$type\": \"proto.sdui.actions.requests.RequestedArguments\", \"payload\": {}}}, \"states\": []}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[sharing.CreatePost]"
+ },
+ {
+  "name": "linkedin rsc write saveProfileIntroForm",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"com.linkedin.sdui.requests.profile.saveProfileIntroForm\", \"serverRequest\": {\"requestId\": \"com.linkedin.sdui.requests.profile.saveProfileIntroForm\", \"requestedArguments\": {\"$type\": \"proto.sdui.actions.requests.RequestedArguments\", \"payload\": {}}}, \"states\": []}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[profile.saveProfileIntroForm]"
+ },
+ {
+  "name": "linkedin rsc write updateSearchHistoryRequest (Request suffix is not a read)",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"com.linkedin.sdui.search.requests.updateSearchHistoryRequest\", \"serverRequest\": {\"requestId\": \"com.linkedin.sdui.search.requests.updateSearchHistoryRequest\", \"requestedArguments\": {\"$type\": \"proto.sdui.actions.requests.RequestedArguments\", \"payload\": {}}}, \"states\": []}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[requests.updateSearchHistoryRequest]"
+ },
+ {
+  "name": "linkedin rsc write addaMarkNotificationsSeen (namespace is not a read)",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"com.linkedin.sdui.requests.mynetwork.addaMarkNotificationsSeen\", \"serverRequest\": {\"requestId\": \"com.linkedin.sdui.requests.mynetwork.addaMarkNotificationsSeen\", \"requestedArguments\": {\"$type\": \"proto.sdui.actions.requests.RequestedArguments\", \"payload\": {}}}, \"states\": []}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[mynetwork.addaMarkNotificationsSeen]"
+ },
+ {
+  "name": "linkedin rsc write deletePost",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"com.linkedin.sdui.update.deletePost\", \"serverRequest\": {\"requestId\": \"com.linkedin.sdui.update.deletePost\", \"requestedArguments\": {\"$type\": \"proto.sdui.actions.requests.RequestedArguments\", \"payload\": {}}}, \"states\": []}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[update.deletePost]"
+ },
+ {
+  "name": "linkedin rsc no requestId",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"serverRequest\": {}}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[unknown]"
+ },
+ {
+  "name": "linkedin rsc unparseable",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "not json",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[unparseable]"
+ },
+ {
+  "name": "linkedin rsc outer read id with inner write id is a write",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"com.linkedin.sdui.feed.update.comments.fetchComment\", \"serverRequest\": {\"requestId\": \"com.linkedin.sdui.reactions.create\", \"requestedArguments\": {}}, \"states\": []}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[mismatch]"
+ },
+ {
+  "name": "linkedin rsc read with no inner id",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"com.linkedin.sdui.requests.profile.fetchEducationSections\", \"serverRequest\": {\"requestedArguments\": {}}}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:r"
+ },
+ {
+  "name": "linkedin rsc read lazyLoadedActionsRequest (exact id)",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"com.linkedin.sdui.search.requests.lazyLoadedActionsRequest\", \"serverRequest\": {\"requestId\": \"com.linkedin.sdui.search.requests.lazyLoadedActionsRequest\", \"requestedArguments\": {\"$type\": \"proto.sdui.actions.requests.RequestedArguments\", \"requestedStateKeys\": [], \"payload\": {\"actionSlots\": {\"ACoAAAAA\": \"SearchResultsACoAAAAA\"}}}}, \"states\": []}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:r"
+ },
+ {
+  "name": "linkedin rsc read batchClassicSnippetRequest (exact id)",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"com.linkedin.sdui.requests.search.batchClassicSnippetRequest\", \"serverRequest\": {\"requestId\": \"com.linkedin.sdui.requests.search.batchClassicSnippetRequest\", \"requestedArguments\": {\"$type\": \"proto.sdui.actions.requests.RequestedArguments\", \"requestedStateKeys\": [], \"payload\": {\"memberProfileIds\": [\"ACoAAAAA\"], \"searchQuery\": \"x\"}}}, \"states\": []}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:r"
+ },
+ {
+  "name": "linkedin rsc exact id is the full id, not a suffix",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"com.linkedin.sdui.other.lazyLoadedActionsRequest\", \"serverRequest\": {\"requestId\": \"com.linkedin.sdui.other.lazyLoadedActionsRequest\", \"requestedArguments\": {\"$type\": \"proto.sdui.actions.requests.RequestedArguments\", \"requestedStateKeys\": [], \"payload\": {}}}, \"states\": []}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[other.lazyLoadedActionsRequest]"
+ },
+ {
+  "name": "linkedin rsc read globalTypeaheadSubmitAction (Enter in the search box; exact id)",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"com.linkedin.sdui.search.requests.globalTypeaheadSubmitAction\", \"serverRequest\": {\"requestId\": \"com.linkedin.sdui.search.requests.globalTypeaheadSubmitAction\", \"requestedArguments\": {\"$type\": \"proto.sdui.actions.requests.RequestedArguments\", \"requestedStateKeys\": [{\"key\": {\"value\": {\"$case\": \"id\", \"id\": \"SearchResultsGlobalTyahKeywordsBinding\"}}}], \"payload\": {\"origin\": \"FLAGSHIP_TYPEAHEAD_V2_GLOBAL_DESKTOP\", \"keywordsField\": {\"key\": \"SearchResultsGlobalTyahKeywordsBinding\", \"namespace\": \"MemoryNamespace\"}, \"resultsComponentRef\": \"GlobalTypeaheadResultsRef\"}}}, \"states\": []}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:r"
+ },
+ {
+  "name": "linkedin rsc read actorPreviewCard",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"com.linkedin.sdui.requests.feed.actorPreviewCard\", \"serverRequest\": {\"requestId\": \"com.linkedin.sdui.requests.feed.actorPreviewCard\", \"requestedArguments\": {\"$type\": \"proto.sdui.actions.requests.RequestedArguments\", \"payload\": {}}}, \"states\": []}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:r"
+ },
+ {
+  "name": "linkedin rsc read orgPreviewCard",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"com.linkedin.sdui.requests.feed.orgPreviewCard\", \"serverRequest\": {\"requestId\": \"com.linkedin.sdui.requests.feed.orgPreviewCard\", \"requestedArguments\": {\"$type\": \"proto.sdui.actions.requests.RequestedArguments\", \"requestedStateKeys\": [], \"payload\": {\"organizationId\": \"0\", \"forceLinksInNewTab\": false}}}, \"states\": []}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:r"
+ },
+ {
+  "name": "linkedin rsc write: a name that only starts like orgPreviewCard",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"com.linkedin.sdui.requests.feed.orgPreviewCardFollow\", \"serverRequest\": {\"requestId\": \"com.linkedin.sdui.requests.feed.orgPreviewCardFollow\", \"requestedArguments\": {\"$type\": \"proto.sdui.actions.requests.RequestedArguments\", \"requestedStateKeys\": [], \"payload\": {\"organizationId\": \"0\", \"forceLinksInNewTab\": false}}}, \"states\": []}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[feed.orgPreviewCardFollow]"
+ },
+ {
+  "name": "linkedin rsc read jobSearchBoxLegoRequest",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"com.linkedin.sdui.jobseeker.requests.jobSearchBoxLegoRequest\", \"serverRequest\": {\"requestId\": \"com.linkedin.sdui.jobseeker.requests.jobSearchBoxLegoRequest\", \"requestedArguments\": {\"$type\": \"proto.sdui.actions.requests.RequestedArguments\", \"requestedStateKeys\": [], \"payload\": {}}}, \"states\": []}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:r"
+ },
+ {
+  "name": "linkedin rsc write: a name that only starts like actorPreviewCard",
+  "method": "POST",
+  "url": "https://www.linkedin.com/flagship-web/rsc-action/actions/server-request",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"requestId\": \"com.linkedin.sdui.requests.feed.actorPreviewCardFollow\", \"serverRequest\": {\"requestId\": \"com.linkedin.sdui.requests.feed.actorPreviewCardFollow\", \"requestedArguments\": {\"$type\": \"proto.sdui.actions.requests.RequestedArguments\", \"payload\": {}}}, \"states\": []}",
+  "expected": "POST www.linkedin.com/flagship-web/rsc-action/actions/server-request li:rsc:w[feed.actorPreviewCardFollow]"
+ },
+ {
+  "name": "linkedin messaging badge cleared (read-tracking)",
+  "method": "POST",
+  "url": "https://www.linkedin.com/voyager/api/voyagerMessagingDashMessagingBadge?action=markAllMessagesAsSeen",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"until\":1700000000000}",
+  "expected": "POST www.linkedin.com/voyager/api/voyagerMessagingDashMessagingBadge?action=markAllMessagesAsSeen li:msgbadge:w[seen]"
+ },
+ {
+  "name": "linkedin messaging badge: any other body is unknown",
+  "method": "POST",
+  "url": "https://www.linkedin.com/voyager/api/voyagerMessagingDashMessagingBadge?action=markAllMessagesAsSeen",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"until\":1700000000000,\"conversation\":\"x\"}",
+  "expected": "POST www.linkedin.com/voyager/api/voyagerMessagingDashMessagingBadge?action=markAllMessagesAsSeen li:msgbadge:w[unknown]"
+ },
+ {
+  "name": "linkedin messaging: send a message",
+  "method": "POST",
+  "url": "https://www.linkedin.com/voyager/api/voyagerMessagingDashMessengerMessages?action=createMessage",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"message\": {\"body\": {\"attributes\": [], \"text\": \"hello\"}, \"renderContentUnions\": [], \"conversationUrn\": \"urn:li:msg_conversation:(urn:li:fsd_profile:ACoAAA0000000000000000000000000000000,2-MDAwMDAwMDA=)\", \"originToken\": \"00000000-0000-0000-0000-000000000000\"}, \"mailboxUrn\": \"urn:li:fsd_profile:ACoAAA0000000000000000000000000000000\", \"trackingId\": \"0000\", \"dedupeByClientGeneratedToken\": false}",
+  "expected": "POST www.linkedin.com/voyager/api/voyagerMessagingDashMessengerMessages?action=createMessage li:msg:w[send]"
+ },
+ {
+  "name": "linkedin messaging: react to a message",
+  "method": "POST",
+  "url": "https://www.linkedin.com/voyager/api/voyagerMessagingDashMessengerMessages?action=reactWithEmoji",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"messageUrn\": \"urn:li:msg_message:(urn:li:fsd_profile:ACoAAA0000000000000000000000000000000,2-MDAwMDAwMDA=)\", \"emoji\": \"😍\"}",
+  "expected": "POST www.linkedin.com/voyager/api/voyagerMessagingDashMessengerMessages?action=reactWithEmoji li:msg:w[react]"
+ },
+ {
+  "name": "linkedin messaging: unsend a message",
+  "method": "POST",
+  "url": "https://www.linkedin.com/voyager/api/voyagerMessagingDashMessengerMessages?action=recall",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"messageUrn\": \"urn:li:msg_message:(urn:li:fsd_profile:ACoAAA0000000000000000000000000000000,2-MDAwMDAwMDA=)\"}",
+  "expected": "POST www.linkedin.com/voyager/api/voyagerMessagingDashMessengerMessages?action=recall li:msg:w[recall]"
+ },
+ {
+  "name": "linkedin messaging: edit a message",
+  "method": "POST",
+  "url": "https://www.linkedin.com/voyager/api/voyagerMessagingDashMessengerMessages/urn%3Ali%3Amsg_message%3A(urn%3Ali%3Afsd_profile%3AACoAAA0000000000000000000000000000000%2C2-MDAwMDAwMDA%3D)",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"patch\": {\"$set\": {\"body\": {\"text\": \"edited\", \"attributes\": []}}}}",
+  "expected": "POST www.linkedin.com/voyager/api/voyagerMessagingDashMessengerMessages/urn%3Ali%3Amsg_message%3A(urn%3Ali%3Afsd_profile%3AACoAAA0000000000000000000000000000000%2C2-MDAwMDAwMDA%3D) li:msg:w[edit]"
+ },
+ {
+  "name": "linkedin messaging: typing (read-tracking)",
+  "method": "POST",
+  "url": "https://www.linkedin.com/voyager/api/voyagerMessagingDashMessengerConversations?action=typing",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"conversationUrn\": \"urn:li:msg_conversation:(urn:li:fsd_profile:ACoAAA0000000000000000000000000000000,2-MDAwMDAwMDA=)\"}",
+  "expected": "POST www.linkedin.com/voyager/api/voyagerMessagingDashMessengerConversations?action=typing li:msg:w[typing]"
+ },
+ {
+  "name": "linkedin messaging: typing with anything else is unknown",
+  "method": "POST",
+  "url": "https://www.linkedin.com/voyager/api/voyagerMessagingDashMessengerConversations?action=typing",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"conversationUrn\": \"urn:li:msg_conversation:(urn:li:fsd_profile:ACoAAA0000000000000000000000000000000,2-MDAwMDAwMDA=)\", \"text\": \"x\"}",
+  "expected": "POST www.linkedin.com/voyager/api/voyagerMessagingDashMessengerConversations?action=typing li:msg:w[unknown]"
+ },
+ {
+  "name": "linkedin messaging: conversation marked read (read-tracking)",
+  "method": "POST",
+  "url": "https://www.linkedin.com/voyager/api/voyagerMessagingDashMessengerConversations?ids=List(urn:li:msg_conversation:(urn:li:fsd_profile:ACoAAA0000000000000000000000000000000,2-MDAwMDAwMDA=))",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"entities\": {\"urn:li:msg_conversation:(urn:li:fsd_profile:ACoAAA0000000000000000000000000000000,2-MDAwMDAwMDA=)\": {\"patch\": {\"$set\": {\"read\": true}}}}}",
+  "expected": "POST www.linkedin.com/voyager/api/voyagerMessagingDashMessengerConversations li:msg:w[read]"
+ },
+ {
+  "name": "linkedin messaging: conversation marked unread is unknown",
+  "method": "POST",
+  "url": "https://www.linkedin.com/voyager/api/voyagerMessagingDashMessengerConversations?ids=List(urn:li:msg_conversation:(urn:li:fsd_profile:ACoAAA0000000000000000000000000000000,2-MDAwMDAwMDA=))",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"entities\": {\"urn:li:msg_conversation:(urn:li:fsd_profile:ACoAAA0000000000000000000000000000000,2-MDAwMDAwMDA=)\": {\"patch\": {\"$set\": {\"read\": false}}}}}",
+  "expected": "POST www.linkedin.com/voyager/api/voyagerMessagingDashMessengerConversations li:msg:w[unknown]"
+ },
+ {
+  "name": "linkedin messaging: marked read and archived together is unknown",
+  "method": "POST",
+  "url": "https://www.linkedin.com/voyager/api/voyagerMessagingDashMessengerConversations?ids=List(urn:li:msg_conversation:(urn:li:fsd_profile:ACoAAA0000000000000000000000000000000,2-MDAwMDAwMDA=))",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"entities\": {\"urn:li:msg_conversation:(urn:li:fsd_profile:ACoAAA0000000000000000000000000000000,2-MDAwMDAwMDA=)\": {\"patch\": {\"$set\": {\"read\": true, \"categories\": [\"ARCHIVE\"]}}}}}",
+  "expected": "POST www.linkedin.com/voyager/api/voyagerMessagingDashMessengerConversations li:msg:w[unknown]"
+ },
+ {
+  "name": "linkedin messaging: a conversation action not seen is unknown",
+  "method": "POST",
+  "url": "https://www.linkedin.com/voyager/api/voyagerMessagingDashMessengerConversations?action=deleteConversation",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"conversationUrn\": \"urn:li:msg_conversation:(urn:li:fsd_profile:ACoAAA0000000000000000000000000000000,2-MDAwMDAwMDA=)\"}",
+  "expected": "POST www.linkedin.com/voyager/api/voyagerMessagingDashMessengerConversations?action=deleteConversation li:msg:w[unknown]"
+ },
+ {
+  "name": "linkedin messaging: delivery acknowledgement (read-tracking)",
+  "method": "POST",
+  "url": "https://www.linkedin.com/voyager/api/voyagerMessagingDashMessengerMessageDeliveryAcknowledgements?action=sendDeliveryAcknowledgement",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"messageUrns\": [\"urn:li:msg_message:(urn:li:fsd_profile:ACoAAA0000000000000000000000000000000,2-MDAwMDAwMDA=)\"], \"clientId\": \"voyager-web\", \"deliveryMechanism\": \"REALTIME\", \"clientConsumedAt\": 1700000000000}",
+  "expected": "POST www.linkedin.com/voyager/api/voyagerMessagingDashMessengerMessageDeliveryAcknowledgements?action=sendDeliveryAcknowledgement li:msg:w[delivered]"
+ },
+ {
+  "name": "linkedin messaging: unreadable body",
+  "method": "POST",
+  "url": "https://www.linkedin.com/voyager/api/voyagerMessagingDashMessengerMessages?action=createMessage",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"message\": ",
+  "expected": "POST www.linkedin.com/voyager/api/voyagerMessagingDashMessengerMessages?action=createMessage li:msg:w[unparseable]"
+ },
+ {
+  "name": "linkedin messaging: a repeated action is unknown, not the first one's read tracking",
+  "method": "POST",
+  "url": "https://www.linkedin.com/voyager/api/voyagerMessagingDashMessengerConversations?action=typing&action=deleteConversation",
+  "contentType": "application/json",
+  "hasBody": true,
+  "body": "{\"conversationUrn\":\"urn:li:msg_conversation:1\"}",
+  "expected": "POST www.linkedin.com/voyager/api/voyagerMessagingDashMessengerConversations?action=? li:msg:w[unknown]"
+ }
+]

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Fixture sign-in</title>
+<style>body{font:14px system-ui;margin:40px;max-width:420px} label{display:block;margin:12px 0 4px} input{width:100%;padding:8px} button{margin-top:16px;padding:8px 16px} pre{background:#f4f4f4;padding:8px;white-space:pre-wrap}</style>
+</head>
+<body>
+  <!-- Typed-secret scrub check (background/typed-secrets.ts): the sign-in sends the password and code with no
+       field name to find them by, in the formats only the typed-value scrub can catch. -->
+  <h1>Sign in</h1>
+  <label for="email">Email</label><input id="email" type="email" autocomplete="username">
+  <label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password">
+  <label for="otp">Code</label><input id="otp" type="text" inputmode="numeric" autocomplete="one-time-code">
+  <button id="signin" type="button">Sign in</button>
+  <pre id="out"></pre>
+  <script>
+    const $ = (id) => document.getElementById(id);
+    $('signin').addEventListener('click', async () => {
+      const email = $('email').value, pw = $('pw').value, otp = $('otp').value;
+      const freq = JSON.stringify([[['MI613e', JSON.stringify([null, [1, null, null, null, [pw, null, true]]]), null, 'generic']]]);
+      const mp = new FormData(); mp.append('field_1', email); mp.append('field_3', pw);
+      const sends = [
+        ['f.req', fetch('/api/signin?kind=freq', { method: 'POST', headers: { 'content-type': 'application/x-www-form-urlencoded;charset=UTF-8' }, body: `f.req=${encodeURIComponent(freq)}` })],
+        ['json', fetch('/api/signin?kind=json', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify([[email, pw]]) })],
+        ['multipart', fetch('/api/signin?kind=multipart', { method: 'POST', body: mp })],
+        ['otp', fetch('/api/signin?kind=otp', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ step: 'verify', data: [otp] }) })],
+      ];
+      const lines = [];
+      for (const [name, p] of sends) { try { lines.push(`${name}: ${(await p).status}`); } catch (e) { lines.push(`${name}: failed`); } }
+      $('out').textContent = lines.join('\n');
+    });
+  </script>
+</body>
+</html>

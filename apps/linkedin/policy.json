@@ -1,0 +1,56 @@
+{
+  "websockets": "block",
+  "targetDomains": [
+    "linkedin.com"
+  ],
+  "telemetryAllow": [
+    "/li/track",
+    "/platform-telemetry/",
+    "/lite/track",
+    "/sensorCollect",
+    "/li/ct",
+    "/litms/",
+    "realtimeFrontendClientConnectivityTracking",
+    "/to11y*",
+    "/tapi*",
+    "/tlix*",
+    "/tmed*",
+    "perf.linkedin.com",
+    "px.ads.linkedin.com",
+    "merchantpool",
+    "/collect",
+    "/analytics",
+    "/telemetry",
+    "/rum",
+    "re:^www\\.linkedin\\.com/(?=[^/?]*[A-Z])(?=[^/?]*[a-z])[A-Za-z0-9_-]{10,20}$"
+  ],
+  "blockedGetPaths": [],
+  "blockedShapes": [
+    "gcal:sync:w",
+    "gtasks:sync:w",
+    "gmail:s:w",
+    "li:rsc:w",
+    "li:msgbadge:w",
+    "li:msg:w"
+  ],
+  "allowedShapes": [
+    "li:rsc:w[cooloff.activity]",
+    "li:rsc:w[sharing.LaunchSharebox]",
+    "li:rsc:w[requests.updateSearchHistoryRequest]",
+    "li:rsc:w[sharing.TrackShareboxInteraction]",
+    "li:rsc:w[sharing.collaboratorResetOnDiscardAction]"
+  ],
+  "readTrackingShapes": [
+    "li:rsc:w[mynetwork.addaClearUnseenInvitationsMutation]",
+    "li:rsc:w[mynetwork.addaMarkNotificationsSeen]",
+    "li:rsc:w[notifications.markNotificationsSeen]",
+    "li:rsc:w[profile.profilePolicyNotice]",
+    "li:msgbadge:w[seen]",
+    "li:msg:w[typing]",
+    "li:msg:w[read]",
+    "li:msg:w[delivered]"
+  ],
+  "readPutPaths": [
+    "/realtime/realtimeFrontendSubscriptions"
+  ]
+}

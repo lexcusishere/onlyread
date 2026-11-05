@@ -1,0 +1,32 @@
+{
+ "testedOn": "2026-09-26",
+ "passes": [
+  "Issue lists, backlog and My issues",
+  "Open an issue",
+  "Projects and project pages",
+  "Views and filters",
+  "Search",
+  "Recently deleted",
+  "Settings pages",
+  "Notification inbox"
+ ],
+ "refused": [
+  "Create an issue",
+  "Edit an issue: status, priority, assignee, labels, due date, title",
+  "Edit a description",
+  "Delete or archive an issue",
+  "Restore from Recently deleted",
+  "Comment, reply, edit or delete a comment",
+  "React with an emoji",
+  "Add an attachment or link",
+  "Favorite",
+  "Create or update a project",
+  "Post a project update",
+  "Create a view",
+  "Create a label",
+  "Typing drafts (implicit)",
+  "View preferences (implicit, allowed with read-tracking on)",
+  "User settings (implicit)",
+  "CSV export (a write like any other mutation)"
+ ]
+}

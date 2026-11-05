@@ -1,0 +1,32 @@
+{
+ "testedOn": "2026-09-28",
+ "passes": [
+  "Home feed and post details",
+  "Own profile and About page",
+  "Search",
+  "Notifications",
+  "Friends, Groups and Events",
+  "Pages (Meta) with posts and photos",
+  "Marketplace",
+  "Saved items",
+  "Settings pages (read)"
+ ],
+ "refused": [
+  "Create a post",
+  "React to a post",
+  "Comment on a post",
+  "Reply to a comment",
+  "Edit a post",
+  "Save a post",
+  "Move a post to trash",
+  "Edit the profile bio",
+  "Change a setting (dark mode)",
+  "Typing indicators and screen-time logging (implicit, allowed with read-tracking on)",
+  "Videos marked watched and stories marked seen (implicit, allowed with read-tracking on)",
+  "Audience-prompt acknowledgements (implicit)"
+ ],
+ "outOfScope": [
+  "Messenger (chats and sending messages): not guarded, so messages are delivered even in enforce"
+ ],
+ "leakCheck": true
+}

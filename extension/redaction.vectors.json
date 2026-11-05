@@ -1,0 +1,58 @@
+[
+ {
+  "input": "NAcN8sZqk2bB0xYzQ1r4T7u:17:1712345678",
+  "expected": "[redacted]:17:1712345678"
+ },
+ {
+  "input": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.dBjftJeZ4CVPmB92K27uhbUJU1p1r_wW1gFWFOEjXk",
+  "expected": "[redacted].[redacted].[redacted]"
+ },
+ {
+  "input": "123e4567-e89b-12d3-a456-426614174000",
+  "expected": "[redacted]"
+ },
+ {
+  "input": "AIzaSyD1f3x9Kq2LmN8pQr7StUv0WxYz12345",
+  "expected": "[redacted]"
+ },
+ {
+  "input": "voyagerFeedDashClientSignal.8e1d4f3a9b7c2d5e6f7a8b9c0d1e2f3a",
+  "expected": "voyagerFeedDashClientSignal.[redacted]"
+ },
+ {
+  "input": "urn:li:fsd_profile:ACoAAB1x2y3Z4a5b6C7d8E9f0",
+  "expected": "urn:li:fsd_profile:[redacted]"
+ },
+ {
+  "input": "ZmVlZGJhY2s6MTIz",
+  "expected": "[redacted]"
+ },
+ {
+  "input": "CometUFIFeedbackReactMutation",
+  "expected": "CometUFIFeedbackReactMutation"
+ },
+ {
+  "input": "markNotificationsSeen",
+  "expected": "markNotificationsSeen"
+ },
+ {
+  "input": "IssueUpdate2Mutation",
+  "expected": "IssueUpdate2Mutation"
+ },
+ {
+  "input": "com.linkedin.sdui.requests.notifications.markNotificationsSeen",
+  "expected": "com.linkedin.sdui.requests.notifications.markNotificationsSeen"
+ },
+ {
+  "input": "1635855486666999",
+  "expected": "1635855486666999"
+ },
+ {
+  "input": "thread-f:1812345678901234567",
+  "expected": "thread-f:1812345678901234567"
+ },
+ {
+  "input": "short token aB3dE5",
+  "expected": "short token aB3dE5"
+ }
+]

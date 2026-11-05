@@ -1,0 +1,39 @@
+name: Report an agent
+description: Tell us how OnlyRead worked with an AI agent or AI browser.
+title: "Agent: "
+labels: ["agent report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        OnlyRead guards the browser, not a particular agent. Reports like this one show which agents it
+        has been used with, and catch the ones it doesn't see. Please **do not paste private data**.
+  - type: input
+    id: agent
+    attributes:
+      label: Agent or AI browser
+      placeholder: "Dia, version 1.4"
+    validations:
+      required: true
+  - type: dropdown
+    id: result
+    attributes:
+      label: How did it go?
+      options:
+        - Worked: reads passed and writes were refused
+        - Partly worked
+        - Didn't work
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: The sites you tried, what the agent did, and anything that surprised you.
+  - type: dropdown
+    id: when
+    attributes:
+      label: When OnlyRead protects
+      options:
+        - During agent sessions (the default)
+        - Always

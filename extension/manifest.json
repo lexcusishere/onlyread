@@ -1,0 +1,71 @@
+{
+  "manifest_version": 3,
+  "name": "OnlyRead",
+  "version": "1.0.0",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArMBBsHgNiyPLNdMoUfAD6PGa/aik1KcctHzNerrBNy3TENMWdyt8IkKW9WBuakzF1b2WYI88BGzWYoQDEFa4gSDwLMK6/kfNLMwk+yOnfpq0TrCq1pCxOe3v0ZOQSVMU18ziWej9fIRx2Y2YplONsSELntkHrjHq9KwqxO6NMqDAFkY+xuAgmZ8ijC49cVKwHLIRfqUEBdCoG/z4irZI3FF71cC8SNlmBIvCnAskfQNbp92FPWt6mIk9npbuo0we1QNqUDCNnJP8FL7Ytf3C1WrRx4t32wE6R1m63uUdReobjS9DKrMdZ9Z7BnbQ8eZIxPZ183n+U/gg2L3AvMXfxwIDAQAB",
+  "description": "Read-only guard for AI browser agents: refuses writes on the sites you choose, lets reads through, and logs every decision.",
+  "minimum_chrome_version": "121",
+  "permissions": [
+    "declarativeNetRequestWithHostAccess",
+    "declarativeNetRequestFeedback",
+    "storage",
+    "webNavigation",
+    "webRequest",
+    "debugger",
+    "favicon"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "dist/background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "OnlyRead",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/icon-16.png",
+      "32": "assets/icon-32.png",
+      "48": "assets/icon-48.png"
+    }
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "dist/content.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "icons": {
+    "16": "assets/icon-16.png",
+    "32": "assets/icon-32.png",
+    "48": "assets/icon-48.png",
+    "128": "assets/icon-128.png"
+  },
+  "homepage_url": "https://onlyread.ai",
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "options.html",
+        "dist/options.js",
+        "ui.css",
+        "layout.css",
+        "assets/*"
+      ],
+      "matches": [
+        "https://pro.onlyread.ai/*",
+        "http://localhost/*",
+        "http://127.0.0.1/*"
+      ],
+      "use_dynamic_url": false
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "enabled": false,
+  "mode": "enforce",
+  "sites": {
+    "gmail": {
+      "enabled": false
+    },
+    "calendar": {
+      "enabled": false
+    },
+    "linear": {
+      "enabled": false
+    }
+  },
+  "customSites": [],
+  "thresholds": {
+    "allow": 0.3,
+    "block": 0.75,
+    "reviewAllow": 0.3,
+    "reviewBlock": 0.75
+  },
+  "reviewBand": "llm",
+  "judge": {
+    "provider": "cloud",
+    "byok": {
+      "id": "openrouter"
+    },
+    "timeoutMs": 5000,
+    "llmTimeoutMs": 6000
+  },
+  "telemetryAllow": ["/gen_204", "/log?", "/logstreamz", "/jserror", "/csi", "/beacon", "play.google.com/log", "google.internal.waa.v1.Waa", "/collect", "/telemetry", "/analytics", "/b/ss/", "/TealeafTarget"],
+  "blockedGetPaths": [
+    "action=RESPOND",
+    "/calendar/event?action=RESPOND"
+  ],
+  "blockedShapes": [],
+  "allowedShapes": [],
+  "readTrackingShapes": [],
+  "allowReadTracking": true,
+  "websockets": "block",
+  "downloads": true,
+  "uploads": false,
+  "onRefusedMutation": "notice",
+  "blockResponse": "fail",
+  "opaqueToReview": true,
+  "attachScope": "all-tabs",
+  "attachWhen": "agent-session",
+  "devSink": "http://localhost:4173/__audit",
+  "effective": {
+    "targetDomains": [],
+    "guardAll": false,
+    "excludeDomains": [],
+    "exemptDomains": [],
+    "telemetryAllow": [],
+    "blockedGetPaths": [],
+    "blockedShapes": [],
+    "allowedShapes": [],
+    "readTrackingShapes": [],
+    "siteRules": [],
+    "websocketBlockDomains": [],
+    "websocketAllowDomains": [],
+    "rejectDomains": [],
+    "editorGuardDomains": [],
+    "socketGuardDomains": [],
+    "socketGuards": []
+  },
+  "cloud": {
+    "serviceUrl": "https://pro.onlyread.ai",
+    "timeoutMs": 8000
+  }
+}

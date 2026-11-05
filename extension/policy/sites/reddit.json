@@ -1,0 +1,45 @@
+{
+ "id": "reddit",
+ "name": "Reddit",
+ "domains": [
+  "reddit.com",
+  "www.reddit.com",
+  "old.reddit.com"
+ ],
+ "verified": true,
+ "iconUrl": "https://www.redditstatic.com/shreddit/assets/favicon/192x192.png",
+ "description": "Browse posts, comments, profiles and search.",
+ "telemetryAllow": [
+  "/gen_204",
+  "/log?",
+  "/logstreamz",
+  "/jserror",
+  "/csi",
+  "/beacon",
+  "play.google.com/log",
+  "google.internal.waa.v1.Waa",
+  "/collect",
+  "/telemetry",
+  "/analytics",
+  "/b/ss/",
+  "/TealeafTarget",
+  "/svc/shreddit/events",
+  "/svc/shreddit/perfMetrics",
+  "/svc/shreddit/client-errors",
+  "w3-reporting.reddit.com/reports",
+  "pi.reddit.com/v4/p",
+  "error-tracking.reddit.com/"
+ ],
+ "blockedGetPaths": [
+  "action=RESPOND",
+  "/calendar/event?action=RESPOND"
+ ],
+ "blockedShapes": [],
+ "allowedShapes": [],
+ "websockets": "block",
+ "blockResponse": null,
+ "editorGuard": false,
+ "readTrackingShapes": [],
+ "readPutPaths": [],
+ "cache": {}
+}

@@ -1,0 +1,56 @@
+[
+ {
+  "name": "gmail sync poll (read)",
+  "method": "POST",
+  "url": "https://mail.google.com/sync/u/2/i/s?hl=en&c=13&rt=r&pt=ji",
+  "contentType": "application/json",
+  "body": "[null, null, [1, 1074, null, null, [null, 0], null, 1], [null, 0, null, 0, 22], 1]",
+  "hasBody": true,
+  "expected": "POST mail.google.com/sync/u/{id}/i/s gmail:s:r"
+ },
+ {
+  "name": "gmail session init (read)",
+  "method": "POST",
+  "url": "https://mail.google.com/sync/u/2/i/s?hl=en&c=13&rt=r&pt=ji",
+  "contentType": "application/json",
+  "body": "[[1, null, null, 0], null, [1, null, null, null, [null, 25], null, 1], [null, 0, null, 0], 1]",
+  "hasBody": true,
+  "expected": "POST mail.google.com/sync/u/{id}/i/s gmail:s:r"
+ },
+ {
+  "name": "gmail thread op mark read / draft (write)",
+  "method": "POST",
+  "url": "https://mail.google.com/sync/u/2/i/s?hl=en&c=13&rt=r&pt=ji",
+  "contentType": "application/json",
+  "body": "[null, [[[1, [\"thread-a:r-9999999999999999997\", [null, null, [[\"\", null, 1790448720752, \"thread-a:r-9999999999999999997\", [[\"msg-a:r-9999999999999999996\", [1, \"test.user@example.com\", \"Only Read\", null, null, null, null, null, null, \"test.user@example.com\"], [[1, \"test.user@example.com\", \"Only Read\"]], null, null, [\"^all\", \"^i\", \"^u\"]]]]]]]]]], [1, 1074, null, null, [null, 0], null, 1], [1790448466724, 0, 0, 0, 22], 3]",
+  "hasBody": true,
+  "expected": "POST mail.google.com/sync/u/{id}/i/s gmail:s:w[^i,^u]"
+ },
+ {
+  "name": "gmail thread op trash (write)",
+  "method": "POST",
+  "url": "https://mail.google.com/sync/u/2/i/s?hl=en&c=13&rt=r&pt=ji",
+  "contentType": "application/json",
+  "body": "[null, [[[1, [\"thread-a:r-9999999999999999997\", [null, null, [[\"\", null, 1790448720752, \"thread-a:r-9999999999999999997\", [[\"msg-a:r-1\", [1, \"a@b\", \"A\"], [[1, \"a@b\", \"A\"]], null, null, [\"^all\", \"^k\"]]]]]]]]]], [1, 1, null, null, [null, 0], null, 1], [1, 0, 0, 0, 22], 3]",
+  "hasBody": true,
+  "expected": "POST mail.google.com/sync/u/{id}/i/s gmail:s:w[^k]"
+ },
+ {
+  "name": "gmail send (write)",
+  "method": "POST",
+  "url": "https://mail.google.com/sync/u/2/i/s?hl=en&c=13&rt=r&pt=ji",
+  "contentType": "application/json",
+  "body": "[[null, null, 2], [[[6, [\"thread-a:r-9999999999999999997\", [null, null, null, null, null, null, null, null, null, null, null, null, null, [[\"msg-a:r-9999999999999999996\", [1, \"test.user@example.com\", \"Only Read\", null, null, null, null, null, null, \"test.user@example.com\"], [[1, \"test.user@example.com\", \"Only Read\"]], null, null, [\"^all\", \"^i\", \"^u\"]]]]]]]], null, [1, 0, 0, 0, 22], 3]",
+  "hasBody": true,
+  "expected": "POST mail.google.com/sync/u/{id}/i/s gmail:s:w[^i,^u]"
+ },
+ {
+  "name": "gmail unparseable body fails closed",
+  "method": "POST",
+  "url": "https://mail.google.com/sync/u/2/i/s?hl=en&c=13&rt=r&pt=ji",
+  "contentType": "application/json",
+  "body": "[null,[[[1,",
+  "hasBody": true,
+  "expected": "POST mail.google.com/sync/u/{id}/i/s gmail:s:w[unparseable]"
+ }
+]

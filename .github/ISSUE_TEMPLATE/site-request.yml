@@ -1,0 +1,65 @@
+name: Request a site
+description: Ask for a site to be tested in depth (an app your agent should be able to read but never change).
+title: "Site request: "
+labels: ["site request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the request. Please **do not paste private data**: no email addresses, message text,
+        tokens, cookies or screenshots of your account. One site per issue.
+
+        Before requesting: any site can already be guarded today with **Guard this site** in the
+        popup (rules and the AI judge only). A site tested in depth adds a decoder, reviewed verdicts and a
+        tested list of reads and writes.
+  - type: input
+    id: site
+    attributes:
+      label: Site
+      description: Product name and the address you use it at.
+      placeholder: "Notion — www.notion.so"
+    validations:
+      required: true
+  - type: textarea
+    id: reads
+    attributes:
+      label: What should the agent be able to read?
+      description: The pages and actions that must keep working.
+      placeholder: |
+        - Open pages and databases
+        - Search
+    validations:
+      required: true
+  - type: textarea
+    id: writes
+    attributes:
+      label: What must never happen?
+      description: The writes that matter most to you.
+      placeholder: |
+        - Edit or delete a page
+        - Share a page or invite someone
+    validations:
+      required: true
+  - type: dropdown
+    id: tried
+    attributes:
+      label: Have you tried it with "Guard this site"?
+      options:
+        - "No"
+        - "Yes, and it works well enough"
+        - "Yes, but reads are refused"
+        - "Yes, but a write got through"
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: What happened (optional)
+      description: If a read was refused or a write got through, describe the action you took. No private data.
+  - type: checkboxes
+    id: help
+    attributes:
+      label: Can you help?
+      options:
+        - label: I can test with a dedicated account on this site
+        - label: I would like to add this site myself (see "Adding a site" in CONTRIBUTING.md)

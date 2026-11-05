@@ -1,0 +1,155 @@
+/* The welcome kit: the hero, the demo scene and the judge choice that the setup window (setup.html) and the
+   settings page's no-judge view (options.html #judge-gate) share. Scoped to .welcome-kit, so the settings page's own
+   styles are untouched; the scene's markup is shared/demo-scene.ts. */
+.welcome-kit {
+  .hero { text-align: center; margin-bottom: 12px; }
+  .hero .tile-logo { position: relative; width: 56px; height: 56px; margin: 0 auto 12px; border-radius: 17px; display: grid; place-items: center; background: var(--card); border: 1px solid var(--line); box-shadow: 0 16px 36px -14px rgba(219, 39, 119, .55); animation: w-float 5s ease-in-out infinite; }
+  /* A ring that breathes out from the logo now and then. */
+  .hero .tile-logo::after { content: ''; position: absolute; inset: -1px; border-radius: inherit; border: 1.5px solid var(--accent); opacity: 0; animation: w-ring 3.6s ease-out 1s infinite; }
+  .hero .tile-logo img { width: 38px; height: 38px; }
+  h1 { font: 800 24px/1.2 var(--display); letter-spacing: -0.025em; margin: 0 0 10px; }
+  /* The wordmark sits on the text's baseline: its letters end 38/188 of its height above the bottom (the "y" tail). */
+  h1.welcome img { height: 1.4em; width: auto; vertical-align: -0.283em; margin-left: 0.12em; }
+  .choice { padding: 18px 20px; margin-top: 12px; position: relative; }
+  .choice.featured { border: 1.5px solid transparent; background: linear-gradient(var(--card), var(--card)) padding-box, var(--grad) border-box; box-shadow: var(--shadow-lg); }
+  .choice-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .choice-icon { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; flex: none; background: var(--chip); color: var(--accent); }
+  .choice.featured .choice-icon { background: var(--grad); color: #fff; }
+  .choice h2 { font: 800 15px/1.2 var(--display); letter-spacing: -0.01em; margin: 0; }
+  .choice .tag { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+  .fine { margin: 10px 0 0; font-size: 11px; line-height: 1.45; color: var(--faint); text-align: center; }
+  .fine a { white-space: nowrap; }
+  /* ---- The judge step's opening: what OnlyRead does, shown rather than told. An agent works through a site; its
+     reads go through and its writes are refused, one line at a time, on a loop. Decorative (aria-hidden). */
+  .pitch { margin: -4px auto 14px; text-align: center; color: var(--muted); font-size: 13.5px; line-height: 1.6; }
+  .pitch span { display: block; white-space: nowrap; }
+  .pitch b { color: var(--fg); font-weight: 600; }
+  .pitch u { color: var(--accent-ink); text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+  /* Its own height, just the apps' content (the notice comes over its empty bottom-left corner): filling the window
+     left the apps floating in empty room. */
+  .scene { flex: none; height: 268px; display: flex; flex-direction: column; margin-bottom: 4px; border-radius: 18px; border: 1px solid var(--line); background: linear-gradient(180deg, color-mix(in srgb, var(--card) 92%, var(--accent) 8%), var(--card)); box-shadow: var(--shadow); overflow: hidden; position: relative; }
+  /* The scene: a browser window on one app at a time (mail, team chat, tasks), switched every 8 s by
+     shared/demo-scene.ts. In each, the AI agent tries one change and OnlyRead refuses it with the same notice a guarded
+     page shows (content/actions.ts NOTICE_CSS: the glass card at the bottom left). Animations run under .play only. */
+  .scene { position: relative; }
+  .slide { position: absolute; inset: 0; display: flex; flex-direction: column; opacity: 0; transition: opacity .45s ease; }
+  .slide.on { opacity: 1; }
+  /* Faded back gradually once every app has played its story (shared/demo-scene.ts), so the Pro card leads; a pointer
+     over it brings it back. */
+  .scene { transition: opacity 1.6s ease; }
+  .scene.dim { opacity: .5; transition: opacity 4s cubic-bezier(.4,0,.6,1); }
+  .scene.dim:hover { opacity: 1; transition-duration: .3s; }
+  /* Each app comes in row by row as its story starts. */
+  .play .pane > * { animation: w-rise .45s cubic-bezier(.2,.8,.3,1) backwards; }
+  .play .pane > :nth-child(2) { animation-delay: .06s; } .play .pane > :nth-child(3) { animation-delay: .12s; } .play .pane > :nth-child(4) { animation-delay: .18s; }
+  .scene-bar { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-bottom: 1px solid var(--line); color: var(--faint); }
+  .scene-bar .nav { display: flex; gap: 6px; }
+  .scene-bar .url { flex: 1; min-width: 0; display: flex; align-items: center; gap: 7px; padding: 5px 12px; border-radius: 999px; background: color-mix(in srgb, var(--fg) 6%, transparent); font-size: 12px; color: var(--muted); }
+  .scene-bar .url b { color: var(--fg); font-weight: 500; }
+  .scene-bar .ext { position: relative; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; background: var(--chip); }
+  .scene-bar .ext img { width: 18px; height: 18px; }
+  /* A still dot: the scene stays in the background, nothing in it calls for attention but the agent and the notice. */
+  .scene-bar .ext::after { content: ''; position: absolute; right: 3px; bottom: 3px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 2px var(--card); }
+  .app { flex: 1; display: grid; grid-template-columns: 46px 1fr; min-height: 0; position: relative; }
+  /* Half-skeleton apps (shared/demo-scene.ts): grey shapes for icons, faces and the lines that do not tell the story. */
+  .sk { display: block; width: var(--w, 100%); max-width: 100%; height: 8px; border-radius: 999px; background: color-mix(in srgb, var(--fg) 10%, transparent); }
+  .rail { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 12px 0; border-right: 1px solid var(--line); }
+  .rail span { width: 26px; height: 26px; border-radius: 8px; background: color-mix(in srgb, var(--fg) 6%, transparent); }
+  .rail .on { background: var(--chip); }
+  .rail .pen { background: color-mix(in srgb, var(--accent) 35%, transparent); margin-bottom: 4px; }
+  .pane { display: flex; flex-direction: column; gap: 9px; padding: 11px 14px 12px; min-width: 0; font-size: 12.5px; }
+  .avatar { width: 30px; height: 30px; border-radius: 50%; flex: none; background: color-mix(in srgb, var(--fg) 10%, transparent); }
+  .who, .post > div { flex: 1; min-width: 0; display: grid; gap: 7px; }
+  .who b, .channel b { font-size: 13px; }
+  .post p { margin: 0; color: var(--muted); }
+  /* Mail */
+  .thread { display: flex; align-items: center; gap: 10px; }
+  .msg { padding-left: 40px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .compose { border: 1px solid var(--line); border-radius: 13px; background: var(--card-2); padding: 11px 12px 9px; display: grid; gap: 9px; }
+  .compose .to { font-size: 11.5px; color: var(--muted); }
+  .compose .to i { font-style: normal; padding: 1px 8px; border-radius: 999px; background: color-mix(in srgb, var(--fg) 7%, transparent); color: var(--fg); }
+  .compose .text { font-size: 13px; min-height: 19px; display: flex; align-items: center; white-space: nowrap; overflow: hidden; }
+  .compose .typed { display: inline-block; overflow: hidden; max-width: 0; }
+  .compose .caret { display: inline-block; width: 1.5px; height: 15px; margin-left: 2px; background: var(--accent); animation: w-blink .9s steps(2) infinite; }
+  .actions { display: flex; align-items: center; gap: 10px; }
+  .target { position: relative; display: inline-flex; }
+  .send { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; font: 700 12px/1 var(--body); color: #fff; background: #3b82f6; }
+  .send.icon { padding: 7px; border-radius: 9px; }
+  /* Chat */
+  .channel { display: flex; align-items: center; min-height: 14px; }
+  .post { display: flex; align-items: center; gap: 10px; }
+  .compose.chatbox { grid-template-columns: 1fr auto; align-items: center; }
+  .compose.chatbox .actions { gap: 8px; }
+  /* Prospecting */
+  .profile { display: flex; align-items: center; gap: 12px; padding: 4px 0 2px; }
+  .avatar.big { width: 44px; height: 44px; }
+  .pbtn { margin-left: auto; display: inline-flex; padding: 9px 14px; border-radius: 999px; border: 1.5px solid var(--line-strong); }
+  .target.push { margin-left: auto; }
+  /* Tasks */
+  .issue { display: flex; align-items: center; gap: 9px; padding: 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--card-2); }
+  .issue.sel { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+  .issue .st { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--faint); flex: none; } .issue .st.done { background: var(--faint); border-color: var(--faint); }
+  .issue b { flex: 1; min-width: 0; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .issue .kebab { margin-left: auto; }
+  /* The selected issue's "⋯" menu, open under its button as a dropdown over the board. */
+  .issue.sel { position: relative; }
+  .issue .kebab { display: grid; place-items: center; width: 22px; height: 22px; margin-right: -4px; border-radius: 6px; color: var(--fg); background: color-mix(in srgb, var(--fg) 9%, transparent); }
+  .menu { position: absolute; top: calc(100% + 5px); right: 0; z-index: 2; display: grid; gap: 1px; padding: 4px; min-width: 150px; border-radius: 11px; border: 1px solid var(--line-strong); background: var(--card); box-shadow: var(--shadow); font-size: 12px; }
+  .menu .target { display: flex; }
+  .menu .mi .sk { margin: 4px 0; }
+  .menu .mi { flex: 1; display: flex; align-items: center; gap: 8px; padding: 5px 10px; border-radius: 7px; color: var(--muted); line-height: 1.3; }
+  .menu .mi svg { flex: none; }
+  .menu .danger { color: var(--danger); background: color-mix(in srgb, var(--danger) 9%, transparent); font-weight: 600; }
+  /* The agent's cursor, with its badge: in view the whole story, it types, glides a short way to the button and presses
+     it. It starts up and to the left of the button (over the text it typed), so it never leaves the scene. */
+  .agent { position: absolute; left: 60%; top: 55%; display: flex; align-items: flex-start; gap: 3px; pointer-events: none; z-index: 4; }
+  .agent svg { filter: drop-shadow(0 2px 3px rgba(0,0,0,.35)); }
+  /* At the right edge, the badge sits on the cursor's left. */
+  .target.end .agent .tag { position: absolute; right: 100%; top: 0; margin-right: -2px; }
+  .agent .tag { margin-top: 14px; display: flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 700; color: #fff; background: #1d1320; border: 1px solid rgba(255,255,255,.18); white-space: nowrap; }
+  /* The real notice, at the scene's scale. */
+  .notice { position: absolute; left: 8px; bottom: 8px; transform-origin: 0 100%; scale: .78; z-index: 3; display: grid; grid-template-columns: auto 1fr; gap: 11px; align-items: start; width: 300px; padding: 12px 14px; border-radius: 16px; opacity: 0;
+    background: rgba(255,255,255,.78); color: #1d1320; border: 1px solid rgba(255,255,255,.8);
+    backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%);
+    box-shadow: 0 10px 40px rgba(15,23,42,.2), 0 2px 8px rgba(15,23,42,.1), inset 0 1px 0 rgba(255,255,255,.65);
+    font: 12.5px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  .notice img { width: 26px; height: 26px; display: block; border-radius: 7px; }
+  .notice .t { font-weight: 700; font-size: 13px; margin: 3px 0 4px; }
+  .notice .b { display: flex; gap: 7px; margin-top: 9px; }
+  .notice .b span { padding: 5px 10px; border-radius: 8px; border: 1px solid rgba(29,19,32,.14); font-weight: 600; font-size: 11.5px; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) & .notice { background: rgba(31,26,34,.86); color: #f5eef3; border-color: rgba(255,255,255,.14); box-shadow: 0 18px 40px -16px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.18); } :root:not([data-theme="light"]) & .notice .b span { border-color: rgba(255,255,255,.18); } }
+  :root[data-theme="dark"] & .notice { background: rgba(31,26,34,.86); color: #f5eef3; border-color: rgba(255,255,255,.14); box-shadow: 0 18px 40px -16px rgba(0,0,0,.7), inset 0 1px 0 rgba(255,255,255,.18); }
+  :root[data-theme="dark"] & .notice .b span { border-color: rgba(255,255,255,.18); }
+  .play .typed { animation: w-type 8s steps(38, end) both; }
+  .play .agent { animation: w-cursor 8s cubic-bezier(.45,.05,.25,1) both; }
+  .play .hit { animation: w-press 8s both; }
+  .play .notice { animation: w-notice 8s ease-out both; }
+  .choice.featured .choice-head { margin-bottom: 14px; }
+  .btn.cta { position: relative; overflow: hidden; width: 100%; display: flex; align-items: center; justify-content: center; gap: 9px; padding: 14px 20px; font-size: 15px; border-radius: 14px; animation: w-cta-glow 2.8s ease-in-out infinite; }
+  .btn.cta .arrow { transition: transform .2s cubic-bezier(.2,.9,.25,1.4); animation: w-nudge 2.8s ease-in-out infinite; }
+  .btn.cta:hover .arrow { transform: translateX(4px); animation: none; }
+  .btn.cta::after { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, .32) 50%, transparent 65%); transform: translateX(-100%); animation: w-shine 4.2s ease-in-out 1.2s infinite; pointer-events: none; }
+  .btn.cta.busy .arrow { display: none; }
+  /* A leading sparkle that glints now and then (the popup's "Set up AI judge"). */
+  .btn.cta .lead { flex: none; animation: w-glint 2.8s ease-in-out infinite; }
+  .btn.cta.busy .lead { display: none; }
+  .choice.featured .row { flex-direction: column; align-items: stretch; }
+  @media (prefers-reduced-motion: reduce) {
+    .hero .tile-logo, .hero .tile-logo::after, .btn.cta, .btn.cta::after, .btn.cta .arrow, .btn.cta .lead { animation: none !important; }
+    .compose .caret, .agent, .notice, .hit, .typed, .pane > * { animation: none !important; }
+    .scene { transition: none; }
+    .compose .typed { max-width: none; } .notice { opacity: 1; }
+  }
+}
+@keyframes w-rise { from { opacity: 0; transform: translateY(8px); } }
+@keyframes w-float { 50% { transform: translateY(-4px); } }
+@keyframes w-ring { 0% { opacity: .55; transform: scale(1); } 70%, 100% { opacity: 0; transform: scale(1.45); } }
+@keyframes w-type { 0%, 5% { max-width: 0; } 33%, 100% { max-width: var(--w); } }
+@keyframes w-blink { 50% { opacity: 0; } }
+@keyframes w-cursor { 0% { transform: translate(-40px, -56px); opacity: 0; } 4%, 34% { transform: translate(-40px, -56px); opacity: 1; } 47% { transform: translate(0, 0); } 49% { transform: translate(0, 0) scale(.88); } 51%, 100% { transform: translate(0, 0); opacity: 1; } }
+@keyframes w-press { 0%, 48% { transform: none; } 49% { transform: scale(.94); } 51%, 100% { transform: none; } }
+@keyframes w-notice { 0%, 51% { opacity: 0; transform: translateY(8px); } 58%, 92% { opacity: 1; transform: none; } 97%, 100% { opacity: 0; transform: none; } }
+@keyframes w-cta-glow { 0%, 100% { box-shadow: 0 10px 26px -10px rgba(236, 72, 153, .75), 0 0 0 0 rgba(236, 72, 153, .35); } 50% { box-shadow: 0 14px 34px -10px rgba(236, 72, 153, .95), 0 0 0 7px rgba(236, 72, 153, 0); } }
+@keyframes w-shine { 0%, 60% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+@keyframes w-glint { 0%, 60%, 100% { transform: none; opacity: 1; } 70% { transform: rotate(-12deg) scale(1.2); } 80% { transform: rotate(8deg) scale(.95); opacity: .85; } }
+@keyframes w-nudge { 0%, 70%, 100% { transform: none; } 80% { transform: translateX(4px); } 90% { transform: none; } }

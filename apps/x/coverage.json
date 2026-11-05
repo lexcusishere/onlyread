@@ -1,0 +1,27 @@
+{
+ "testedOn": "2026-10-08",
+ "passes": [
+  "Home timeline (For you and Following)",
+  "Explore and trends",
+  "Search (Top and Latest)",
+  "Open a post and its replies",
+  "Profiles, their posts, replies and media",
+  "Notifications",
+  "Bookmarks and History",
+  "Browse the settings pages",
+  "Live like and repost counts"
+ ],
+ "refused": [
+  "Publish a post",
+  "Reply to a post",
+  "Like a post",
+  "Repost a post",
+  "Bookmark a post",
+  "Pin a post to the profile",
+  "Delete a post",
+  "Change an account setting",
+  "Dismiss a new-user prompt (implicit, allowed with read-tracking on)",
+  "Chat (direct messages): the chat channel is a WebSocket, which is refused"
+ ],
+ "leakCheck": true
+}
