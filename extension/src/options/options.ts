@@ -4,14 +4,14 @@ import { agreeToJudge } from '../shared/consent-ui';
 import { accountActive, accountStatusText, cloudProblem, cloudUsage, proManaged, usagePercent } from '../shared/cloud-ui';
 import { $, faviconImg, iconImg, installIconFallbacks, lockedBy, send } from '../popup/ui';
 import { extensionGone } from '../shared/messaging';
-import { initTheme, normalizeTheme, setTheme, type Theme } from '../shared/theme';
+import { applyTheme, initTheme, normalizeTheme, setTheme, type Theme } from '../shared/theme';
 import { anthropicLine, mountByokForm } from '../shared/byok-form';
 import { exclusionLine, type OverviewButton, overviewAction, overviewFacts, overviewHeading, setupLine, siteSummary } from '../shared/status-text';
 import { relativeTime } from '../shared/refusals';
 import { installSidebar, reducedMotion, scrollToSection, setCount } from './sections';
 import { takeSignInResult } from '../shared/sign-in-result';
 import { MEGAPHONE, mountReport, openReport } from './report';
-import { allowFrame, enterFramed, framedSection } from './framed';
+import { allowFrame, enterFramed, framedSection, framedTheme } from './framed';
 import { mountScene } from '../shared/demo-scene';
 import { reloadOnDevBuild } from '../shared/dev-reload';
 import { markFirstJudge } from '../shared/first-judge';
@@ -43,8 +43,11 @@ if (framed) enterFramed(framed);
 
 installIconFallbacks();
 mountReport();
-// The demo again, on any of its sites: the setup window's choice of site (background/messages.ts openSetupWindow).
-$('demo-again').addEventListener('click', () => void send({ type: 'setup:open', step: 'demo' }));
+// The demo again, on any of its sites: the setup window's choice of site (background/messages.ts openSetupWindow). In
+// the Overview card, and in Pro mode in the "Managed on your Pro account" card, which is all the page shows there.
+for (const b of document.querySelectorAll<HTMLButtonElement>('[data-demo-again]')) {
+  b.addEventListener('click', () => void send({ type: 'setup:open', step: 'demo' }));
+}
 // Appearance: System / Light / Dark, stored once and applied by every extension page.
 function renderTheme(t: Theme): void {
   for (const b of document.querySelectorAll<HTMLButtonElement>('#theme-seg button')) {
@@ -52,7 +55,9 @@ function renderTheme(t: Theme): void {
     b.classList.toggle('on', on); b.setAttribute('aria-checked', String(on));
   }
 }
-void initTheme().then(renderTheme);
+// Framed on the Pro account page, the page's own light or dark choice instead (options/framed.ts).
+if (framed) applyTheme(framedTheme());
+else void initTheme().then(renderTheme);
 // Another page (a second options tab, the setup window) may change it: keep the control in step.
 chrome.storage.onChanged.addListener((changes, area) => {
   if (area === 'local' && changes.theme) renderTheme(normalizeTheme(changes.theme.newValue));

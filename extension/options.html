@@ -320,7 +320,7 @@
   .opt { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; cursor: pointer; transition: border-color .15s, background .15s; }
   .opt:hover { border-color: var(--line-strong); }
   .opt:has(input:checked) { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 5%, var(--card)); }
-  .opt input { accent-color: var(--accent); margin: 3px 0 0; flex: none; width: 16px; height: 16px; }
+  .opt input { accent-color: var(--accent); margin: 3px 0 0; flex: none; width: 16px; height: 16px; border-radius: 50%; } /* round, so its focus outline is */
   .opt-body { display: grid; gap: 3px; }
   .opt-name { font-weight: 600; display: flex; align-items: center; gap: 8px; }
   .rec { font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 999px; background: var(--chip); color: var(--accent-ink); }
@@ -453,10 +453,14 @@
   .card.pro-managed { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between; padding: 20px 22px; background: var(--card); }
   .card.pro-managed .text { display: grid; gap: 2px; min-width: 0; }
   .card.pro-managed .text span { color: var(--muted); font-size: 13px; }
+  .card.pro-managed .demo-again { flex-basis: 100%; margin: 0; }
   html.framed body { visibility: hidden; background: transparent; }
   html.framed.framed-ok body { visibility: visible; }
   html.framed .top, html.framed .content-top, html.framed .side, html.framed .legal, html.framed .content > section:not(.framed-target) { display: none; }
   html.framed .page { max-width: none; padding: 2px; }
+  /* Framed, a card's shadow would reach past the frame's edge and be cut there, a thin band along the sides and the
+     bottom: the account page around the frame gives the depth instead. */
+  html.framed .card { box-shadow: none; }
   html.framed .shell { display: block; }
   html.framed .framed-target > header { display: none; }
   html.framed dialog { margin-top: 24px; }
@@ -521,6 +525,7 @@
           <div class="card pro-managed">
             <div class="text"><b>Managed on your Pro account</b><span>Sites, activity and protection for this browser.</span></div>
             <button id="pro-managed-open" class="btn primary" type="button">Open your account page</button>
+            <p class="demo-again">See OnlyRead stop a change on a real site. <button type="button" class="link" data-demo-again>Try the demo</button></p>
           </div>
         </section>
 
@@ -539,7 +544,7 @@
               <div class="tile"><div class="k">Writes refused today</div><div class="v"><span id="t-refused">0</span> <small id="t-seen"></small></div></div>
               <div class="tile"><div class="k">Guarded sites</div><div class="v"><span id="t-sites">0</span></div><div class="sub" id="t-account"></div></div>
             </div>
-            <p class="demo-again">See OnlyRead stop a change on a real site. <button type="button" class="link" id="demo-again">Try the demo</button></p>
+            <p class="demo-again">See OnlyRead stop a change on a real site. <button type="button" class="link" id="demo-again" data-demo-again>Try the demo</button></p>
           </div>
         </section>
 
